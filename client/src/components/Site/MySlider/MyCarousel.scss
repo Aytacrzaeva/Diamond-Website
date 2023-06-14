@@ -1,0 +1,108 @@
+.slide {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.slide__text {
+  position: absolute;
+  top: 100px;
+  left: 150px;
+}
+
+.slide__text h1 {
+  margin-bottom: 10px;
+  color: rgb(242, 223, 207);
+  width: 485px;
+  font-size: 100px;
+  text-transform: capitalize;
+  font-family: 'Playfair Display';
+  font-weight: 600;
+}
+
+.slide__text p {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 22px;
+  font-weight: 400;
+  width: 690px;
+  height: 50px;
+  color: rgb(242, 223, 207);
+  text-align: start;
+  font-family: 'Outfit';
+
+}
+
+.slide__text button {
+  width: 200px;
+  height: 40px;
+  background-color: rgb(242, 223, 207);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-right: 490px;
+  font-weight: bold;
+  font-family: 'Outfit';
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 1s all;
+
+}
+
+.slide__text button:hover {
+  background: none;
+  border: 1px solid rgb(242, 223, 207);
+  color: rgb(242, 223, 207);
+}
+
+.carousel {
+  margin-top: 30px;
+}
+
+@media (max-width:873px) {
+  .carousel {
+    display: none;
+  }
+}
+
+@media (max-width:1390px) {
+  .slide__text {
+    position: absolute;
+    top:10px;
+    left: 100px;
+
+    h1 {
+      font-size: 70px;
+      margin-right: 50px;
+      width: 328px;
+    }
+
+    p {
+      width: 450px;
+      height: auto;
+    }
+
+
+  }
+}
+@media(max-width:1055px){
+  .slide__text{
+    position: absolute;
+    top:0px;
+    left: 100px;
+    h1{
+      width: 270px;
+      font-size: 55px;
+    }
+    p{
+      font-size: 13px;
+      width: 400;
+      height: auto;
+    }
+  }
+}

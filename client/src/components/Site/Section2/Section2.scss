@@ -1,0 +1,132 @@
+.section2{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-top: 60px;
+    gap: 50px;
+
+    &__left{
+        width: 510px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        h1 {
+            margin-bottom: 30px;
+            color: rgb(242, 223, 207);
+            width: 400px;
+            font-size: 46px;
+            text-transform: capitalize;
+            font-family: 'Playfair Display';
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            line-height: 20px;
+            font-weight: 400;
+            width: 561px;
+            color: rgb(242, 223, 207);
+            text-align: start;
+            font-family: 'Outfit';
+            font-weight: 500;
+            margin: 0;
+
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            background-color: rgb(242, 223, 207);
+            color: black;
+            border: none;
+            border-radius: 30px;
+            margin-top: 20px;
+            margin-right: 490px;
+            font-weight: bold;
+            font-family: 'Outfit';
+            font-size: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            transition: 1s all;
+
+            &:hover {
+                background: none;
+                border: 1px solid rgb(242, 223, 207);
+                color: rgb(242, 223, 207);
+            }
+
+        }
+    }
+    &__right{
+        width: 561px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@media (max-width:1400px){
+    .section2{
+        padding: 20px;
+        gap: 30px;
+        &__right{
+            width: auto;
+            height: 420px;
+        }
+        &__left {
+            width: 60%;
+
+            h1 {
+                height: auto;
+                width: 100%;
+                font-size: 32px;
+            }
+
+            p {
+                width:100%;
+                height: auto;
+
+            }
+
+            button {
+            }
+        }
+    }
+}
+
+@media (max-width: 804px) {
+    .section2 {
+        flex-direction: column;
+        padding: 20px;
+        &__left {
+            width: 100%;
+
+            h1 {
+                width: 100%;
+                font-size: 32px;
+                height: auto;
+            }
+
+            p {
+                height: auto;
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        &__right {
+            width: auto;
+            height: auto;
+            margin-top: 20px;
+        }
+    }
+}

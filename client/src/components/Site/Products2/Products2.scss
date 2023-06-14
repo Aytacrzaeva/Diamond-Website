@@ -1,0 +1,195 @@
+.products2 {
+  height: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+
+  &__up {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+    &__left{
+        width: 80%;
+        h1 {
+                margin-bottom: 10px;
+                color: rgb(242, 223, 207);
+                width: 485px;
+                font-size: 46px;
+                width: 400px;
+                text-transform: capitalize;
+                font-family: 'Playfair Display';
+                font-weight: 600;
+            }
+            
+    }
+    &__right{
+        width: 20%;
+        button {
+        width: 200px;
+        height: 40px;
+        background-color: rgb(242, 223, 207);
+        color: black;
+        border: none;
+        border-radius: 30px;
+        margin-top: 20px;
+        margin-right: 490px;
+        font-weight: bold;
+        font-family: 'Outfit';
+        font-size: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        transition: 1s all;
+
+        &:hover {
+          background: none;
+          border: 1px solid rgb(242, 223, 207);
+          color: rgb(242, 223, 207);
+        }
+      }
+    }
+
+}
+  &__down {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .slider-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 250px;
+
+      .slider-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background: transparent;
+          border: none;
+
+          &__header {
+            a {
+              font-size: 24px;
+              text-decoration: none;
+              color: #F2DFCF;
+            }
+          }
+
+          &__icon {
+            color: #F2DFCF;
+            font-size: 20px;
+            display: flex;
+            align-items: end;
+            justify-content: end;
+          }
+
+          .card__footer {
+            button {
+              width: 200px;
+              height: 40px;
+              background-color: rgb(242, 223, 207);
+              color: black;
+              border: none;
+              border-radius: 30px;
+              margin-top: 30px;
+              font-weight: bold;
+              font-family: 'Outfit';
+              font-size: 15px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              transition: 1s all;
+
+              &:hover {
+                background: none;
+                border: 1px solid rgb(242, 223, 207);
+                color: rgb(242, 223, 207);
+              }
+            }
+
+            .price {
+              display: flex;
+              align-items: start;
+              justify-content: start;
+              flex-direction: column;
+              color: #F2DFCF;
+              font-family: 'Outfit';
+
+              .star {
+                display: flex;
+                align-items: start;
+                justify-content: start;
+
+                p:first-child {
+                  color: red;
+                }
+
+                .sizes {
+                  margin-left: 20px;
+                  display: flex;
+                  align-items: center;
+                  gap: 20px;
+
+                  .ring {
+                    width: 25px;
+                    height: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid #F2DFCF;
+                    border-radius: 50%;
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.slider-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider-button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: #F2DFCF;
+  font-size: 30px;
+}
+
+@media(max-width:1439px){
+  .products2{
+    display: none;
+  }
+}

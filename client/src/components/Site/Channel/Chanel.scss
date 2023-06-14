@@ -1,0 +1,35 @@
+.chanel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 150px 0; 
+    &__header{
+        h2{
+            color: rgb(242, 223, 207);
+        font-size: 40px;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 50px;
+        }
+    } 
+    &__body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 30px;
+    }  
+    &__img{
+        padding-top: 100px;
+        z-index: 7;
+        width: 25%;
+        height: 200px;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

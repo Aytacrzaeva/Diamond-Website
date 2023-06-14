@@ -1,0 +1,261 @@
+.categories {
+    margin: 0 150px;
+
+    &__cards {
+        width: 100%;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        &__card1 {
+            width: 50%;
+            height: 100%;
+            background-image: url(../../..//images/categories/1-555x335.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px 30px;
+
+            h4 {
+                font-size: 14px;
+                font-family: 'Outfit';
+                letter-spacing: 1px;
+                font-weight: 500;
+            }
+
+            h2 {
+                font-size: 36px;
+                font-family: 'Playfair Display', serif;
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+            button{
+                width: 200px;
+                height: 40px;
+                border: none;
+                border-radius: 30px;
+                margin-top: 210px;
+                margin-right: 490px;
+                font-weight: bold;
+                font-family: 'Outfit';
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(12,60,54);
+                color: rgb(242,223,207);
+                transition: 0.5s all;
+                &:hover{
+                    color: black;
+                background-color: rgb(242,223,207);
+
+
+                }
+              }
+        }
+
+        &__card2 {
+            width: 25%;
+            height: 100%;
+            background-image: url(../../../images/categories/1-270x335.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+
+            h4 {
+                font-size: 14px;
+                font-family: 'Outfit';
+                letter-spacing: 1px;
+                font-weight: 500;
+            }
+
+            h2 {
+                font-size: 36px;
+                font-family: 'Playfair Display', serif;
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+            button{
+                width: 200px;
+                height: 40px;
+                border: none;
+                border-radius: 30px;
+                margin-top: 210px;
+                margin-right: 490px;
+                font-weight: bold;
+                font-family: 'Outfit';
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(12,60,54);
+                color: rgb(242,223,207);
+                transition: 0.5s all;
+                &:hover{
+                    color: black;
+                background-color: rgb(242,223,207);
+
+
+                }
+              }
+        }
+
+        &__card3 {
+            width: 25%;
+            height: 100%;
+            background-image: url(../../../images/categories/2-270x335.jpeg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 20px;
+
+            h4 {
+                font-size: 14px;
+                font-family: 'Outfit';
+                letter-spacing: 1px;
+                font-weight: 500;
+            }
+
+            h2 {
+                font-size: 36px;
+                font-family: 'Playfair Display', serif;
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+            button{
+                width: 200px;
+                height: 40px;
+                border: none;
+                border-radius: 30px;
+                margin-top: 210px;
+                margin-right: 490px;
+                font-weight: bold;
+                font-family: 'Outfit';
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgb(12,60,54);
+                color: rgb(242,223,207);
+                transition: 0.5s all;
+                &:hover{
+                    color: black;
+                background-color: rgb(242,223,207);
+
+
+                }
+              }
+        }
+    }
+    &__texts{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 90px;
+        padding: 50px;
+        &__text{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: rgb(242,223,207);
+        }
+        
+    }
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Outfit';
+    font-size: 14px;
+}
+.icons{
+    font-size: 30px;
+}
+
+
+@media(max-width:1200px){
+    .categories{
+        margin: 0 50px;
+        padding: 50px 0;
+    
+    &__cards{
+        height: auto;
+        display: flex;
+        h4{
+            font-size: 14px;
+        }
+        button{
+            padding: 10px;
+            width: 150px;
+            height: 40px;
+        }
+    }
+}
+}
+
+@media (max-width:873px) {
+    .categories{
+        margin: 0 25px;
+        &__cards{
+            display: flex;
+            flex-wrap: wrap;
+            h4{
+                font-size: 18px;
+            }
+            button{
+                padding: 10px;
+                width: 200px;
+                height: 50px;
+            }
+            &__card1{
+                width: 100%;
+            }
+            &__card2{
+                width: 100%;
+            }
+            &__card3{
+                width: 100%;
+            }
+        }
+        &__texts{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: start;
+            justify-content: start;
+            &__text{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
+                .icons{
+                    font-size: 100px;
+                }
+            }
+            p{
+                font-size: 25px;
+                width: 200px;
+            }
+        }
+    }    
+}
+
+@media (max-width:430px){
+    .categories{
+        &__texts{
+            &__text{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                text-align: center;
+                .icons{
+                    font-size: 50px;
+                }
+            }
+        }
+    }
+}

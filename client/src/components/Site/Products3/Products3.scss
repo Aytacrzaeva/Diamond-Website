@@ -1,0 +1,368 @@
+.products3 {
+    height: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  
+    &__up {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 300px;
+  
+      &__left {
+        width: 80%;
+  
+        h1 {
+          margin-bottom: 10px !important;
+          color: rgb(242, 223, 207);
+          font-size: 46px;
+          width: 400px;
+          text-transform: capitalize;
+          font-family: 'Playfair Display';
+          font-weight: 600;
+        }
+      }
+  
+      &__right {
+        width: 20%;
+  
+        button {
+          width: 200px !important;
+          height: 40px !important;
+          background-color: rgb(242, 223, 207);
+          color: black;
+          border: none;
+          border-radius: 30px;
+          margin-top: 20px;
+          margin-right: 490px;
+          font-weight: bold;
+          font-family: 'Outfit';
+          font-size: 15px;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          transition: 1s all;
+  
+          &:hover {
+            background: none;
+            border: 1px solid rgb(242, 223, 207);
+            color: rgb(242, 223, 207);
+          }
+        }
+      }
+    }
+  
+    &__down {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      .slider-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 250px;
+  
+        .slider-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          width: 100%;
+  
+          .card {
+            width: 50%;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+          flex-direction: row;
+            gap: 10px;
+            background: transparent;
+            border: none;
+  
+            &__header {
+              margin-bottom: 20px;
+              a {
+                font-size: 24px;
+                text-decoration: none;
+                color: #F2DFCF;
+              }
+            }
+  
+            &__icon {
+              color: #F2DFCF;
+              font-size: 20px;
+              display: flex;
+              align-items: flex-end;
+              justify-content: flex-end;
+            }
+  
+            .card__footer {
+              button {
+                width: 200px;
+                height: 40px;
+                background-color: rgb(242, 223, 207);
+                color: black;
+                border: none;
+                border-radius: 30px;
+                margin-top: 30px;
+                font-weight: bold;
+                font-family: 'Outfit';
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                transition: 1s all;
+  
+                &:hover {
+                  background: none;
+                  border: 1px solid rgb(242, 223, 207);
+                  color: rgb(242, 223, 207);
+                }
+              }
+  
+              .price {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-direction: column;
+                gap: 15px;
+                color: #F2DFCF;
+                font-family: 'Outfit';
+  
+                .star {
+                  display: flex;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  
+  
+                  p:first-child {
+                    color: red;
+                  }
+  
+                  .sizes {
+                    margin-left: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+  
+                    .ring {
+                      width: 25px;
+                      height: 25px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      border: 1px solid #F2DFCF;
+                      border-radius: 50%;
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  
+  .slider-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .slider-button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: #F2DFCF;
+    font-size: 30px;
+  }
+  
+
+
+// @media(max-width:435px){
+//   .products3{
+//     &__down{
+//       .card{
+//         width: 20%;
+//       }
+//     }
+//   }
+// }
+
+//   /* Telefonlar için düzenleme */
+// @media (max-width: 1167px) {
+//   .products3 {
+//     height: auto;
+//     margin-top: 50px;
+
+//     &__up {
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: flex-start;
+//       height: auto;
+
+//       &__left {
+//         width: 100%;
+
+//         h1 {
+//           font-size: 32px;
+//           width: auto;
+//           text-align: center;
+//         }
+//       }
+
+//       &__right {
+//         width: 100%;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         margin-top: 20px;
+
+//         button {
+//           width: 400px;
+//           margin-right: 0;
+//         }
+//       }
+//     }
+
+//     &__down {
+//       width: 100%;
+//       margin-top: 310px;
+//       height: auto;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+
+//       .slider-wrapper {
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         height: auto;
+
+//         .slider-container {
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           flex-wrap: wrap;
+//           gap: 20px;
+//           width: 100%;
+
+//           .card {
+//             width: 100%;
+//             display: flex !important;
+//             align-items: center !important;
+//             justify-content: center !important;
+//             flex-direction: column;
+//             gap: 10px;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 768px) and (max-width: 1023px) {
+//   .products3 {
+//     height: auto;
+
+//     &__up {
+//       height: auto;
+
+//       &__left {
+//         width: auto;
+
+//         h1 {
+//           font-size: 40px;
+//           width: 300px;
+//           text-align: center;
+//         }
+//       }
+
+//       &__right {
+//         width: auto;
+//         button {
+//           width: 300px;
+//         }
+//       }
+//     }
+
+//     &__down {
+//       width: 100%;
+//       height: auto;
+
+//       .slider-wrapper {
+//         .slider-container {
+//           .card {
+//             width: 25%;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// /* Normal boyutlu cihazlar için düzenleme */
+// @media (min-width: 1024px) {
+//   .products3 {
+//     height: auto;
+//     margin-top: 50px;
+
+//     &__up {
+//       height: 300px;
+
+//       &__left {
+//         width: 80%;
+
+//         h1 {
+//           font-size: 46px;
+//           width: 400px;
+//           text-align: center;
+//         }
+//       }
+
+//       &__right {
+//         width: 20%;
+
+//         button {
+//           width: 900px;
+//         }
+//       }
+//     }
+
+//     &__down {
+//       height: 300px;
+
+//       .slider-wrapper {
+//         .slider-container {
+//           .card {
+//             width: 50%;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+
+@media(max-width:1439px){
+  .products3{
+    display: none;
+  }
+}
