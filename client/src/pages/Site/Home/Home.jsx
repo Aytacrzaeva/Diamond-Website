@@ -10,22 +10,27 @@ import Partners from '../../../components/Site/Partners/Partners';
 import Categories2 from '../../../components/Site/Categories2/Categories2';
 import Blog from '../../../components/Site/Blog/Blog';
 import Chanel from '../../../components/Site/Channel/Chanel';
+import { Helmet } from 'react-helmet';
 
 
 const Home = () => {
   return (
     <>
-      <MyCarousel/>
-      <Categories/>
-      <Products/>
-      <Products2/>
-      <Section1/>
-      <Products3/> 
-      <Section2/>
-      <Partners/>
-      <Categories2/>
-      <Blog/>
-      <Chanel/>
+      <Helmet>
+        <title>
+          DIAMONDS      </title>
+      </Helmet>
+      <MyCarousel />
+      <Categories />
+      <Products />
+      <Products2 />
+      <Section1 />
+      <Products3 />
+      <Section2 />
+      <Partners />
+      <Categories2 />
+      <Blog />
+      <Chanel />
     </>
   );
 };

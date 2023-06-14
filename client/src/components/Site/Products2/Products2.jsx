@@ -3,16 +3,16 @@ import './Products2.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
-import Ring1 from "../../../images/products/1/1-1000x1000.png";
-import Ring1_2 from "../../../images/products/1/2-1000x1000.png";
-import Ring2 from "../../../images/products/2/1-1000x1000-1.png";
-import Ring2_2 from "../../../images/products/2/2-1000x1000-1.png";
-import Ring3 from "../../../images/products/3/1-1000x1000-2.png";
-import Ring3_2 from "../../../images/products/3/2-1000x1000-2.png";
-import Ring4 from "../../../images/products/4/1-1000x1000-3.png";
-import Ring4_2 from "../../../images/products/4/3-1000x1000.png";
-import Ring5 from "../../../images/products/5/1-1000x1000.png";
-import Ring5_2 from "../../../images/products/5/2-1000x1000.png";
+import Ring1 from "../../../images/products/1/1-1000x1000.png"
+import Ring1_2 from "../../../images/products/1/2-1000x1000.png"
+import Ring2 from "../../../images/products/2/1-1000x1000-1.png"
+import Ring2_2 from "../../../images/products/2/2-1000x1000-1.png"
+import Ring3 from "../../../images/products/3/1-1000x1000-2.png"
+import Ring3_2 from "../../../images/products/3/2-1000x1000-2.png"
+import Ring4 from "../../../images/products/4/1-1000x1000-3.png"
+import Ring4_2 from "../../../images/products/4/3-1000x1000.png"
+import Ring5 from "../../../images/products/5/1-1000x1000.png"
+import Ring5_2 from "../../../images/products/5/2-1000x1000.png"
 
 const Products2 = () => {
   const images = [
@@ -110,30 +110,17 @@ const Products2 = () => {
 
   return (
     <div className="products2">
-      <div className="products2__up">
-        <div className="products2__up__left">
-            <h1>Jewellery & diamonds</h1>
-        </div>
-        <div className="products2__up__right">
-            <button>Check More Product <RiShoppingBagLine/></button>
-        </div>
-      </div>
+      <div className="products2__up"></div>
       <div className="products2__down">
         <div className="slider-wrapper">
+          <button className="slider-button" onClick={previousCard}><MdOutlineKeyboardDoubleArrowLeft /></button>
           <div className="slider-container">
             {renderCard(currentIndex)}
             {renderCard((currentIndex + 1) % cards.length)}
             {renderCard((currentIndex + 2) % cards.length)}
             {renderCard((currentIndex + 3) % cards.length)}
           </div>
-          <div className="slider-navigation">
-            <div className="slider-navigation__arrow" onClick={previousCard}>
-              <MdOutlineKeyboardDoubleArrowLeft />
-            </div>
-            <div className="slider-navigation__arrow" onClick={nextCard}>
-              <MdOutlineKeyboardDoubleArrowRight />
-            </div>
-          </div>
+          <button className="slider-button" onClick={nextCard}><MdOutlineKeyboardDoubleArrowRight /></button>
         </div>
       </div>
     </div>

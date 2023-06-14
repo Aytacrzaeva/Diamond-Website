@@ -1,76 +1,195 @@
 .footer{
     width: 100%;
-    height: 500px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
     gap: 35px;
-    padding: 30px 75px;
+    padding: 20px 75px;
+    padding-bottom: 50px;
     color: white;
     background-color: rgb(242, 223, 207) !important;
     position: relative;
 }
 .footer__up{
+    padding: 0 75px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content:space-around ;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    height: 500px;
-    border-bottom: 1px solid rgba(204, 204, 204, 0.548);
+    flex-wrap: wrap;
+    flex-direction: row;
 
 }
-.footer__crypto{
-    width:30%;
+.footer__inp{
+    width:39%;
     font-size: 18px;
     display: flex;
     flex-direction: column;
-    gap: 35px;
-    line-height: 30px;
-}
-.footer__crypto__icons{
-    font-size: 25px;
-    display: flex;
-    gap: 45px;
+    gap: 20px;
+    color: rgb(242, 223, 207);
+    opacity: 1;
+    h2{
+        font-size: 34px;
+        color: black;
+        font-family: 'Playfair Display';
+
+    }
+    &__input{
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+
+        button{
+            position: absolute;
+            right: 10px;
+            border: none;
+            background: none;
+            color: rgb(242, 223, 207);
+            font-size: 25px;
+        }
+    }
+    input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 7px;
+        padding-left: 10px;
+        border-radius: 30px;
+        border: none;
+        color: rgb(242, 223, 207);
+        background-color: black;
+    }
+    
 }
 .icon{
-    background-color: rgba(202, 202, 202, 0.274);
+    background-color: rgb(22, 22, 22);
+    color: bisque;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    padding: 8px 10px 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
 }
 .footer__company{
     display: flex;
     gap: 50px;
     width: 15%;
-    line-height: 35px;
+    font-family: "outfit";
+    color: black;
 }
 .footer__company h2{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.footer__company p{
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 24px;
 }
 .footer__about{
     display: flex;
     gap: 35px;
     width: 15%;
-    line-height: 35px;
+    font-family: "outfit";
+    color: black;
+
 }
 .footer__about h2{
-    margin-bottom: 30px;
-}
-.footer__resource{
-    display: flex;
-    gap: 35px;
-    width: 18%;
-    font-size: 18px;
-    line-height: 30px;
-}
-.footer__resource h2{
-    margin-bottom: 30px;
-}
-.footer__resource p{
     margin-bottom: 20px;
+    font-size: 14px;
 }
-.footer__down{
+.footer__about p{
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 24px;
+}
+.footer__share{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 20%;
     font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-bottom: 10px;
+    color: black;
+}
+.footer__share__icons{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+}
+.footer__share h1{
+    font-family: 'Playfair Display', serif;
+}
+.footer__share h5{
+    font-family: "outfit";
+    font-size: 14px;
+}
+.footer__share p{
+    line-height: 20px;
+}
+ 
+
+@media (max-width:1200px){
+    .footer__up{
+        padding: 0;
+    }
+    .footer__inp{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width:820px){
+    .footer__up{
+        padding: 0;
+    }
+    .footer__inp{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .footer__about{
+        width: 50%;
+    }
+    .footer__company{
+        width: 50%;
+    }
+    .footer__share{
+        width: 100%;
+    }
+}
+
+@media (max-width:530px){
+    .footer{
+        padding:0 10px;
+    }
+    .footer__up{
+        padding: 0;
+        .footer__inp{
+            width: 100%;
+            margin-bottom: 30px;
+            h2{
+                font-size: 25px;
+            }
+        }
+    }
+    
+}
+@media (max-width:340px){
+    .footer{
+        padding:0;
+        padding-bottom: 10px;
+    }
+    .footer__up{
+        padding: 0 10px;
+        .footer__inp{
+            width: 90%;
+            margin-bottom: 30px;
+            h2{
+                font-size: 25px;
+            }
+        }
+    }
+    
 }

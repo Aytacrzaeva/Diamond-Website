@@ -10,7 +10,7 @@ const Siteroot = () => {
         <Header/>
         <Header2/>
         <Outlet/>
-        {/* <Footer/> */}
+        <Footer/>
     </React.Fragment>
   )
 }

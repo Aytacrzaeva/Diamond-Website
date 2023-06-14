@@ -1,0 +1,110 @@
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 10px 150px;
+    width: 100%;
+    margin-top: 50px;
+    font-family: "outfit";
+
+    &__left {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 40px;
+        color: rgb(242, 223, 207);
+        margin-top: 50px;
+        p{
+            font-size: 16px;
+            line-height: 10px;
+        }
+    }
+    &__right{
+        width: 50%;
+        h2{
+            color: rgb(242, 223, 207);
+            font-size: 30px;
+        }
+    }
+    .form {
+        flex: 1;
+        padding: 20px;
+        background-color: rgb(242, 223, 207);
+        border: 1px solid #213a2d;
+        border-radius: 4px;
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            div {
+                margin-bottom: 20px;
+
+                label {
+                    margin-bottom: 8px;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 8px;
+                    border: 1px solid #213a2d;
+                    background: transparent;
+                    border-radius: 10px;
+                }
+                textarea{
+                    height: 270px;
+                    width: 100%;
+                    padding: 8px;
+                    border: 1px solid #213a2d;
+                    background: transparent;
+                    border-radius: 10px;
+                }
+
+                div {
+                    color: red;
+                }
+            }
+
+            button {
+                width: 200px;
+                padding: 10px;
+                background: none;
+                color: black;
+                border: 1px solid #213a2d;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact {
+      flex-direction: column;
+      padding: 50px 20px;
+    }
+    
+    .contact__left,
+    .contact__right {
+      width: 100%;
+    }
+    
+    .contact__left {
+      margin-top: 20px;
+    }
+    
+    .contact__right h2 {
+      font-size: 24px;
+    }
+    
+    .form {
+      padding: 10px;
+      padding-bottom: 50px;
+    }
+  }
+  

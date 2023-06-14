@@ -4,13 +4,14 @@
     justify-content: center;
     flex-direction: column;
     gap: 30px;
-    padding: 150px 0; 
+    padding-top: 50px;
+    background: linear-gradient(rgb(24, 43, 41) 0%, rgb(13, 53, 51) 50%, rgb(242, 223, 207) 50%, rgb(242, 223, 207) 100%);
+
     &__header{
         h2{
             color: rgb(242, 223, 207);
         font-size: 40px;
         font-family: 'Playfair Display', serif;
-        margin-bottom: 50px;
         }
     } 
     &__body{
@@ -20,9 +21,9 @@
         flex-wrap: wrap;
         flex-direction: row;
         gap: 30px;
+        margin-bottom: 110px;
     }  
     &__img{
-        padding-top: 100px;
         z-index: 7;
         width: 25%;
         height: 200px;

@@ -1,0 +1,193 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 50px;
+    font-family: "outfit";
+
+    .loginback {
+        width: 100%;
+        padding: 20px 150px;
+        display: flex;
+        justify-content: space-between;
+        color: rgb(242, 223, 207);
+        font-family: "outfit";
+
+        &__left {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            flex-direction: column;
+            gap: 20px;
+
+            &__button {
+                #back {
+                    font-size: 30px;
+                }
+
+                button {
+                    color: rgb(242, 223, 207);
+                    border: none;
+                    background: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+
+                    a {
+                        color: rgb(242, 223, 207);
+                    }
+                }
+            }
+
+            h2 {
+                font-size: 40px;
+                font-weight: 600;
+            }
+        }
+
+        &__right {
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            gap: 0px;
+
+            a {
+                text-decoration: none;
+                color: rgb(242, 223, 207);
+                font-size: 17.5px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+       
+    }
+
+    &__down {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        width: 100%;
+        padding: 0 150px;
+        color: rgb(242, 223, 207);
+        &__left{
+            width: 50%;
+            button{
+                border: none;
+                background: none;
+                background-color: rgb(242, 223, 207);
+                padding: 10px 60px;
+                border-radius: 30px;
+                a{
+                    color: black;
+                    font-weight: bold;
+
+                }
+            }
+            h3{
+                border-bottom: 1px solid rgb(242, 223, 207);
+            }
+        }
+        &__right{
+            width: 50%;
+
+        }
+
+    }
+}
+
+.myForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  
+}
+.forgot{
+    text-align: start;
+    width: 100%;
+    a{
+
+        color: rgb(114, 186, 161);
+        font-size: 13px;
+    }
+}
+.myForm div {
+  width: 100%;
+}
+
+.myForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: rgb(242, 223, 207);
+
+}
+
+.myForm input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid rgb(64,121,114);
+  border-radius: 10px;
+  font-size: 14px;
+  background: none;
+  color: rgb(242, 223, 207);
+  transition: border-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.myForm input:focus {
+  outline: none;
+}
+
+.myForm .error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+.myForm button[type="submit"] {
+  margin-top: 1rem;
+  padding: 10px 60px;
+  background-color: rgb(242, 223, 207);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+}
+
+.myForm button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+@media(max-width:1000px){
+    .login{
+        &__down{
+            padding: 0 20px;
+            flex-direction: column;
+            &__left{
+                width: 100%;
+            }
+            &__right{
+                width: 100%;
+                .myForm{
+                    width: 100%;
+                    margin: 0;
+                    input{
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}
