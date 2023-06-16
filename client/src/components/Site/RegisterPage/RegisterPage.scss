@@ -57,11 +57,9 @@
     }
 
     @media (max-width: 768px) {
-        /* Mobil ekranlar için stil değişiklikleri */
         padding: 10px 30px;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         gap: 10px;
 
         &__left {
@@ -198,3 +196,4 @@
     }
     
 }
+

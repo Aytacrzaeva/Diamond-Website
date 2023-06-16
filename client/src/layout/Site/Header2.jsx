@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Logo from "../../images/logo.png";
 import "./Header2.scss";
 import { FiSearch } from 'react-icons/fi';
@@ -17,6 +17,7 @@ const Header2 = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMenu, setShowMenu] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,12 +31,26 @@ const Header2 = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowProfileDropdown(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   const toggleSearchModal = () => {
     setShowSearchModal(!showSearchModal);
   };
 
-  const toggleProfileDropdown = () => {
-    setShowProfileDropdown(!showProfileDropdown);
+  const closeProfileDropdown = () => {
+    setShowProfileDropdown(false);
   };
 
   const handleSearch = () => {
@@ -77,8 +92,8 @@ const Header2 = () => {
         <img src={Logo} alt="" />
       </div>
       <div className="nav2__right">
-        <div className="dropdown">
-          <button onClick={toggleProfileDropdown}>
+        <div className="dropdown" ref={dropdownRef}>
+          <button onClick={() => setShowProfileDropdown(!showProfileDropdown)}>
             <AiOutlineUser />
             {windowWidth > 770 ? "My Profile" : null} <FiChevronDown/>
           </button>
@@ -88,10 +103,10 @@ const Header2 = () => {
                 <h3>Your Account</h3>
                 <p>Access account and manage orders</p>
               </div>
-              <Link to="/register"><BsPersonFillAdd /> Register</Link>
-              <Link to="/login"><FaLock /> Login</Link>
-              <Link to="/wishlist"><AiFillHeart /> Wishlist</Link>
-              <Link to="/"><FaDollarSign /> Currency</Link>
+              <Link to="/register" onClick={closeProfileDropdown}><BsPersonFillAdd /> Register</Link>
+              <Link to="/login" onClick={closeProfileDropdown}><FaLock /> Login</Link>
+              <Link to="/wishlist" onClick={closeProfileDropdown}><AiFillHeart /> Wishlist</Link>
+              <Link to="/" onClick={closeProfileDropdown}><FaDollarSign /> Currency</Link>
             </div>
           )}
         </div>

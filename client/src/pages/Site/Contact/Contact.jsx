@@ -8,7 +8,7 @@ const Contact = () => {
     <>
     <Helmet>
         <title>
-            Contact Page
+            Contact Us
         </title>
     </Helmet>
     <Contactback/>

@@ -1,0 +1,247 @@
+.categories2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 125px;
+    margin-top: 200px;
+
+    &__right {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .categories2__cards {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            gap: 20px;
+
+            &__card2 {
+                width: 45%;
+                height: 100%;
+                background-image: url(../../../../images/categories/1-270x335.jpeg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 20px;
+
+                h4 {
+                    font-size: 14px;
+                    font-family: 'Outfit';
+                    letter-spacing: 1px;
+                    font-weight: 500;
+                }
+
+                h2 {
+                    font-size: 36px;
+                    font-family: 'Playfair Display', serif;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                }
+
+                button {
+                    width: 180px;
+                    height: 40px;
+                    border: none;
+                    border-radius: 30px;
+                    margin-top: 210px;
+                    margin-right: 490px;
+                    font-weight: bold;
+                    font-family: 'Outfit';
+                    font-size: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(242, 223, 207);
+                    color: rgb(12, 60, 54);
+                    transition: 0.5s all;
+
+                    &:hover {
+                        color: rgb(242, 223, 207);
+                        background-color:  rgb(12, 60, 54);
+
+
+                    }
+                }
+            }
+
+            &__card3 {
+                width: 45%;
+                height: 100%;
+                background-image: url(../../../../images/categories/2-270x335.jpeg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 20px;
+
+                h4 {
+                    font-size: 14px;
+                    font-family: 'Outfit';
+                    letter-spacing: 1px;
+                    font-weight: 500;
+                }
+
+                h2 {
+                    font-size: 36px;
+                    font-family: 'Playfair Display', serif;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                }
+
+                button {
+                    width: 180px;
+                    height: 40px;
+                    border: none;
+                    border-radius: 30px;
+                    margin-top: 210px;
+                    margin-right: 490px;
+                    font-weight: bold;
+                    font-family: 'Outfit';
+                    font-size: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(242,223,207 );
+                    color: rgb(12, 60, 54);
+                    transition: 0.5s all;
+
+                    &:hover {
+                        color: rgb(242, 223, 207);
+                        background-color: rgb(12, 60, 54);
+
+
+                    }
+                }
+            }
+
+        }
+    }
+
+    &__left {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-image: url();
+
+        h1 {
+            margin-bottom: 30px;
+            color: rgb(242, 223, 207);
+            height: auto;
+            font-size: 46px;
+            text-transform: capitalize;
+            font-family: 'Playfair Display';
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            line-height: 20px;
+            font-weight: 400;
+            width: auto;
+            height: auto;
+            color: rgb(242, 223, 207);
+            text-align: start;
+            font-family: 'Outfit';
+            font-weight: 500;
+            margin: 0;
+
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            background-color: rgb(242, 223, 207);
+            color: rgb(12, 60, 54);
+            border: none;
+            border-radius: 30px;
+            margin-top: 20px;
+            margin-right: 490px;
+            font-weight: bold;
+            font-family: 'Outfit';
+            font-size: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            transition: 1s all;
+
+            &:hover {
+                background: none;
+                border: 1px solid rgb(242, 223, 207);
+                color: rgb(242, 223, 207);
+            }
+
+        }
+    }
+
+
+}
+
+
+@media (max-width:1243px){
+    .categories2{
+        padding: 0 30px;
+        &__left{
+            width: 35%;
+
+        }
+        &__right{
+            width: 65%;
+        }
+    }
+}
+@media (max-width:786px){
+    .categories2{
+        margin-top: 100px;
+        padding: 0 30px;
+        flex-direction: column;
+        gap: 30px;
+        &__left{
+            width: 100%;
+
+        }
+        &__right{
+            width: 100%;
+        }
+    }
+}
+@media (max-width:706px){
+    .categories2{
+        margin-top: 0px;
+        padding: 0 30px;
+        flex-direction: column;
+        gap: 30px;
+        &__left{
+            width: 100%;
+
+        }
+        &__right{
+            width: 100%;
+        }
+    }
+
+    .categories2__right .categories2__cards{
+        flex-direction: column;
+    
+    }
+    
+    .categories2__right .categories2__cards__card2{
+        width: 100%;
+    }
+    
+    .categories2__right .categories2__cards__card3{
+        width: 100%;
+    }
+}
+@media(max-width:334px){
+    .categories2{
+        display: none;
+    }
+}
+//334 birde bax cunki duzelmelidi

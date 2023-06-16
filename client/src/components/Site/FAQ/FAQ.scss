@@ -1,0 +1,350 @@
+.why__sec {
+    width: 100%;
+    h2{
+        text-align: center;
+        color: rgb(242, 223, 207);
+        font-size: 40px;
+        font-family: "outfit";
+    }
+    p{
+        text-align: center;
+        color: rgb(242, 223, 207);
+        font-size: 20px;
+    }
+    &__title{
+        &__box{
+            text-align: center;
+        }
+    }
+    &__box {
+        padding: 50px 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        
+        &__right {
+            width: 100%;
+        }
+        &__left{
+            width: 50%;
+            height: 100%;
+            position: fixed;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+/* Accordion container */
+.accordion {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Accordion title */
+.accordion button {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    background: none;
+    color:rgb(242, 223, 207);
+    cursor: pointer;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Accordion content */
+.accordion .content {
+    width: 100%;
+    height: 200px;
+    color: rgb(242, 223, 207);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s linear;
+}
+
+.accor__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.accor__icon {
+    padding: 15px;
+    background-color:  rgb(242, 223, 207) ;
+    color: rgba(35, 64, 49, 0.752);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 50%;
+}
+
+.accor_icon2{
+    transition: 0.3s linear;
+    font-size: 25px;
+}
+
+.icon2 {
+    background-color: rgb(255, 245, 220);
+}
+
+.accor_icon {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.custom__accor {
+    .content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0px 10%;
+        transition: max-height 0.3s linear;
+    }
+
+    &.active {
+        .content {
+            max-height: 400px;
+            transition: max-height 0.3s linear;
+            padding: 0px 10px;
+        }
+        .accor_icon2{
+            transform: rotateX(180deg);
+        }
+        .accor__icon2{
+            background-color:rgba(35, 64, 49, 0.752);
+            color: white;
+        }
+    }
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 900px) {
+    .why__sec {
+        &__box {
+            flex-direction: row;
+            gap: 100px;
+            padding: 10px;
+
+            &__right {
+                width: 100%;
+            }
+        }
+    }
+
+    .custom__accor {
+        .content {
+            padding: 0px 10%;
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .why__sec {
+        padding: 5px;
+
+        &__box {
+            gap: 30px;
+            font-size: 12px;
+
+            &__left{
+                display: none;
+            }
+            &__right {
+                width: 100%;
+            }
+        }
+    }
+
+    .accordion {
+        width: 100%;
+    }
+
+    .custom__accor {
+        .content {
+            padding: 0px 5%;
+            font-size: 12px;
+        }
+    }
+    .accor__icon{
+        padding: 5px;
+    }
+}
+
+
+
+
+
+
+
+
+.faqback {
+    width: 100%;
+    padding: 0 150px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(242, 223, 207);
+    font-family: "outfit";
+
+    &__left {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-direction: column;
+        gap: 20px;
+
+        &__button {
+            #back {
+                font-size: 30px;
+            }
+
+            button {
+                color: rgb(242, 223, 207);
+                border: none;
+                background: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+
+                a {
+                    color: rgb(242, 223, 207);
+                }
+            }
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 10px;
+
+        a {
+            text-decoration: none;
+            color: rgb(242, 223, 207);
+            font-size: 17.5px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .faqback{
+
+            padding: 10px 30px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+    
+            &__left {
+                align-items: center;
+                text-align: center;
+    
+                &__button {
+                    #back {
+                        font-size: 20px;
+                    }
+    
+                    button {
+                        flex-direction: column;
+                        gap: 5px;
+    
+                        a {
+                            font-size: 15px;
+                        }
+                    }
+                }
+    
+                h2 {
+                    font-size: 30px;
+                }
+            }
+    
+            &__right {
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+    
+                a {
+                    font-size: 15px;
+                }
+    
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        }
+}
+    @media (max-width: 890px) {
+        .faqback{
+           padding: 10px 30px;
+           justify-content: space-between;
+           gap: 10px;
+       
+           &__left {
+               align-items: center;
+               text-align: center;
+       
+               &__button {
+                   #back {
+                       font-size: 20px;
+                   }
+                   button {
+                       flex-direction: column;
+                       gap: 5px;
+       
+                       a {
+                           font-size: 15px;
+                       }
+                   }
+               }
+               h2 {
+                   font-size: 30px;
+               }
+           }
+       
+           &__right {
+               align-items: center;
+               text-align: center;
+               gap: 10px;
+       
+               a {
+                   font-size: 15px;
+               }
+               p {
+                   font-size: 14px;
+               }
+           }
+       }
+       }
+               
+           
+
+
+       

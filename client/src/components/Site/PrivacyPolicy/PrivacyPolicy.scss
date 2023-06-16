@@ -1,0 +1,22 @@
+.priv{
+    width: 100%;
+    padding: 50px 150px;
+    font-family: "outfit";
+    color: rgb(242, 223, 207);
+    &__head{
+        h2{
+            font-size: 40px;
+        }
+    }
+}
+@media (max-width:830px){
+    .priv{
+        padding: 20px;
+        p{
+            font-size: 12px;
+        }
+        h2{
+            font-size: 30px;
+        }
+    }
+}

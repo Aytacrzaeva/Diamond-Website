@@ -1,0 +1,202 @@
+.forgot{
+    width: 100%;
+    padding: 90px 150px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "outfit";
+    color: rgb(242, 223, 207);
+    &__down{
+        width: 100%;
+        h2{
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 30px;
+        }
+        p{
+            font-size: 16px;
+            border-bottom: 1px solid rgb(242, 223, 207);
+        }
+        h4{
+            font-size: 20px;
+            display:flex;
+        }
+        input{
+            width: 70%;
+            padding: 5px;
+            border-radius: 20px;
+            border: none;
+        }
+        button{
+            background-color: rgb(242, 223, 207);
+            border: none;
+            color: black;
+            padding: 5px 30px;
+            border-radius: 20px;
+        }
+    }
+}
+.forgotback {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(242, 223, 207);
+    font-family: "outfit";
+
+    &__left {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-direction: column;
+        gap: 20px;
+
+        &__button {
+            #back {
+                font-size: 30px;
+            }
+
+            button {
+                color: rgb(242, 223, 207);
+                border: none;
+                background: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+
+                a {
+                    color: rgb(242, 223, 207);
+                }
+            }
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 10px;
+
+        a {
+            text-decoration: none;
+            color: rgb(242, 223, 207);
+            font-size: 17.5px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .forgotback{
+
+            padding: 10px 30px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+    
+            &__left {
+                align-items: center;
+                text-align: center;
+    
+                &__button {
+                    #back {
+                        font-size: 20px;
+                    }
+    
+                    button {
+                        flex-direction: column;
+                        gap: 5px;
+    
+                        a {
+                            font-size: 15px;
+                        }
+                    }
+                }
+    
+                h2 {
+                    font-size: 30px;
+                }
+            }
+    
+            &__right {
+                align-items: center;
+                text-align: center;
+                gap: 10px;
+    
+                a {
+                    font-size: 15px;
+                }
+    
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+        }
+}
+    @media (max-width: 890px) {
+       .forgot .forgotback{
+           padding: 10px 30px;
+           justify-content: space-between;
+           gap: 10px;
+       
+           &__left {
+               align-items: center;
+               text-align: center;
+       
+               &__button {
+                   #back {
+                       font-size: 20px;
+                   }
+                   button {
+                       flex-direction: column;
+                       gap: 5px;
+       
+                       a {
+                           font-size: 15px;
+                       }
+                   }
+               }
+               h2 {
+                   font-size: 30px;
+               }
+           }
+       
+           &__right {
+               align-items: center;
+               text-align: center;
+               gap: 10px;
+       
+               a {
+                   font-size: 15px;
+               }
+               p {
+                   font-size: 14px;
+               }
+           }
+       }
+       }
+               
+           
+@media(max-width:900px){
+    .forgot{
+        padding: 20px;
+    }
+    .forgot{
+        input{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        button{
+            padding: 5px 20px;
+            width: 100%;
+        }
+    }
+}

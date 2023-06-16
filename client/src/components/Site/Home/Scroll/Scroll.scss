@@ -1,0 +1,27 @@
+.scroll {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: black;
+    color: bisque;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 22px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+        background-color: rgb(62, 99, 80);
+        color: black;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  

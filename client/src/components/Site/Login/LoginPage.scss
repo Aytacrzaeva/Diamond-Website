@@ -98,9 +98,13 @@
         }
 
     }
+
+
+    
 }
 
 .myForm {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,7 +114,7 @@
   border-radius: 8px;
   
 }
-.forgot{
+.forgott{
     text-align: start;
     width: 100%;
     a{
@@ -189,5 +193,12 @@
                 }
             }
         }
+    }
+}
+
+
+@media(max-width:664px){
+.login .loginback{
+        padding: 20px;
     }
 }

@@ -1,0 +1,39 @@
+.conditions{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 150px;
+    color: rgb(242, 223, 207);
+    font-family: "outfit";
+    &__up{
+        h2{
+            font-size: 40px;
+            font-weight: 600;
+        }
+    }
+    &__down{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        &__item{
+            &__down{
+                
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                &__left{
+                    font-size: 40px;
+                }
+            }
+        }
+
+    }
+}
+@media (max-width:900px){
+    .conditions{
+        padding: 20px;
+        font-size: 13px;
+    }
+}

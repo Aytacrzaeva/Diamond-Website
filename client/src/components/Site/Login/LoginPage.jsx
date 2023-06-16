@@ -18,7 +18,6 @@ const LoginPage = () => {
   });
 
   const handleSubmit = (values) => {
-    // Form submit işlemleri burada gerçekleştirilebilir
     console.log(values);
   };
 
@@ -83,7 +82,7 @@ const LoginPage = () => {
                   />
                   <ErrorMessage name="password" component="div" className="error" />
                 </div>
-                <p className='forgot'><Link to="/forgotpassword">Forgotten Password</Link></p>
+                <p className='forgott'><Link to="/forgotpassword">Forgotten Password</Link></p>
                 <div>
                   <button type="submit">Login</button>
                   
