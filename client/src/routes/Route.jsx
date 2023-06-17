@@ -14,6 +14,7 @@ import Privacy from "../pages/Site/Privacy/Privacy";
 import BlogPage from "../pages/Site/Blog/BlogPage";
 import Map from "../pages/Site/Map/Map";
 import Details from "../pages/Site/Details/Details";
+import Products from "../pages/Site/Products/Products";
 
 export const ROUTES=[{
     path:"/",
@@ -55,8 +56,11 @@ export const ROUTES=[{
         path:"address",
         element:<Map/>
     },{
-        path:"id",
+        path:":id",
         element:<Details/>
+    },{
+        path:"products",
+        element:<Products/>
     }]
 },{
     path:"/admin",

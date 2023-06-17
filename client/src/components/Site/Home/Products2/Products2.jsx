@@ -15,6 +15,8 @@ import Ring5 from "../../../../images/products/5/1-1000x1000.png"
 import Ring5_2 from "../../../../images/products/5/2-1000x1000.png"
 
 const Products2 = () => {
+
+
   const images = [
     { main: Ring1, hover: Ring1_2 },
     { main: Ring2, hover: Ring2_2 },
@@ -110,7 +112,14 @@ const Products2 = () => {
 
   return (
     <div className="products2">
-      <div className="products2__up"></div>
+      <div className="products2__up">
+      <div className="products2__up__left">
+          <h1>Jewellery & diamonds</h1>
+        </div>
+        <div className="products2__up__right">
+          <button>Check More Product <RiShoppingBagLine/></button>
+        </div>
+      </div>
       <div className="products2__down">
         <div className="slider-wrapper">
           <button className="slider-button" onClick={previousCard}><MdOutlineKeyboardDoubleArrowLeft /></button>
