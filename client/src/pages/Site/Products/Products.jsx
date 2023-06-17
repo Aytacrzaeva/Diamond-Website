@@ -29,6 +29,7 @@ import Ring9_2 from "../../../images/products/4/3-1000x1000.png";
 import Ring10 from "../../../images/products/5/1-1000x1000.png";
 import Ring10_2 from "../../../images/products/5/2-1000x1000.png";
 import "./Products.scss";
+import { Helmet } from 'react-helmet';
 
 const Products = () => {
   const images = [
@@ -263,6 +264,11 @@ const Products = () => {
       </div>
     </div>
     <Products2/>
+    <Helmet>
+      <title>
+        All Products
+      </title>
+    </Helmet>
     </>
   );
 };
