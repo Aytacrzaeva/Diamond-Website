@@ -1,7 +1,5 @@
 import FAQ from "../components/Site/FAQ/FAQ";
 import Conditions from "../pages/Site/Terms&conditions/Terms";
-import Adminroot from "../pages/Admin/Adminroot/Adminroot";
-import Dashboard from "../pages/Admin/Dashboard/Dashboard";
 import About from "../pages/Site/About/About";
 import Contact from "../pages/Site/Contact/Contact";
 import Forgotpass from "../pages/Site/Forgotpass/Forgotpass";
@@ -19,7 +17,9 @@ import Account from "../pages/Site/Account/Account";
 import Wishlist from "../pages/Site/WishList/Wishlist";
 import Basket from "../pages/Site/Basket/Basket";
 import AccInformation from "../pages/Site/MyAccInfo/AccInformation";
-
+import Adminroot from '../pages/Admin/Adminroot/Adminroot'
+import AddFilm from "../pages/Admin/add-film";
+import AdminHome from "../components/Admin/AdminHome/AdminHome";
 export const ROUTES=[{
     path:"/",
     element: <Siteroot/>,
@@ -83,6 +83,6 @@ export const ROUTES=[{
     element: <Adminroot/>,
     children:[{
         path:"",
-        element:<Dashboard/>
+        element:<AdminHome/>
     }]
 }]

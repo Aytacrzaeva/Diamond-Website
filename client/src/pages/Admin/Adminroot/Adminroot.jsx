@@ -1,15 +1,12 @@
 import React from 'react'
-import Header from '../../../layout/Admin/Header'
 import { Outlet } from 'react-router-dom'
-import Footer from '../../../layout/Admin/Footer'
-
+import AdminHeader from '../../../layout/Admin/header/index'
 const Adminroot = () => {
   return (
-    <React.Fragment>
-        <Header/>
+    <div>
+        <AdminHeader/>
         <Outlet/>
-        <Footer/>
-    </React.Fragment>
+    </div>
   )
 }
 
