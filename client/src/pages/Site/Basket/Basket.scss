@@ -1,0 +1,88 @@
+.wish {
+    margin: 50px 150px;
+    font-family: "outfit";
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0px;
+    width: 100%;
+  }
+  
+  .button-container a {
+    text-decoration: none;
+  }
+  
+  .button-container button {
+    color: black;
+    background-color: rgb(242, 223, 207);
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "outfit";
+  }
+  .button-container button:hover{
+    background: none;
+    color: rgb(242, 223, 207);
+    border: 1px solid rgb(242, 223, 207);
+  }
+  .round-button {
+    color: rgb(242, 223, 207);
+    font-size: 30px;
+  }
+  
+  h1 {
+    color: rgb(242, 223, 207);
+    font-family: "Dancing Script", cursive;
+    font-size: 60px;
+  }
+  
+  .basket-input {
+    border: none;
+    background: none;
+    border: 1px solid rgb(242, 223, 207);
+    color: rgb(242, 223, 207);
+    border-radius: 20px;
+    padding: 10px;
+  }
+  
+  table {
+    border: 1px solid rgb(242, 223, 207);
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  
+    thead {
+      tr {
+        th {
+          color: rgb(242, 223, 207);
+        }
+      }
+    }
+  
+    tbody {
+      tr {
+        td {
+          color: rgb(242, 223, 207);
+  
+          &.image-cell {
+            img {
+              width: auto;
+              height: auto;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media(max-width:1125px){
+    .wish{
+      margin: 20px;
+    }
+  }

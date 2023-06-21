@@ -9,7 +9,7 @@ const Header = () => {
     </div>
     <div className="nav__right">
         <ul>
-
+          <li><Link to="/products">All Products</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/address">Address</Link></li>
             <li><Link to="/contact">Contact</Link></li>

@@ -1,5 +1,31 @@
 .wish {
     margin: 50px 150px;
+    .button-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px 0px;
+      width: 100%;
+    }
+    
+    .button-container a {
+      text-decoration: none;
+    }
+    
+    .button-container button {
+      color: black;
+      background-color: rgb(242, 223, 207);
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: "outfit";
+    }
+    .button-container button:hover{
+      background: none;
+      color: rgb(242, 223, 207);
+      border: 1px solid rgb(242, 223, 207);
+    }
     .action-buttons{
         display: flex;
         align-items: center;

@@ -4,6 +4,7 @@ import { Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/m
 import Ring1 from "../../../images/products/5/1-1000x1000.png";
 import {AiOutlineCloseCircle} from "react-icons/ai"
 import {FaShoppingCart} from "react-icons/fa"
+import { Link } from 'react-router-dom';
 
 
 const Wish = () => {
@@ -24,6 +25,15 @@ const Wish = () => {
       inStock: false,
       price: '$20.00'
     },
+    {
+      id: 3,
+      image: Ring1,
+      productName: 'Product 3',
+      model: 'Model 3',
+      inStock: true,
+      price: '$200.00'
+    }
+    
     // Diğer wishlist öğeleri
   ];
 
@@ -42,6 +52,7 @@ const Wish = () => {
 
   return (
     <div className="wish">
+      <h1>Wish List</h1>
       <Table>
         <TableHead>
           <TableRow style={tableCellStyle}>
@@ -73,6 +84,9 @@ const Wish = () => {
           ))}
         </TableBody>
       </Table>
+      <div className="button-container">
+                <Link to="/products"><Button >Continue Shopping</Button></Link>
+            </div>
     </div>
   );
 };

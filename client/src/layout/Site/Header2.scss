@@ -58,6 +58,9 @@
       font-size: 14px;
       font-weight: bold;
       letter-spacing: 1px;
+      display: flex;
+        align-items: center;
+        justify-content: center;
     }
   }
 
@@ -142,6 +145,7 @@
         color: #777;
         font-size: 18px;
         margin-left: 10px;
+        
       }
     }
   }
@@ -226,6 +230,9 @@
   a {
     color: rgba(0, 0, 0, 0.706);
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

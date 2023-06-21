@@ -10,8 +10,55 @@
         border: 1px solid rgb(242, 223, 207);
         height: 700px;
         display: flex;
-        align-items: center;
         flex-direction: column;
+        gap: 30px;
+        padding:10px;
+        padding-top: 50px;
+        &__card{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            border-bottom: 1px solid rgb(242, 223, 207);
+            h2{
+                font-size: 20px;
+                color: rgb(242, 223, 207);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            ul{
+                line-height: 40px;
+                li{
+                    list-style: none;
+                    a{
+                        text-decoration: none;
+                        color: rgb(242, 223, 207);
+                        font-size: 14px;
+                    }
+                }
+            }
+            button{
+                border: none;
+                background: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                color: rgb(242, 223, 207);
+                gap: 30px;
+                font-size: 18px;
+                
+            }
+        }
+        h6{
+            color: rgb(242, 223, 207);
+        }
+        a{
+            text-decoration: none;
+            color: rgb(242, 223, 207);
+        }
     }
     &__left{
         width: 73%;
@@ -47,6 +94,12 @@
                     &__left{
                         font-size: 45px;
 
+                    }
+                    &__right{
+                        a{
+                            text-decoration: none;
+                            color: rgb(242, 223, 207);
+                        }
                     }
                 }
             }

@@ -17,6 +17,8 @@ import Details from "../pages/Site/Details/Details";
 import Products from "../pages/Site/Products/Products";
 import Account from "../pages/Site/Account/Account";
 import Wishlist from "../pages/Site/WishList/Wishlist";
+import Basket from "../pages/Site/Basket/Basket";
+import AccInformation from "../pages/Site/MyAccInfo/AccInformation";
 
 export const ROUTES=[{
     path:"/",
@@ -69,6 +71,12 @@ export const ROUTES=[{
     },{
         path:"wishlist",
         element:<Wishlist/>
+    },{
+        path:"cart",
+        element:<Basket/>
+    },{
+        path:"myprofile",
+        element:<AccInformation/>
     }]
 },{
     path:"/admin",
