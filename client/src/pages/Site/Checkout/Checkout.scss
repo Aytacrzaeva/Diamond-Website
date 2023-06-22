@@ -1,0 +1,96 @@
+.checkout-form {
+  display: flex;
+  padding: 50px 150px;
+  font-family: "outfit";
+
+  .shipping-address {
+    flex: 1;
+    margin-right: 2rem;
+    color: beige;
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        background: none;
+        padding: 0.5rem;
+        border: none;
+        border: 1px solid beige;
+        border-radius: 20px;
+        color: white;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 0.5rem;
+      }
+    }
+
+    button[type='submit'] {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: beige;
+        border-radius: 20px;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+    }
+  }
+
+  .shipping {
+    flex: 1;
+    color: beige;
+    font-family: "outfit";
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+
+      label {
+        font-weight: bold;
+      }
+
+      select,
+      input {
+        padding: 0.5rem;
+        background: none;
+        border: none;
+        border: 1px solid beige;
+        border-radius: 20px;
+        color: white;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 0.5rem;
+      }
+    }
+
+    button[type='submit'] {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: beige;
+      border-radius: 20px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}

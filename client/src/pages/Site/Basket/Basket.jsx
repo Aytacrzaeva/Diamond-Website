@@ -62,7 +62,13 @@ const Basket = () => {
         let totalPrice = 0;
         items.forEach((item) => {
             const price = parseFloat(item.price.replace('$', ''));
-            totalPrice += price * item.quantity;
+            if(isNaN(item.quantity)){
+            totalPrice += price * 0;
+            }
+            else{
+                totalPrice += price * item.quantity;
+
+            }
         });
         return totalPrice.toFixed(2);
     };
@@ -121,7 +127,7 @@ const Basket = () => {
 
             <div className="button-container">
                 <Link to="/products"><Button >Continue Shopping</Button></Link>
-                <Link to="/confirm"><Button>Confirm</Button></Link>
+                <Link to="/checkout"><Button>Confirm</Button></Link>
             </div>
         </div>
     );

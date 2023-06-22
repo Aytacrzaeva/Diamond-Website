@@ -17,7 +17,7 @@ import Ring5_2 from "../../../../images/products/5/2-1000x1000.png"
 const Products2 = () => {
 
 
-  const images = [
+  const images = [  
     { main: Ring1, hover: Ring1_2 },
     { main: Ring2, hover: Ring2_2 },
     { main: Ring3, hover: Ring3_2 },
@@ -30,7 +30,9 @@ const Products2 = () => {
       id: 1,
       title: "Stars Ring",
       price: "$150",
-      sizes: ["16", "19", "20", "22"]
+      sizes: ["16", "19", "20", "22"],
+      // posterImage:"",
+      // hoverImage:""
     },
     {
       id: 2,
@@ -71,7 +73,8 @@ const Products2 = () => {
     const card = cards[index];
 
     const handleImageHover = (event) => {
-      event.target.src = images[index].hover;
+      event.target.src = images[index].hover; 
+      // cards[i].hoverImage
     };
 
     const handleImageLeave = (event) => {

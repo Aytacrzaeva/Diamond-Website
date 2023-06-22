@@ -20,6 +20,7 @@ import AccInformation from "../pages/Site/MyAccInfo/AccInformation";
 import Adminroot from '../pages/Admin/Adminroot/Adminroot'
 import AddFilm from "../pages/Admin/add-film";
 import AdminHome from "../components/Admin/AdminHome/AdminHome";
+import Checkout from "../pages/Site/Checkout/Checkout";
 export const ROUTES=[{
     path:"/",
     element: <Siteroot/>,
@@ -77,6 +78,9 @@ export const ROUTES=[{
     },{
         path:"myprofile",
         element:<AccInformation/>
+    },{
+        path:"checkout",
+        element:<Checkout/>
     }]
 },{
     path:"/admin",
