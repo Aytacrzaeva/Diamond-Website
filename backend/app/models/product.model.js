@@ -5,18 +5,11 @@ const Product = mongoose.model(
     new mongoose.Schema(
         {
             name: String,
-            desc: String,
+            raiting:Number,
+            productcode:String,
             price: Number,
-            discount: Number,
-            stock: Number,
-            categoryId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Category',
-            },
-            brandId: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Brand',
-            },
+            size: Number,
+            instock: Boolean,
             images: [
                 {
                     type: String,

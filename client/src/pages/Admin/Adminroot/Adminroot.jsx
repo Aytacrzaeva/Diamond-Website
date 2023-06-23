@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import AdminHeader from '../../../layout/Admin/header/index'
+import AdminHeader from "../../../layout/Admin/header/AdminHeader"
+
 const Adminroot = () => {
   return (
     <div>

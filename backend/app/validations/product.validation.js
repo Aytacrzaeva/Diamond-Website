@@ -2,7 +2,6 @@ const { body, validationResult } = require('express-validator')
 
 const productValidation = [
     body('name').notEmpty().withMessage('Product name is required'),
-    body('desc').notEmpty().withMessage('Product Desc field is required !'),
     body('price').notEmpty().withMessage('Product Price is required !'),
     body('stock').notEmpty().withMessage('Stock field is required !'),
     (req, res, next) => {

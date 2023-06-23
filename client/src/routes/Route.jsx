@@ -18,9 +18,9 @@ import Wishlist from "../pages/Site/WishList/Wishlist";
 import Basket from "../pages/Site/Basket/Basket";
 import AccInformation from "../pages/Site/MyAccInfo/AccInformation";
 import Adminroot from '../pages/Admin/Adminroot/Adminroot'
-import AddFilm from "../pages/Admin/add-film";
 import AdminHome from "../components/Admin/AdminHome/AdminHome";
 import Checkout from "../pages/Site/Checkout/Checkout";
+import ProductsTable from "../pages/Admin/ProductTable/ProductsTable";
 export const ROUTES=[{
     path:"/",
     element: <Siteroot/>,
@@ -88,5 +88,11 @@ export const ROUTES=[{
     children:[{
         path:"",
         element:<AdminHome/>
-    }]
+    },
+    {
+        path:"allprod",
+        element:<ProductsTable/>
+    }
+]
+
 }]

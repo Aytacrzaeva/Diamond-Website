@@ -1,7 +1,6 @@
 #admin-header {
   width: 100%;
-  border-bottom: 1px solid #e9ecef;
-  background-color: rgb(137, 171, 137);
+  background-color: rgb(53, 70, 86);
   position: fixed;
   z-index: 6;
 
@@ -57,16 +56,16 @@
           -webkit-transition: all 0.4s;
           transition: all 0.4s;
           border-radius: 5px;
-          background-color: beige;
+          background-color: rgb(212, 132, 78);
           border: 1px solid rgba(57, 108, 240, 0.1);
-          color: black;
+          color: white;
+
           .fa-solid {
-            margin-right: 8px;
             font-size: 12px;
           }
 
           &:hover {
-            background:none;
+            background: none;
             border: 1px solid beige;
             color: #fff;
           }
@@ -79,17 +78,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
       width: 400px;
 
       p {
         margin: 0;
         color: beige;
+        font-family: 'Courgette', cursive;
+        font-size: 20px;
       }
 
       img {
-        width: 36px;
-        height: 36px;
+        width: 45px;
+        height: 45px;
         object-fit: cover;
       }
 

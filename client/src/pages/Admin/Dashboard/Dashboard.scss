@@ -1,0 +1,12 @@
+.dashboard-img{
+    width: 81%;
+    height: 100vh;
+    padding-top: 15px;
+    margin-left: 280px;
+    background: linear-gradient(to right,rgb(69,96,110) 0%, rgb(56,77,93) 500px,rgb(44,55,72) 1000px, rgb(41,49,66) 1400px, rgb(42,50,67)2000px) !important;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}

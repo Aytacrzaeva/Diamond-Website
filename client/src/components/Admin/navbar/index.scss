@@ -1,21 +1,31 @@
 .admin-navbar {
-  background-color: rgb(137, 171, 137);
+  background-color: rgb(53,70,86);
   width: 20%;
   height: 100%;
   border-right: 1px solid #e9ecef;
   position: fixed;
   z-index: 10;
   top: 0;
+  font-family: "outfit";
+
   .nav1 {
     width: 100%;
     padding: 20px;
   }
   nav {
-    padding: 30px 40px;
+    padding: 20px;
+    display: flex;
     ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      li{
+        list-style: none;
+      }
       .nav-menu {
         margin-top: 15px;
-        .icon {
+        .iconn {
+          font-size: 30px;
           width: 36px;
           height: 36px;
           border-radius: 5px;
@@ -24,12 +34,13 @@
           align-items: center;
           cursor: pointer;
           transition: all 0.3s;
+          color: beige;
           .fa-solid{
             font-size: 13px;
           }
         }
         a {
-          color: black;
+          color: rgb(218, 157, 116);
           font-size: 16px;
           font-weight: 600;
           letter-spacing: 1px;
@@ -38,21 +49,25 @@
           display: flex;
           align-items: center;
           column-gap: 10px;
+          text-decoration: none;
           
           &:hover {
-            color: #396cf0;
+            color:rgb(212, 132, 78);
           }
           &.active {
-            color: #396cf0;
+            color: #ffffff;
           }
         }
         ul {
-          padding: 10px 35px;
           .menu-item {
             margin-top: 8px;
             a {
+              color: beige !important;
               display: flex;
               align-items: center;
+              letter-spacing: 1px;
+              font-weight: lighter;
+              font-size: 15px;
               .fa-solid {
                 font-size: 12px;
               }

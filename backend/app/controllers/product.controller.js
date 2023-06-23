@@ -1,93 +1,76 @@
-const { Aggregate, default: mongoose } = require('mongoose')
-const { Product } = require('../models/product.model')
-const { Category } = require('../models/category.model')
-const { Brand } = require('../models/brand.model')
+const mongoose = require('mongoose');
+const { Product } = require('../models/product.model');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/'); // Specify the directory where uploaded files will be stored
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Use the original file name as the destination file name
+  }
+});
+
+const upload = multer({ storage: storage });
+
 const productController = {
-    getAll: (req, res) => {
-        Product.find({}, (err, docs) => {
-            if (!err) {
-                res.json(docs)
-            } else {
-                res.status(500).json(err)
-            }
-        })
-    },
-    getById: (req, res) => {
-        let id = req.params.id
+  getAll: async (req, res) => {
+    const products = await Product.find()
+    res.send(products)
+  },
 
-        Product.findById(id, (err, doc) => {
-            if (!err) {
-                res.json(doc)
-            }
-        })
-    },
+  getById: async(req, res) => {
+    let id = req.params.id;
+    const target = await Product.findById(id)
+    res.send(target)
+  },
 
-    add: (req, res, next) => {
-        const files = req.files
-        console.log(files)
-        const imageArr = []
-        for (let i = 0; i < files.length; i++) {
-            imageArr.push(files[i].filename)
-        }
-        if (!files) {
-            const error = new Error('Please choose files')
-            error.httpStatusCode = 400
-            return next(error)
-        }
-        let product = new Product({
-            name: req.body.name,
-            desc: req.body.desc,
-            price: req.body.price,
-            discount: req.body.discount,
-            stock: req.body.stock,
-            categoryId: mongoose.Types.ObjectId(req.body.categoryId),
-            category: Category.findById(req.body.categoryId),
-            brandId: mongoose.Types.ObjectId(req.body.brandId),
-            brand: Brand.findById(req.body.brandId),
-            images: imageArr,
-        })
-        product.save((err, docs) => {
-            if (!err) {
-                res.send(`Product Created ! ${docs}`)
-            }
-        })
-    },
-    edit: async (req, res) => {
-        let id = req.params.id
-        const files = req.files
-        const imageArr = []
-        for (let i = 0; i < files.length; i++) {
-            imageArr.push(files[i].filename)
-        }
-        Product.findByIdAndUpdate(
-            id,
-            {
-                name: req.body.name,
-                desc: req.body.desc,
-                stock: req.body.stock,
-                price: req.body.price,
-                categoryId: req.body.categoryId,
-                brandId: req.body.brandId,
-                discount: req.body.discount,
-                images: imageArr,
-            },
-            function (err, docs) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log(docs)
-                }
-                res.send('Prod Edited !')
-            },
-        )
-    },
-    delete: (req, res) => {
-        let id = req.params.id
-        Product.findByIdAndDelete(id, (err, doc) => {
-            if (!err) {
-                res.json('Product Deleted !')
-            }
-        })
-    },
-}
-module.exports = { productController }
+  add: async (req, res) => {
+    const image = req.files;
+
+    let product = new Product({
+      name: req.body.name,
+      images: image.path,
+      rating: req.body.rating,
+      instock: req.body.stock,
+      size: req.body.size,
+      price: req.body.price,
+      productcode: req.body.productcode,
+    });
+
+    await product.save(); // Corrected line
+
+    res.send(product);
+  },
+
+  edit: async (req, res) => {
+    try {
+      let id = req.params.id;
+      const files = req.files;
+      const imageArr = files.map((file) => file.filename);
+
+      await Product.findByIdAndUpdate(id, {
+        name: req.body.name,
+        images: imageArr,
+        rating: req.body.rating,
+        instock: req.body.stock,
+        size: req.body.size,
+        price: req.body.price,
+        productcode: req.body.productcode,
+      });
+
+      res.send('Product Edited!');
+    } catch (err) {
+      console.error(err);
+      res.status(500).send('An error occurred while editing the product.');
+    }
+  },
+
+  delete: async (req, res) => {
+    let id = req.params.id;
+    await Product.findByIdAndDelete(id);
+    res.send("Product has been deleted");
+  }
+};
+
+module.exports = { productController };
