@@ -1,17 +1,5 @@
 const mongoose = require('mongoose');
 const { Product } = require('../models/product.model');
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/'); // Specify the directory where uploaded files will be stored
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); // Use the original file name as the destination file name
-  }
-});
-
-const upload = multer({ storage: storage });
 
 const productController = {
   getAll: async (req, res) => {
@@ -25,21 +13,18 @@ const productController = {
     res.send(target)
   },
 
-  add: async (req, res) => {
-    const image = req.files;
-
+  add: async (req, res) => {    
     let product = new Product({
       name: req.body.name,
-      images: image.path,
+      images: req.file.filename,
       rating: req.body.rating,
       instock: req.body.stock,
-      size: req.body.size,
+      size: req.body.size.split(","),
       price: req.body.price,
       productcode: req.body.productcode,
     });
 
     await product.save(); // Corrected line
-
     res.send(product);
   },
 

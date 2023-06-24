@@ -5,21 +5,12 @@ const Product = mongoose.model(
     new mongoose.Schema(
         {
             name: String,
-            raiting:Number,
-            productcode:String,
-            price: Number,
-            size: Number,
+            images: String,
+            rating:Number,
             instock: Boolean,
-            images: [
-                {
-                    type: String,
-                    isPoster: {
-                        type: Boolean,
-                        default: false,
-                    },
-                    src: String,
-                },
-            ],
+            size: Array,
+            price: Number,
+            productcode:String,
             isDeleted: {
                 type: Boolean,
                 default: false,

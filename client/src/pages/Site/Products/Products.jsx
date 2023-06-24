@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Products2 from '../../../components/Site/Home/Products2/Products2'
 import { FaList } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
@@ -30,8 +30,15 @@ import Ring10 from "../../../images/products/5/1-1000x1000.png";
 import Ring10_2 from "../../../images/products/5/2-1000x1000.png";
 import "./Products.scss";
 import { Helmet } from 'react-helmet';
+import axios from 'axios'
 
 const Products = () => {
+  const [data, setdata] = useState([])
+  useEffect(() => {
+    axios.get('http://localhost:8080/products')
+    .then(res=>setdata(res.data))
+  }, [])
+  
   const images = [
     { main: Ring1, hover: Ring1_2 },
     { main: Ring2, hover: Ring2_2 },
@@ -181,9 +188,17 @@ const Products = () => {
             <div className="star">
               <p>*</p> <p>Size</p>
               <div className="sizes">
-                {card.sizes.map((size, index) => (
-                  <div className="ring" key={index}>{size}</div>
-                ))}
+                {
+                // data&&data
+                card.sizes.map((size, index) => {
+                  return(
+                    <div>
+                      <div className="ring" key={index}>{size}</div>
+                      {/* <img src={`http://localhost:8080/public/${size.images}`} alt="" /> */}
+                      
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
