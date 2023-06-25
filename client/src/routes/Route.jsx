@@ -21,6 +21,8 @@ import Adminroot from '../pages/Admin/Adminroot/Adminroot'
 import AdminHome from "../components/Admin/AdminHome/AdminHome";
 import Checkout from "../pages/Site/Checkout/Checkout";
 import ProductsTable from "../pages/Admin/ProductTable/ProductsTable";
+import AddProduct from "../components/Admin/AddProduct/AddProduct";
+import ErrorPage from "../pages/Site/Error/ErrorPage";
 export const ROUTES=[{
     path:"/",
     element: <Siteroot/>,
@@ -81,7 +83,11 @@ export const ROUTES=[{
     },{
         path:"checkout",
         element:<Checkout/>
-    }]
+    },{
+        path:"error",
+        element:<ErrorPage/>
+    }
+]
 },{
     path:"/admin",
     element: <Adminroot/>,
@@ -92,6 +98,10 @@ export const ROUTES=[{
     {
         path:"allprod",
         element:<ProductsTable/>
+    },
+    {
+        path:"addprod",
+        element:<AddProduct/>
     }
 ]
 

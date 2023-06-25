@@ -1,0 +1,53 @@
+.products-table {
+  padding-top: 80px;
+  padding-left: 280px;   
+  background-color: rgb(52,70,86);
+  h2{
+    padding: 60px;
+    text-align: center;
+    color: beige;
+    font-size: 40px;
+    font-family: 'Poltawski Nowy', serif;  }
+  table {
+    background-color:rgb(146,171,185);
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "outfit";
+    border: none;
+    
+    th, td {
+        color: beige;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        font-family: "outfit";
+
+      }
+      
+      th {
+        color: rgb(228, 170, 116);
+        background-color: rgb(52,70,86);
+        font-weight: bold;
+        font-family: "outfit";
+        text-align: left;
+        font-size: 18px;
+      }
+      
+      td {
+        img {
+          max-width: 50px;
+          max-height: 50px;
+          margin-right: 5px;
+        }
+      }
+      
+      .action-buttons {
+        button{
+          font-family: "outfit";
+          color: beige;
+        }
+        gap: 5px;
+        display: flex;
+      }
+    }
+  }
+  
