@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Helmet } from "react-helmet";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -24,7 +24,7 @@ export default function AddProduct() {
                             price: "",
                             productcode: "",
                         }}
-                        validationSchema={Yup.object({
+                        validationSchema={Yup.object({      
                             name: Yup.string().required("Name is required"),
                             images: Yup.mixed().required("Images are required"),
                             rating: Yup.string().required("Rating is required"),
@@ -34,6 +34,7 @@ export default function AddProduct() {
                             productcode: Yup.string().required("Product Code is required"),
                         })}
                         onSubmit={(values, { resetForm }) => {
+                            console.log(values)
                             axios
                                 .post("http://localhost:8080/products/", values)
                                 .then((res) => {
@@ -45,7 +46,7 @@ export default function AddProduct() {
                             resetForm();
                         }}
                     >
-                        {({ values, handleChange, handleSubmit, dirty }) => (
+                        {({ values, setFieldValue,handleChange, handleSubmit, dirty }) => (
                             <form onSubmit={handleSubmit}>
                                 <div className="form-row">
                                     <div className="form-field">
@@ -55,23 +56,18 @@ export default function AddProduct() {
                                             placeholder="Name"
                                             id="name"
                                             value={values.name}
-                                            onChange={handleChange}
+                                            onChange={handleChange("name")}
                                         />
                                     </div>
                                     <div className="form-field">
-                                        <label htmlFor="file">Images:</label>
+                                        <label htmlFor="images">Images:</label>
                                         <input
                                             type="file"
                                             placeholder="Images"
-                                            id="file"
-                                            onChange={(event) => {
-                                                handleChange({
-                                                    target: {
-                                                        id: "images",
-                                                        value: event.target.files[0],
-                                                    },
-                                                });
-                                            }}
+                                            id="images"
+                                            name="images"
+                                            value={values.images}
+                                            onChange={handleChange}
                                         />
                                     </div>
                                     <div className="form-field">

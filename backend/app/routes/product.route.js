@@ -1,4 +1,7 @@
-const express = require('express')
+const express = require('express');
+const cors = require('cors');
+const app = express();
+app.use(cors());
 const { productController } = require('../controllers/product.controller')
 const store = require('../middlewares/multer')
 const productValidation = require('../validations/product.validation')

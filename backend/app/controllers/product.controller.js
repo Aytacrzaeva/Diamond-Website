@@ -13,9 +13,10 @@ const productController = {
     res.send(target)
   },
 
-  add: async (req, res) => {    
+  add: async (req, res) => {  
+    
     let product = new Product({
-      name: req.body.name,
+      name: req.body.name,  
       images: req.file.filename,
       rating: req.body.rating,
       instock: req.body.stock,
