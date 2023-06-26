@@ -84,7 +84,7 @@ export const ROUTES=[{
         path:"checkout",
         element:<Checkout/>
     },{
-        path:"error",
+        path:"404error",
         element:<ErrorPage/>
     }
 ]
