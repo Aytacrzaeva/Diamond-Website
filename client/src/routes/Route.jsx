@@ -23,6 +23,7 @@ import Checkout from "../pages/Site/Checkout/Checkout";
 import ProductsTable from "../pages/Admin/ProductTable/ProductsTable";
 import AddProduct from "../components/Admin/AddProduct/AddProduct";
 import ErrorPage from "../pages/Site/Error/ErrorPage";
+import UserTable from "../pages/Admin/UserTable/UserTable";
 export const ROUTES=[{
     path:"/",
     element: <Siteroot/>,
@@ -102,6 +103,10 @@ export const ROUTES=[{
     {
         path:"addprod",
         element:<AddProduct/>
+    },
+    {
+        path:"users",
+        element:<UserTable/>
     }
 ]
 

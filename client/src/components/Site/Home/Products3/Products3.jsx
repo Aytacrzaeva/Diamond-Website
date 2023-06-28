@@ -106,7 +106,6 @@ const Products3 = () => {
               </div>
             </div>
           </div>
-          <button className="add-to-cart" onClick={addToCart}>Add to Cart <RiShoppingBagLine /></button>
         </div>
 
         </div>

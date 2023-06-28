@@ -76,7 +76,7 @@ const AdminNavbar = () => {
             {user && (
               <ul>
                 <li className="menu-item">
-                  <NavLink to={"/cinema"}>
+                  <NavLink to={"/users"}>
                     <i className="fa-solid fa-caret-right"></i>· Users Table
                   </NavLink>
                 </li>
