@@ -29,8 +29,8 @@ const Acc = () => {
                             <div className="acc__left__top__cards__card__left">
                                 <SlLock />
                             </div>
-                            <div className="acc__left__top__card__right">
-                                <h6>Change Your Password</h6>
+                            <div className="acc__left__top__cards__card__right">
+                                <Link to="/changepass"><h6>Change Your Password</h6></Link>
                                 <p>Change Your Password</p>
                             </div>
                         </div>

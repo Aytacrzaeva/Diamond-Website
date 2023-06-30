@@ -54,7 +54,7 @@ const LoginPage = () => {
             setLoading(false);
           }
         } else {
-          navigate("/admin");
+          navigate("/");
           setLoading(false);
         }
       }

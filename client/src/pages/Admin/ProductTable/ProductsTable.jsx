@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -12,36 +11,64 @@ const ProductsTable = () => {
     fetchProducts();
   }, []);
 
-  const fetchProducts = () => {
-    axios.get('http://localhost:8080/products')
-      .then(response => setProducts(response.data))
-      .catch(error => console.log(error));
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/products');
+      if (response.ok) {
+        const data = await response.json();
+        setProducts(data);
+      } else {
+        console.log('HTTP error:', response.status);
+      }
+    } catch (error) {
+      console.log('Fetch error:', error);
+    }
   };
 
-  const handleEdit = (productCode) => {
-    console.log(`Düzenle: ${productCode}`);
-    // Seçilen ürünün detaylarını alın
-    const selectedProduct = products.find(product => product.productCode === productCode);
-    // Seçilen ürünün detaylarını backend'e güncelleme isteği gönderin
-    axios.put(`http://localhost:8080/products/${productCode}`, selectedProduct)
-      .then(response => {
-        console.log('Ürün güncellendi:', response.data);
-        // Ürünü güncellemek için frontend tarafındaki state'i de güncelleyebilirsiniz
-        // setProducts ile güncellenen veriyi state'e ekleyebilirsiniz
-      })
-      .catch(error => console.log('Hata:', error));
+  const handleEdit = async (productId) => {
+    console.log(`Düzenle: ${productId}`);
+    const selectedProduct = products.find(product => product.id === productId);
+    try {
+      const response = await fetch(`http://localhost:8080/products/${productId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(selectedProduct)
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Ürün güncellendi:', data);
+        setProducts(prevProducts =>
+          prevProducts.map(product =>
+            product.id === productId ? data : product
+          )
+        );
+      } else {
+        console.log('HTTP error:', response.status);
+      }
+    } catch (error) {
+      console.log('Fetch error:', error);
+    }
   };
 
-  const handleDelete = (productCode) => {
-    console.log(`Sil: ${productCode}`);
-    // Seçilen ürünü backend'den silme işlemini gerçekleştirin
-    axios.delete(`http://localhost:8080/products/${productCode}`)
-      .then(response => {
-        console.log('Ürün silindi:', response.data);
-        // Ürünü silmek için frontend tarafındaki state'i de güncelleyebilirsiniz
-        // setProducts ile güncellenen veriyi state'den kaldırabilirsiniz
-      })
-      .catch(error => console.log('Hata:', error));
+  const handleDelete = async (productId) => {
+    console.log(`Sil: ${productId}`);
+    try {
+      const response = await fetch(`http://localhost:8080/products/${productId}`, {
+        method: 'DELETE'
+      });
+      if (response.ok) {
+        console.log('Ürün silindi:', productId);
+        setProducts(prevProducts =>
+          prevProducts.filter(product => product.id !== productId)
+        );
+      } else {
+        console.log('HTTP error:', response.status);
+      }
+    } catch (error) {
+      console.log('Fetch error:', error);
+    }
   };
 
   return (
@@ -63,7 +90,7 @@ const ProductsTable = () => {
           </TableHead>
           <TableBody>
             {products.map((product) => (
-              <TableRow key={product.productCode}>
+              <TableRow key={product.id}>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>
                   {product.images.map((image, index) => (
@@ -77,10 +104,10 @@ const ProductsTable = () => {
                 <TableCell>{product.productCode}</TableCell>
                 <TableCell>
                   <div className="action-buttons">
-                    <Button startIcon={<EditIcon />} onClick={() => handleEdit(product.productCode)}>
+                    <Button startIcon={<EditIcon />} onClick={() => handleEdit(product.id)}>
                       Edit
                     </Button>
-                    <Button startIcon={<DeleteIcon />} onClick={() => handleDelete(product.productCode)}>
+                    <Button startIcon={<DeleteIcon />} onClick={() => handleDelete(product.id)}>
                       Delete
                     </Button>
                   </div>

@@ -158,7 +158,6 @@
 
 .myForm button[type="submit"] {
   margin-top: 1rem;
-  padding: 10px 60px;
   background-color: rgb(242, 223, 207);
   color: black;
   border: none;
@@ -171,7 +170,8 @@
 }
 
 .myForm button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: none;
+  border: 1px solid beige;
 }
 
 @media(max-width:1000px){

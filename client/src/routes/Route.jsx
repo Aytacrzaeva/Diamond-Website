@@ -24,90 +24,96 @@ import ProductsTable from "../pages/Admin/ProductTable/ProductsTable";
 import AddProduct from "../components/Admin/AddProduct/AddProduct";
 import ErrorPage from "../pages/Site/Error/ErrorPage";
 import UserTable from "../pages/Admin/UserTable/UserTable";
-export const ROUTES=[{
-    path:"/",
-    element: <Siteroot/>,
-    children:[{
-        path:"",
-        element:<Home/>
-    },{
-        path:"about",
-        element:<About/>
-    },{
-        path:"contact",
-        element:<Contact/>
-    },{
-        path:"login",
-        element:<Login/>
-    },{
-        path:"register",
-        element:<Register/>
-    },{
-        path:"forgotpassword",
-        element:<Forgotpass/>
-    },{
-        path:"FAQ",
-        element:<FAQ/>
-    },{
-        path:"terms&conditions",
-        element:<Conditions/>
-    },{
-        path:"delivery",
-        element:<Delivery/>
-    },{
-        path:"privacy",
-        element:<Privacy/>
-    },{
-        path:"blogs",
-        element:<BlogPage/>
-    },{
-        path:"address",
-        element:<Map/>
-    },{
-        path:":id",
-        element:<Details/>
-    },{
-        path:"products",
-        element:<Products/>
-    },{
-        path:"acc",
-        element:<Account/>
-    },{
-        path:"wishlist",
-        element:<Wishlist/>
-    },{
-        path:"cart",
-        element:<Basket/>
-    },{
-        path:"myprofile",
-        element:<AccInformation/>
-    },{
-        path:"checkout",
-        element:<Checkout/>
-    },{
-        path:"404error",
-        element:<ErrorPage/>
+import ChangePass from "../pages/Site/Changepass/ChangePass";
+export const ROUTES = [{
+    path: "/",
+    element: <Siteroot />,
+    children: [{
+        path: "",
+        element: <Home />
+    }, {
+        path: "about",
+        element: <About />
+    }, {
+        path: "contact",
+        element: <Contact />
+    }, {
+        path: "login",
+        element: <Login />
+    }, {
+        path: "register",
+        element: <Register />
+    }, {
+        path: "forgotpassword",
+        element: <Forgotpass />
+    }, {
+        path: "FAQ",
+        element: <FAQ />
+    }, {
+        path: "terms&conditions",
+        element: <Conditions />
+    }, {
+        path: "delivery",
+        element: <Delivery />
+    }, {
+        path: "privacy",
+        element: <Privacy />
+    }, {
+        path: "blogs",
+        element: <BlogPage />
+    }, {
+        path: "address",
+        element: <Map />
+    }, {
+        path: ":id",
+        element: <Details />
+    }, {
+        path: "products",
+        element: <Products />
+    }, {
+        path: "acc",
+        element: <Account />
+    }, {
+        path: "wishlist",
+        element: <Wishlist />
+    }, {
+        path: "cart",
+        element: <Basket />
+    }, {
+        path: "myprofile",
+        element: <AccInformation />
+    }, {
+        path: "checkout",
+        element: <Checkout />
+    },
+    {
+        path: "changepass",
+        element: <ChangePass />
+    },
+    {
+        path: "404error",
+        element: <ErrorPage />
     }
-]
-},{
-    path:"/admin",
-    element: <Adminroot/>,
-    children:[{
-        path:"",
-        element:<AdminHome/>
+    ]
+}, {
+    path: "/admin",
+    element: <Adminroot />,
+    children: [{
+        path: "",
+        element: <AdminHome />
     },
     {
-        path:"allprod",
-        element:<ProductsTable/>
+        path: "allprod",
+        element: <ProductsTable />
     },
     {
-        path:"addprod",
-        element:<AddProduct/>
+        path: "addprod",
+        element: <AddProduct />
     },
     {
-        path:"users",
-        element:<UserTable/>
+        path: "users",
+        element: <UserTable />
     }
-]
+    ]
 
 }]

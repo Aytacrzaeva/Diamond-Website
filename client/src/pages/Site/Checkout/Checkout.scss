@@ -2,8 +2,13 @@
   display: flex;
   padding: 50px 150px;
   font-family: "outfit";
+  align-items: start;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
 
   .shipping-address {
+    width: 50%;
     flex: 1;
     margin-right: 2rem;
     color: beige;
@@ -18,12 +23,12 @@
       margin-bottom: 1rem;
 
       label {
-        font-weight: bold;
       }
 
       input {
         background: none;
         padding: 0.5rem;
+        width: 100%;
         border: none;
         border: 1px solid beige;
         border-radius: 20px;
@@ -38,10 +43,10 @@
 
     button[type='submit'] {
         margin-top: 1rem;
-        padding: 0.5rem 1rem;
+        padding: 1rem;
         border: none;
         background-color: beige;
-        border-radius: 20px;
+        border-radius: 25px;
         color: black;
         font-weight: bold;
         cursor: pointer;
@@ -50,6 +55,7 @@
 
   .shipping {
     flex: 1;
+    width: 50%;
     color: beige;
     font-family: "outfit";
 
@@ -63,7 +69,6 @@
       margin-bottom: 1rem;
 
       label {
-        font-weight: bold;
       }
 
       select,
@@ -84,10 +89,11 @@
 
     button[type='submit'] {
       margin-top: 1rem;
-      padding: 0.5rem 1rem;
+      padding:1rem;
+      width: auto;
       border: none;
       background-color: beige;
-      border-radius: 20px;
+      border-radius: 25px;
       color: black;
       font-weight: bold;
       cursor: pointer;

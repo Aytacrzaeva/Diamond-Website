@@ -40,43 +40,43 @@ const Checkout = () => {
         <div className="shipping-address">
           <h2>Shipping Address</h2>
           <div>
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName">*First Name</label>
             <Field type="text" id="firstName" name="firstName" />
             <ErrorMessage name="firstName" component="div" className="error-message" />
           </div>
 
           <div>
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="lastName">*Last Name</label>
             <Field type="text" id="lastName" name="lastName" />
             <ErrorMessage name="lastName" component="div" className="error-message" />
           </div>
 
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="address">*Address</label>
             <Field type="text" id="address" name="address" />
             <ErrorMessage name="address" component="div" className="error-message" />
           </div>
 
           <div>
-            <label htmlFor="postCode">Post Code</label>
+            <label htmlFor="postCode">*Post Code</label>
             <Field type="text" id="postCode" name="postCode" />
             <ErrorMessage name="postCode" component="div" className="error-message" />
           </div>
 
           <div>
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">*City</label>
             <Field type="text" id="city" name="city" />
             <ErrorMessage name="city" component="div" className="error-message" />
           </div>
 
           <div>
-            <label htmlFor="country">Country</label>
+            <label htmlFor="country">*Country</label>
             <Field type="text" id="country" name="country" />
             <ErrorMessage name="country" component="div" className="error-message" />
           </div>
 
           <div>
-            <label htmlFor="region">Region</label>
+            <label htmlFor="region">*Region</label>
             <Field type="text" id="region" name="region" />
             <ErrorMessage name="region" component="div" className="error-message" />
           </div>
@@ -87,7 +87,7 @@ const Checkout = () => {
         <div className="shipping">
           <h2>Shipping</h2>
           <div>
-            <label htmlFor="paymentMethod">Payment Methods</label>
+            <label htmlFor="paymentMethod">*Payment Methods</label>
             <Field as="select" id="paymentMethod" name="paymentMethod">
               <option value="">Select a payment method</option>
               <option value="cash">Cash</option>
