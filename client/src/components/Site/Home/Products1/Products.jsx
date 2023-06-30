@@ -139,6 +139,7 @@ import './Products.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const [cards, setCards] = useState([]);
@@ -184,11 +185,11 @@ const Products = () => {
         <div className="card__icon">
           <FaRegHeart />
         </div>
-        <div className="card__header">
-          <a href="">{card.name}</a>
+        <div className="card__header" >
+          <Link to={`${card._id}`}>{card.name}</Link>
         </div>
         <img
-          src={card.main}
+          src={`http://localhost:8080/public/${card.images}`}
           alt="Slider Resim"
           onMouseEnter={handleImageHover}
           onMouseLeave={handleImageLeave}

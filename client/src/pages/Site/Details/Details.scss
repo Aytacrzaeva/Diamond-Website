@@ -20,6 +20,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
   
         button {
           border: none;
@@ -43,13 +44,18 @@
         gap: 20px;
         justify-content: start;
         align-items: center;
-  
-        span {
-          padding: 7px 10px;
-          border-radius: 50%;
-          border: 1px solid green;
-          font-size: 14px;
+        button{
+          border: none;
+          background: none;
+          color: rgb(242, 223, 207);
+          span {
+            padding:7px;
+            border-radius: 50%;
+            border: 1px solid green;
+            font-size: 14px;
+          }
         }
+  
       }
   
       &__counter {
@@ -65,6 +71,10 @@
         border-radius: 20px;
         p{
             margin: 0;
+            cursor: pointer;
+        }
+        span{
+          cursor: pointer;
         }
       }
   

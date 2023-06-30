@@ -85,6 +85,7 @@ module.exports.login = async (req, res) => {
     }
 
     const token = createToken(user._id);
+    // res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type");
 
     res.cookie("jwt", token, {
       httpOnly: true,

@@ -1,70 +1,97 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import {AiFillHome} from "react-icons/ai"
-import {BsArrowLeftCircle} from "react-icons/bs"
-import {HiOutlineShoppingBag} from "react-icons/hi"
-import {FaRegHeart} from "react-icons/fa"
-import { Link } from 'react-router-dom'
-import "./Details.scss"
-import Ring1 from '../../../images/products/1/1-1000x1000.png'
-import Ring1__2 from '../../../images/products/1/2-1000x1000.png'
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { AiFillHome } from 'react-icons/ai';
+import { BsArrowLeftCircle } from 'react-icons/bs';
+import { HiOutlineShoppingBag } from 'react-icons/hi';
+import { FaRegHeart } from 'react-icons/fa';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import './Details.scss';
+
 const Details = () => {
+  const { id } = useParams();
+  const [data, setData] = useState({});
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/products/${id}`).then((res) => {
+      setData(res.data);
+    });
+  }, [id]);
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Product Detail</title>
-    </Helmet>
-    <div className="detail">
-      <div className="detail__left">
-        <img src={Ring1} alt="" />
-      </div>
-      <div className="detail__right">
-      <div className="detailback">
-        <div className="detailback__left">
-            <div className="detailback__left__button">
+      </Helmet>
+      <div className="detail">
+        <div className="detail__left">
+          <img src={`http://localhost:8080/public/${data.images}`} alt="" />
+        </div>
+        <div className="detail__right">
+          <div className="detailback">
+            <div className="detailback__left">
+              <div className="detailback__left__button">
                 <button>
-                    <Link to="/products">
-                <BsArrowLeftCircle id='back'/>
-                    </Link>
-                    Back to All Products
+                  <Link to="/products">
+                    <BsArrowLeftCircle id="back" />
+                  </Link>
+                  Back to All Products
                 </button>
+              </div>
             </div>
-            
+            <div className="detailback__right">
+              <Link to="/">
+                <AiFillHome />
+              </Link>
+              <p>/</p>
+              <p>Detail</p>
+            </div>
+          </div>
+          <div className="detail__left__header">
+            <h2>{data.name}</h2>
+            <button>
+              <FaRegHeart />
+            </button>
+          </div>
+          <div className="detail__left__body">
+            <p>Product Code:</p>
+            <p>{data.productcode}</p>
+          </div>
+          <div className="detail__left__size">
+            <p>*Size</p>
+            {data.size && data.size.map((size) =><button>
+              <span key={size}>{size}</span>
+            </button>)}
+          </div>
+          <div className="detail__left__counter">
+            <span onClick={decrementCount}>-</span>
+            <p>{count}</p>
+            <span onClick={incrementCount}>+</span>
+          </div>
+          <div className="detail__left__price">
+            <p>{data.price}$</p>
+          </div>
+          <div className="detail__left__button">
+            <button>
+              Add to Cart
+              <HiOutlineShoppingBag />
+            </button>
+          </div>
         </div>
-        <div className="detailback__right">
-            <Link to="/"><AiFillHome/></Link>
-            <p>/</p>
-            <p>Detail</p>
-            
-        </div>
-    </div>
-    <div className="detail__left__header">
-      <h2>Abigail Moon & Stars Ring</h2>
-      <button><FaRegHeart/></button>
-    </div>
-    <div className="detail__left__body">
-      <p>Product Code:</p><p>Products 1</p>
-    </div>
-    <div className="detail__left__size">
-      <p>*Size</p>
-      <span>17</span>
-      <span>18</span>
-    </div>
-    <div className="detail__left__counter">
-      <span>-</span><p>0</p><span>+</span>
-    </div>
-    <div className="detail__left__price">
-      <p>250$</p>
-    </div>
-    <div className="detail__left__button">
-      <button>Add to Cart <HiOutlineShoppingBag/></button>
-    </div>
       </div>
-    </div>
-    
-   
     </>
-  )
-}
+  );
+};
 
-export default Details
+export default Details;
