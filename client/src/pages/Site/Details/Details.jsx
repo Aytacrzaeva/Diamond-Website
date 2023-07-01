@@ -29,6 +29,14 @@ const Details = () => {
     }
   };
 
+  const renderRatingStars = () => {
+    const stars = [];
+    for (let i = 0; i < data.rating; i++) {
+      stars.push(<span key={i}>&#9733;</span>);
+    }
+    return stars;
+  };
+
   return (
     <>
       <Helmet>
@@ -70,8 +78,8 @@ const Details = () => {
           </div>
           <div className="detail__left__size">
             <p>*Size</p>
-            {data.size && data.size.map((size) =><button>
-              <span key={size}>{size}</span>
+            {data.size && data.size.map((size) => <button key={size}>
+              <span>{size}</span>
             </button>)}
           </div>
           <div className="detail__left__counter">
@@ -81,6 +89,9 @@ const Details = () => {
           </div>
           <div className="detail__left__price">
             <p>{data.price}$</p>
+          </div>
+          <div className="detail__left__rating">
+            {renderRatingStars()}
           </div>
           <div className="detail__left__button">
             <button>

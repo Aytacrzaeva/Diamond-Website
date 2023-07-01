@@ -145,14 +145,20 @@
 
 import React, { useState, useEffect } from 'react';
 import './Products2.scss';
+import { useDispatch } from 'react-redux';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
 import axios from 'axios';
+import { add } from '../../../../store/cartSlice';
 
 const Products2 = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const dispatch = useDispatch()
+  const handleAdd = (product) => {
+    dispatch(add(product))
+}
 
   useEffect(() => {
     axios.get('http://localhost:8080/products')
@@ -173,11 +179,6 @@ const Products2 = () => {
   const previousCard = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
   };
-
-  const addToCart = () => {
-    console.log("Ürün sepete eklendi!");
-  };
-
   const renderCard = (index) => {
     if (cards.length === 0) {
       return null;
@@ -209,7 +210,7 @@ const Products2 = () => {
               </div>
             </div>
           </div>
-          <button className="add-to-cart" onClick={addToCart}>Add to Cart <RiShoppingBagLine /></button>
+          <button className="add-to-cart" onClick={() => handleAdd(card)}>Add to Cart <RiShoppingBagLine /></button>
         </div>
       </div>
     );
