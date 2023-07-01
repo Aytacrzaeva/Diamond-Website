@@ -4,15 +4,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const connect = require('./app/configs/database.connect');
 const products = require('./app/routes/product.route');
-const AuthRoutes = require("./app/routes/AuthRoutes");
+const AuthRoutes = require("./app/routes/auth.route");
 const path = require('path');
+require("dotenv").config()
 
-const corsOptions ={
-  origin:'http://localhost:3000', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 const uploadPath = path.join(__dirname, 'public');

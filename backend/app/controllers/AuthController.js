@@ -1,103 +1,78 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const userModel = require('../models/UserModel');
+const Usermodel = require('../models/Usermodels')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
-const maxAge = 3 * 24 * 60 * 60;
-
-const createToken = (id) => {
-  return jwt.sign({ id }, "secret");
-};
-
-const handleErrors = (err) => {
-  let errors = { email: "", password: "" };
-
-  if (err.message === "User not found") {
-    errors.email = "Email is not registered";
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+      expiresIn: '1h'
+  })
+}
+const RegisterUser = async (req, res) => {
+  const { firstname,lastname, email, password,isAdmin} = req.body
+  const Userexists = await Usermodel.findOne({ email })
+  if (Userexists) {
+      return res.status(404).json({ message: 'Email already exists' })
   }
 
-  if (err.message === "Incorrect password") {
-    errors.password = "Password is incorrect";
-  }
+  const salt = await bcrypt.genSalt(10)
+  const hashed = await bcrypt.hash(password, salt)
 
-  if (err.code === 11000) {
-    errors.email = "Email is already registered";
-    return errors;
-  }
-
-  if (err.message.includes("Users validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-
-  return errors;
-};
-
-module.exports.register = async (req, res) => {
-  const { firstname,lastname, email, password, isAdmin } = req.body;
-
-  try {
-    if (!password) {
-      throw new Error("Password is required.");
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = new userModel({
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      password: hashedPassword,
+  const newUser = await Usermodel.create({
+      firstname,
+      lastname,
+      email,
+      password: hashed,
       isAdmin
-    });
+  })
 
-    const result = await newUser.save();
-    const data = result.toJSON();
-
-    const token = createToken(newUser._id);
-
-    res.cookie("jwt", token, {
-      httpOnly: true,
-      maxAge: maxAge * 1000,
-    });
-
-    res.status(201).json({ user: newUser._id, created: true });
-  } catch (err) {
-    console.log(err);
-    const errors = handleErrors(err);
-    res.json({ errors, created: false });
+  if (newUser) {
+      return res.status(200).json({
+          _id: newUser.id,
+          firstname: newUser.firstname,
+          lastname:newUser.lastname,
+          email: newUser.email,
+          password: newUser.password,
+          token: generateToken(newUser.id),
+          isAdmin:newUser.isAdmin
+      })
   }
-};
-
-module.exports.login = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await userModel.findOne({ email: email });
-
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    const passwordMatch = await bcrypt.compare(password, user.password);
-
-    if (!passwordMatch) {
-      throw new Error("Incorrect password");
-    }
-
-    const token = createToken(user._id);
-    // res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type");
-
-    res.cookie("jwt", token, {
-      httpOnly: true,
-      maxAge: maxAge * 1000,
-    });
-
-    res.status(200).json({ data: user, created: true });
-  } catch (err) {
-    console.log(err);
-    const errors = handleErrors(err);
-    res.json({ errors, created: false });
+  else {
+      return res.status(401).json({ message: 'Invalid User data' })
   }
-};
+}
 
+const LoginUser = async (req, res) => {
+  const { firstname,lastname,email, password,isAdmin } = req.body;
 
+  const user = await Usermodel.findOne({ email })
+
+  if (user && await bcrypt.compare(password, user.password)) {
+      res.status(200).json({
+          _id: user.id,
+          firstname:user.firstname,
+          lastname:user.lastname,
+          email: user.email,
+          password: user.password,
+          token: generateToken(user.id),
+          isAdmin:user.isAdmin
+      })
+  }
+  else {
+      res.status(404).json({ message: 'Invalid User data' })
+  }
+}
+
+const getMe = async (req, res) => {
+  await res.status(200).send(req.user)
+}
+
+const getAll= async(req,res)=>{
+    try {
+        const products = await Usermodel.find();
+        res.send(products);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while retrieving products.');
+}
+}
+module.exports = { RegisterUser,LoginUser,getMe,getAll };

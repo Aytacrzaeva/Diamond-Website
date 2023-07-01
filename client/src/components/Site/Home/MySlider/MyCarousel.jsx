@@ -19,7 +19,7 @@ const MyCarousel = () => {
       <div className='slide'>
         <img src={Slide1} alt="Image 1" />
         <div className="slide__text">
-          <h1>Jeweery & Diamonds</h1>
+          <h1>Jewellery & Diamonds</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           <button>Check More Products <RiShoppingBagLine/></button>
         </div>
@@ -27,7 +27,7 @@ const MyCarousel = () => {
       <div className='slide'>
         <img src={Slide2} alt="Image 1" />
         <div className="slide__text">
-          <h1>Jeweery & Diamonds</h1>
+          <h1>Jewellery & Diamonds</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           <button>Check More Products <RiShoppingBagLine/></button>
 

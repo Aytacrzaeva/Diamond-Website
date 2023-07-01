@@ -3,13 +3,15 @@ import Logo from "../../images/logo.png";
 import "./Header2.scss";
 import { FiSearch } from 'react-icons/fi';
 import { BsPersonFillAdd } from 'react-icons/bs';
+import { BiLogOut } from 'react-icons/bi';
 import { FaLock } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaDollarSign } from 'react-icons/fa';
 import { FiChevronDown } from 'react-icons/fi';
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Header2 = () => {
   const [showSearchModal, setShowSearchModal] = useState(false);
@@ -17,7 +19,18 @@ const Header2 = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showMenu, setShowMenu] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [loggedIn, setLoggedIn] = useState(false);
   const dropdownRef = useRef(null);
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [isAdmin, setisAdmin] = useState(null)
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setShowProfileDropdown(false); // Close the dropdown
+    console.log('logout');
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,6 +57,32 @@ const Header2 = () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/auth/getMe', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const userData = response.data;
+        console.log(userData);
+        setFirstname(userData.firstname);
+        setLastname(userData.lastname);
+        setisAdmin(userData.isAdmin)
+      } catch (error) {
+        console.warn(error);
+        setFirstname("My Profile");
+
+        console.log('yoxam');
+      }
+    };
+
+    fetchUserData();
+  }, [token]);
 
   const toggleSearchModal = () => {
     setShowSearchModal(!showSearchModal);
@@ -94,8 +133,8 @@ const Header2 = () => {
       <div className="nav2__right">
         <div className="dropdown" ref={dropdownRef}>
           <button onClick={() => setShowProfileDropdown(!showProfileDropdown)}>
-            <AiOutlineUser />
-            {windowWidth > 770 ? "My Profile" : null} <FiChevronDown/>
+            <AiOutlineUser />{firstname!=="My Profile"?firstname+" "+lastname:"My Profile"}
+            {loggedIn && windowWidth > 770 ? "My Profile" : null} <FiChevronDown/>
           </button>
           {showProfileDropdown && (
             <div className="dropdown-content">
@@ -103,10 +142,20 @@ const Header2 = () => {
                 <h3>Your Account</h3>
                 <p>Access account and manage orders</p>
               </div>
-              <Link to="/register" onClick={closeProfileDropdown}><BsPersonFillAdd /> Register</Link>
-              <Link to="/login" onClick={closeProfileDropdown}><FaLock /> Login</Link>
+              {firstname!=="My Profile" && lastname && !isAdmin ? (
+                <>
+                  <Link to="/acc" onClick={closeProfileDropdown}><BsPersonFillAdd /> My Profile</Link>
+                  <Link to="/orderhistory" onClick={closeProfileDropdown}> Order History</Link>
+                  <Link onClick={logout}><BiLogOut /> Logout</Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/register" onClick={closeProfileDropdown}><BsPersonFillAdd /> Register</Link>
+                  <Link to="/login" onClick={closeProfileDropdown}><FaLock /> Login</Link>
+                  <Link to="/" onClick={closeProfileDropdown}><FaDollarSign /> Currency</Link>
+                </>
+              )}
               <Link to="/wishlist" onClick={closeProfileDropdown}><AiFillHeart /> Wishlist</Link>
-              <Link to="/" onClick={closeProfileDropdown}><FaDollarSign /> Currency</Link>
             </div>
           )}
         </div>

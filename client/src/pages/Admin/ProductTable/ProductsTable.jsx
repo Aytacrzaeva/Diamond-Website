@@ -3,12 +3,17 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import './ProductsTable.scss';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const ProductsTable = () => {
   const [products, setProducts] = useState([]);
+  const [dummys, setDummy] = useState(false);
+
 
   useEffect(() => {
     fetchProducts();
+
   }, []);
 
   const fetchProducts = async () => {
@@ -17,6 +22,7 @@ const ProductsTable = () => {
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
+        setDummy(false)
       } else {
         console.log('HTTP error:', response.status);
       }
@@ -52,16 +58,17 @@ const ProductsTable = () => {
     }
   };
 
-  const handleDelete = async (productId) => {
-    console.log(`Sil: ${productId}`);
+  const handleDelete = async (id) => {
+    console.log(`Sil: ${id}`);
     try {
-      const response = await fetch(`http://localhost:8080/products/${productId}`, {
-        method: 'DELETE'
-      });
-      if (response.ok) {
-        console.log('Ürün silindi:', productId);
-        setProducts(prevProducts =>
-          prevProducts.filter(product => product.id !== productId)
+      const response = await axios.delete(`http://localhost:8080/products/${id}`);
+      if (response.status === 200) {
+        console.log('Ürün silindi:', id);
+        // Show toast notification
+        toast.success('Item successfully deleted');
+        // Update the state to remove the deleted item
+        setProducts((prevProducts) =>
+          prevProducts.filter((product) => product._id !== id)
         );
       } else {
         console.log('HTTP error:', response.status);
@@ -70,6 +77,7 @@ const ProductsTable = () => {
       console.log('Fetch error:', error);
     }
   };
+
 
   return (
     <div className="products-table">
@@ -93,23 +101,25 @@ const ProductsTable = () => {
               <TableRow key={product.id}>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>
-                  {product.images.map((image, index) => (
-                    <img key={index} src={image} alt={`Image ${index + 1}`} className="product-image" />
-                  ))}
+                  <img src={`http://localhost:8080/public/${product.images}`} className="product-image" alt="Product" />
                 </TableCell>
                 <TableCell>{product.rating}</TableCell>
                 <TableCell>{product.inStock ? 'Yes' : 'No'}</TableCell>
                 <TableCell>{product.size}</TableCell>
                 <TableCell>{product.price}</TableCell>
-                <TableCell>{product.productCode}</TableCell>
+                <TableCell>{product.productcode}</TableCell>
                 <TableCell>
                   <div className="action-buttons">
-                    <Button startIcon={<EditIcon />} onClick={() => handleEdit(product.id)}>
+                    <Button startIcon={<EditIcon />} onClick={() => handleEdit(product._id)}>
                       Edit
                     </Button>
-                    <Button startIcon={<DeleteIcon />} onClick={() => handleDelete(product.id)}>
+                    <Button
+                      startIcon={<DeleteIcon />}
+                      onClick={() => handleDelete(product._id)}
+                    >
                       Delete
                     </Button>
+
                   </div>
                 </TableCell>
               </TableRow>

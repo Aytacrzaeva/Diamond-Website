@@ -5,11 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { Toaster, toast } from 'react-hot-toast';
 import './LoginPage.scss';
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [isEmailRegistered, setIsEmailRegistered] = useState(true);
 
   const initialValues = {
     email: '',
@@ -17,54 +19,29 @@ const LoginPage = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Geçerli bir e-posta adresi girin').required('Bu alan zorunludur'),
-    password: Yup.string().required('Bu alan zorunludur'),
+    email: Yup.string().email('Please enter a valid email address').required('this field is required'),
+    password: Yup.string().required('this field is required'),
   });
 
   const handleSubmit = async (values) => {
     console.log(values);
-    try {
-      setLoading(true);
-      const { data } = await axios.post(
-        "http://localhost:8080/auth/login",
-        values,
-        {
-          withCredentials: true,
-        }
-      );
-      console.log(data);
-      if (data && data.data.isAdmin) {
-        if (data.errors) {
-          const { email, password } = data.errors;
-          if (email) {
-            setLoading(false);
-          } else if (password) {
-            setLoading(false);
-          }
+    axios.post('http://localhost:8080/auth/login', values)
+      .then(res => {
+        localStorage.setItem('token', res.data.token);
+        if (res.data.isAdmin) {
+          navigate('/admin');
         } else {
-          navigate("/admin");
-          setLoading(false);
+          navigate('/');
         }
-      } else if (data && !data.data.isAdmin) {
-        if (data.errors) {
-          const { email, password } = data.errors;
-          if (email) {
-            setLoading(false);
-          } else if (password) {
-            setLoading(false);
-          }
-        } else {
-          navigate("/");
-          setLoading(false);
-        }
-      }
-    } catch (e) {
-      setLoading(false);
-    }
+      })
+      .catch(err => {
+        console.log(err);
+        setIsEmailRegistered(false);
+        toast.error('Wrong email or password');
+      });
   };
 
   const handleForgotPassword = () => {
-    // Handle forgot password logic here
     console.log('Forgot Password');
   };
 
@@ -131,8 +108,10 @@ const LoginPage = () => {
               </div>
             </Form>
           </Formik>
+         
         </div>
       </div>
+      <Toaster position="top-right" reverseOrder={false} /> {/* Add the Toaster component */}
     </div>
   );
 };

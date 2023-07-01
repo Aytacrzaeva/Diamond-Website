@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,navigate, useNavigate } from "react-router-dom";
 import { GiBigDiamondRing } from "react-icons/gi";
 import { TbTruckDelivery } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { FaUsers,FaComments } from "react-icons/fa";
+import { BiLogOut } from 'react-icons/bi';
+
 import "./index.scss";
 const AdminNavbar = () => {
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    console.log('logout');
+    navigate('/')
+  };
   const [product, setProduct] = useState(false);
   const [order, setOrder] = useState(false);
   const [user, setUser] = useState(false);
@@ -76,7 +85,7 @@ const AdminNavbar = () => {
             {user && (
               <ul>
                 <li className="menu-item">
-                  <NavLink to={"/users"}>
+                  <NavLink to={"users"}>
                     <i className="fa-solid fa-caret-right"></i>· Users Table
                   </NavLink>
                 </li>
@@ -120,6 +129,11 @@ const AdminNavbar = () => {
                   <NavLink to={"/"}>
                     <i className="fa-solid fa-caret-right"></i>· Profile Details
                   </NavLink>
+                </li>
+                <li className="menu-item">
+                  
+                  <Link onClick={logout}><BiLogOut /> Logout</Link>
+                  
                 </li>
               </ul>
             )}

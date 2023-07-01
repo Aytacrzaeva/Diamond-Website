@@ -8,8 +8,14 @@ import {TfiPencilAlt} from 'react-icons/tfi'
 import {RiFolderUserFill} from 'react-icons/ri'
 import {AiOutlinePoweroff} from 'react-icons/ai'
 import "./Acc.scss"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const Acc = () => {
+  const navigate = useNavigate();
+
+    const logout = ()=>{
+        localStorage.removeItem('token')
+        navigate('/')
+      }
     return (
         <div className="acc">
             <div className="acc__left">
@@ -87,7 +93,7 @@ const Acc = () => {
                     </ul>
                 </div>
                 <div className="acc__right__card">
-                    <button><AiOutlinePoweroff/>Logout</button>
+                   <button onClick={logout}><AiOutlinePoweroff/>Logout</button>
                 </div>
             </div>
         </div>

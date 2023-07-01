@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import AdminHeader from "../../../layout/Admin/header/AdminHeader"
 import AdminNavbar from '../../../layout/Admin/navbar'
@@ -6,34 +6,38 @@ import {useCookies} from 'react-cookie'
 import axios from 'axios'
 
 const Adminroot = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
-  const navigate = useNavigate();
+  const token = localStorage.getItem('token')
+  const navigate = useNavigate()
 
+  const [data, setdata] = useState({})
   useEffect(() => {
-    const verifyUser = async () => {
-      if (!cookies.jwt) {
-        navigate("/login");
-      } else {
-        const { data } = await axios.post(
-          "http://localhost:8080/auth/register",
-          {},
-          {
-            withCredentials: true,
-          }
-        );
-
-        console.log(data);
+    axios.get('http://localhost:8080/auth/getMe', {
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
-    };
+    })
+      .then(res => setdata(res.data))
+      .catch(() => {
+        if (!data.isAdmin) {
+          console.log('login');
+          navigate('/login')
+        }
+      })
+      
+  }, [data.isAdmin])
 
-    verifyUser();
-  }, [cookies, removeCookie, navigate]);
+  
 
   return (
     <div>
-        <AdminHeader/>
-        <AdminNavbar/>
-        <Outlet/>
+        {
+          (token&&data.isAdmin)&&
+          <>
+          <AdminHeader/>
+          <AdminNavbar/>
+          <Outlet/>
+          </>
+        }
     </div>
   )
 }
