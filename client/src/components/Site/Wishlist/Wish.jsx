@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Wish.scss"
 import { Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
-import Ring1 from "../../../images/products/5/1-1000x1000.png";
+import Ring1 from "../../../images/products/5/5.png";
 import {AiOutlineCloseCircle} from "react-icons/ai"
 import {FaShoppingCart} from "react-icons/fa"
 import { Link } from 'react-router-dom';

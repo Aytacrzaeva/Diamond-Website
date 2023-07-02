@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Basket.scss';
 import { Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { remove } from '../../../store/cartSlice';
+import { remove,countChange } from '../../../store/cartSlice';
 
 const Basket = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.cart);
-  const [items, setItems] = useState(products);
+  const products = useSelector((state) => state.cart.items);
+  console.log("products", products);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    if (products && products.length > 0) {
+      setItems(products.map((product) => ({ ...product, quantity: 1 })));
+    }
+  }, [products]);
 
   const handleRemove = (productId) => {
-    dispatch(remove(productId));
-    setItems((prevItems) => prevItems.filter((item) => item._id !== productId));
+    dispatch(remove(productId)); 
+    setItems((prevItems) => prevItems.filter((item) => item.prod._id !== productId));
   };
+  
 
   const handleQuantityChange = (itemId, newQuantity) => {
-    const quantity = parseInt(newQuantity) || 0;
-    setItems((prevItems) =>
-      prevItems.map((item) =>
+    const quantity = parseInt(newQuantity) || 1;
+    setItems((prevItems) => {
+      const updatedItems = prevItems.map((item) =>
         item._id === itemId ? { ...item, quantity: quantity >= 1 ? quantity : 1 } : item
-      )
-    );
+      );
+      return [...updatedItems];
+    });
   };
+  
 
   const tableCellStyle = {
     color: 'rgb(242, 223, 207)',
@@ -38,13 +47,13 @@ const Basket = () => {
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     items.forEach((item) => {
-      const price = item.price;
-      const quantity = item.quantity;
+      const price = item.prod.price;
+      const quantity = item.count;
       if (!isNaN(price) && !isNaN(quantity)) {
         totalPrice += price * quantity;
       }
     });
-    return totalPrice;
+    return totalPrice.toFixed(2); // Yuvarlağı iki ondalık basamağa ayarla
   };
 
   return (
@@ -64,34 +73,36 @@ const Basket = () => {
         </TableHead>
         <TableBody>
           {items.map((item) => (
-            <TableRow key={item._id} style={tableCellStyle}>
+            <TableRow key={item.prod._id} style={tableCellStyle}>
               <TableCell style={tableCellStyle}>
                 <img
-                  src={`http://localhost:8080/public/${item.images}`}
+                  src={`http://localhost:8080/public/${item.prod.main}`}
                   alt="Slider"
                   style={imageCellStyle}
                 />
               </TableCell>
-              <TableCell style={tableCellStyle}>{item.name}</TableCell>
-              <TableCell style={tableCellStyle}>{item.productcode}</TableCell>
-              <TableCell style={tableCellStyle}>{item.instock ? 'Yes' : 'No'}</TableCell>
-              <TableCell style={tableCellStyle}>{item.price}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.name}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.productcode}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.instock ? 'Yes' : 'No'}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.price}</TableCell>
               <TableCell style={tableCellStyle}>
                 <input
                   className="basket-input"
                   type="number"
-                  min="1"
-                  value={item.quantity || ''}
-                  onChange={(e) => handleQuantityChange(item._id, e.target.value)}
+                  value={item.count}
+                  onChange={(e) => {
+                    dispatch(countChange({_id:item.prod._id,value:e.target.value}))
+                  }}
                 />
               </TableCell>
               <TableCell style={tableCellStyle}>
-                <Button className="round-button" onClick={() => handleRemove(item._id)}>
+                <Button className="round-button" onClick={() => handleRemove(item.prod._id)}>
                   <AiOutlineCloseCircle />
                 </Button>
               </TableCell>
             </TableRow>
           ))}
+
         </TableBody>
         <TableBody>
           <TableRow style={tableCellStyle}>
@@ -108,7 +119,9 @@ const Basket = () => {
           <Button>Continue Shopping</Button>
         </Link>
         <Link to="/checkout">
-          <Button>Confirm</Button>
+          <Button onClick={(e)=>{
+            localStorage.setItem("basketItems",JSON.stringify(products))
+          }}>Confirm</Button>
         </Link>
       </div>
     </div>
@@ -116,3 +129,4 @@ const Basket = () => {
 };
 
 export default Basket;
+

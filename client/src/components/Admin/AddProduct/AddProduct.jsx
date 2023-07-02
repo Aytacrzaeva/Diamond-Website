@@ -7,7 +7,8 @@ import "./AddProduct.scss";
 import { toast, Toaster } from "react-hot-toast";
 
 export default function AddProduct() {
-  const fileInputRef = useRef();
+  const mainInputRef = useRef();
+  const hoverInputRef = useRef();
 
   return (
     <>
@@ -19,18 +20,21 @@ export default function AddProduct() {
           <Formik
             initialValues={{
               name: "",
-              images: null,
+              main: null,
+              mainSrc:"",
               rating: "",
               instock: false,
               size: "",
               price: "",
               productcode: "",
-              imageSrc:""
+              hover:null,
+              hoverSrc:""
 
             }}
             validationSchema={Yup.object({
               name: Yup.string().required("Name is required"),
-              images: Yup.mixed().required("Images are required"),
+              main: Yup.mixed().required("Images are required"),
+              hover:Yup.mixed().required("images are required"),
               rating: Yup.string().required("Rating is required"),
               instock: Yup.boolean().required("InStock is required"),
               size: Yup.string().required("Size is required"),
@@ -38,6 +42,7 @@ export default function AddProduct() {
               productcode: Yup.string().required("Product Code is required"),
             })}
             onSubmit={(values, { resetForm }) => {
+              console.log(values)
                 axios.post("http://localhost:8080/products", values)
 
                 .then((res) => {
@@ -63,32 +68,59 @@ export default function AddProduct() {
                     />
                   </div>
                   <div className="form-field">
-                    <label htmlFor="images">Images:</label>
+                    <label htmlFor="main">Images:</label>
                     <input
                       type="file"
-                      placeholder="Images"
-                      id="images"
-                      name="images"
-                      ref={fileInputRef}
+                      placeholder="main"
+                      id="main"
+                      name="main"
+                      ref={mainInputRef}
                       onChange={(event) => {
                         const file = event.currentTarget.files[0];
-                        console.log(file)
                         if (file) {
-                          setFieldValue("images", file);
-                          setFieldValue("imageSrc",file.name)
+                          setFieldValue("main", file);
+                          setFieldValue("mainSrc",file.name)
                         } else {
-                          setFieldValue("images", null);
+                          setFieldValue("main", null);
                         }
                       }}
                       style={{display:"none"}}
                     />
                     <button
                       type="button"
-                      onClick={() => fileInputRef.current.click()}
+                      onClick={() => mainInputRef.current.click()}
                     >
                       Select File
                     </button>
                   </div>
+
+                  <div className="form-field">
+                    <label htmlFor="hover">Hover image:</label>
+                    <input
+                      type="file"
+                      placeholder="Hover"
+                      id="hover"
+                      name="hover"
+                      ref={hoverInputRef}
+                      onChange={(event) => {
+                        const file = event.currentTarget.files[0];
+                        if (file) {
+                          setFieldValue("hover", file);
+                          setFieldValue("hoverSrc",file.name)
+                        } else {
+                          setFieldValue("hover", null);
+                        }
+                      }}
+                      style={{display:"none"}}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => hoverInputRef.current.click()}
+                    >
+                      Select File
+                    </button>
+                  </div>
+
                   <div className="form-field">
                     <label htmlFor="rating">Rating:</label>
                     <input
@@ -152,3 +184,5 @@ export default function AddProduct() {
     </>
   );
 }
+
+

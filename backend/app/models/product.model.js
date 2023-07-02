@@ -5,7 +5,8 @@ const Product = mongoose.model(
     new mongoose.Schema(
         {
             name: String,
-            images: String,
+            main: String,
+            hover:String,
             rating:Number,
             instock: Boolean,
             size: Array,

@@ -8,7 +8,7 @@ const generateToken = (id) => {
   })
 }
 const RegisterUser = async (req, res) => {
-  const { firstname,lastname, email, password,isAdmin} = req.body
+  const { firstname,lastname, email,number, password,isAdmin,address,postcode,city,country,region} = req.body
   const Userexists = await Usermodel.findOne({ email })
   if (Userexists) {
       return res.status(404).json({ message: 'Email already exists' })
@@ -21,19 +21,31 @@ const RegisterUser = async (req, res) => {
       firstname,
       lastname,
       email,
+      number,
       password: hashed,
+      address,
+      postcode,
+      city,
+      country,
+      region,
       isAdmin
   })
 
   if (newUser) {
       return res.status(200).json({
-          _id: newUser.id,
-          firstname: newUser.firstname,
-          lastname:newUser.lastname,
-          email: newUser.email,
-          password: newUser.password,
-          token: generateToken(newUser.id),
-          isAdmin:newUser.isAdmin
+        _id: user._id,
+        firstname:user.firstname,
+        lastname:user.lastname,
+        email: user.email,
+        number:user.number,
+        password: user.password,
+        address:user.address,
+        postcode:user.postcode,
+        city:user.city,
+        country:user.country,
+        region:user.region,
+        token: generateToken(user.id),
+        isAdmin:user.isAdmin
       })
   }
   else {

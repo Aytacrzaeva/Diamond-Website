@@ -44,7 +44,7 @@ const Details = () => {
       </Helmet>
       <div className="detail">
         <div className="detail__left">
-          <img src={`http://localhost:8080/public/${data.images}`} alt="" />
+          <img src={`http://localhost:8080/public/${data.main}`} alt="" />
         </div>
         <div className="detail__right">
           <div className="detailback">

@@ -8,26 +8,8 @@ import { FaRegHeart } from 'react-icons/fa';
 import { MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 
-import Ring1 from "../../../images/products/1/1-1000x1000.png";
-import Ring1_2 from "../../../images/products/1/2-1000x1000.png";
-import Ring2 from "../../../images/products/2/1-1000x1000-1.png";
-import Ring2_2 from "../../../images/products/2/2-1000x1000-1.png";
-import Ring3 from "../../../images/products/3/1-1000x1000-2.png";
-import Ring3_2 from "../../../images/products/3/2-1000x1000-2.png";
-import Ring4 from "../../../images/products/4/1-1000x1000-3.png";
-import Ring4_2 from "../../../images/products/4/3-1000x1000.png";
-import Ring5 from "../../../images/products/5/1-1000x1000.png";
-import Ring5_2 from "../../../images/products/5/2-1000x1000.png";
-import Ring6 from "../../../images/products/1/1-1000x1000.png";
-import Ring6_2 from "../../../images/products/1/2-1000x1000.png";
-import Ring7 from "../../../images/products/2/1-1000x1000-1.png";
-import Ring7_2 from "../../../images/products/2/2-1000x1000-1.png";
-import Ring8 from "../../../images/products/3/1-1000x1000-2.png";
-import Ring8_2 from "../../../images/products/3/2-1000x1000-2.png";
-import Ring9 from "../../../images/products/4/1-1000x1000-3.png";
-import Ring9_2 from "../../../images/products/4/3-1000x1000.png";
-import Ring10 from "../../../images/products/5/1-1000x1000.png";
-import Ring10_2 from "../../../images/products/5/2-1000x1000.png";
+import Ring1 from "../../../images/products/1/1.png";
+
 import "./Products.scss";
 import { Helmet } from 'react-helmet';
 import axios from 'axios'
@@ -40,16 +22,16 @@ const Products = () => {
   }, [])
   
   const images = [
-    { main: Ring1, hover: Ring1_2 },
-    { main: Ring2, hover: Ring2_2 },
-    { main: Ring3, hover: Ring3_2 },
-    { main: Ring4, hover: Ring4_2 },
-    { main: Ring5, hover: Ring5_2 },
-    { main: Ring6, hover: Ring6_2 },
-    { main: Ring7, hover: Ring7_2 },
-    { main: Ring8, hover: Ring8_2 },
-    { main: Ring9, hover: Ring9_2 },
-    { main: Ring10, hover: Ring10_2 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring1 },
   ];
 
   const cards = [
@@ -113,14 +95,13 @@ const Products = () => {
       price: 1400,
       sizes: ["16", "18", "20"]
     }
-    // Diğer kartları buraya ekleyin
   ];
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [isGrid, setIsGrid] = useState(true);
   const [sortOption, setSortOption] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 3;
+  const pageSize = 6;
 
   const handleListView = () => {
     setIsGrid(false);

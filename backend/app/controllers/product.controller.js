@@ -25,14 +25,16 @@ const productController = {
 
   add: async (req, res) => {
     try {
-      const { name, rating, instock, size, price, productcode,imageSrc} = req.body;
-      const images = req.body.imageSrc;
-      console.log(imageSrc)
+      const { name, rating, instock, size, price, productcode,mainSrc,hoverSrc} = req.body;
+      const main = req.body.mainSrc;
+      const hover = req.body.hoverSrc;
 
       const product = new Product({
         name,
-        imageSrc,
-        images,
+        mainSrc,
+        main,
+        hover,
+        hoverSrc,
         rating,
         instock,
         size: size.split(','),
@@ -53,11 +55,13 @@ const productController = {
       const id = req.params.id;
       const { name, rating, instock, size, price, productcode } = req.body;
       const files = req.files;
-      const imageArr = files.map((file) => file.filename);
+      const mainArr = files.map((file) => file.filename);
+      const hoverArr = files.map((file) => file.filename);
 
       await Product.findByIdAndUpdate(id, {
         name,
-        images: imageArr,
+        main: mainArr,
+        hover:hoverArr,
         rating,
         instock,
         size,

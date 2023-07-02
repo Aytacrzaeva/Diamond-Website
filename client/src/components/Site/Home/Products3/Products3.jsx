@@ -3,16 +3,16 @@ import './Products3.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
-import Ring1 from "../../../../images/products/1/1-1000x1000.png";
-import Ring1_2 from "../../../../images/products/1/2-1000x1000.png";
-import Ring2 from "../../../../images/products/2/1-1000x1000-1.png";
-import Ring2_2 from "../../../../images/products/2/2-1000x1000-1.png";
-import Ring3 from "../../../../images/products/3/1-1000x1000-2.png";
-import Ring3_2 from "../../../../images/products/3/2-1000x1000-2.png";
-import Ring4 from "../../../../images/products/4/1-1000x1000-3.png";
-import Ring4_2 from "../../../../images/products/4/3-1000x1000.png";
-import Ring5 from "../../../../images/products/5/1-1000x1000.png";
-import Ring5_2 from "../../../../images/products/5/2-1000x1000.png";
+import Ring1 from "../../../../images/products/1/1.png";
+import Ring1_2 from "../../../../images/products/1/1-2.png";
+import Ring2 from "../../../../images/products/2/2.png";
+import Ring2_2 from "../../../../images/products/2/2-2.png";
+import Ring3 from "../../../../images/products/3/3.png";
+import Ring3_2 from "../../../../images/products/3/3-2.png";
+import Ring4 from "../../../../images/products/4/4.png";
+import Ring4_2 from "../../../../images/products/4/4-2.png";
+import Ring5 from "../../../../images/products/5/5.png";
+import Ring5_2 from "../../../../images/products/5/5-2.png";
 
 const Products3 = () => {
   const images = [

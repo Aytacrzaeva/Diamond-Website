@@ -69,7 +69,6 @@ const Header2 = () => {
           }
         });
         const userData = response.data;
-        console.log(userData);
         setFirstname(userData.firstname);
         setLastname(userData.lastname);
         setisAdmin(userData.isAdmin)
