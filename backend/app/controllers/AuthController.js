@@ -33,19 +33,19 @@ const RegisterUser = async (req, res) => {
 
   if (newUser) {
       return res.status(200).json({
-        _id: user._id,
-        firstname:user.firstname,
-        lastname:user.lastname,
-        email: user.email,
-        number:user.number,
-        password: user.password,
-        address:user.address,
-        postcode:user.postcode,
-        city:user.city,
-        country:user.country,
-        region:user.region,
-        token: generateToken(user.id),
-        isAdmin:user.isAdmin
+        _id:newUser.id,
+        firstname:newUser.firstname,
+        lastname:newUser.lastname,
+        email: newUser.email,
+        number:newUser.number,
+        password: newUser.password,
+        address:newUser.address,
+        postcode:newUser.postcode,
+        city:newUser.city,
+        country:newUser.country,
+        region:newUser.region,
+        token: generateToken(newUser.id),
+        isAdmin:newUser.isAdmin
       })
   }
   else {

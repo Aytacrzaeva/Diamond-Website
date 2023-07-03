@@ -6,6 +6,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../../store/cartSlice';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const useHoverImage = (mainImage, hoverImage) => {
   const [imageSource, setImageSource] = useState(mainImage);
@@ -28,15 +29,10 @@ const Products2 = () => {
   const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/products')
-      .then((response) => {
-        if (Array.isArray(response.data)) {
-          setCards(response.data);
-        } else {
-          console.log("Invalid data format");
-        }
-      })
-      .catch((error) => console.log(error));
+    fetch('http://localhost:8080/products')
+      .then(response => response.json())
+      .then(data => setCards(data))
+      .catch(error => console.log(error));
   }, []);
 
   const nextCard = () => {
@@ -65,7 +61,7 @@ const Products2 = () => {
           <FaRegHeart />
         </div>
         <div className="card__header">
-          <a href="">{card.name}</a>
+        <Link to={`${card._id}`}>{card.name}</Link>
         </div>
         <img
           src={`http://localhost:8080/public/${imageSource}`}

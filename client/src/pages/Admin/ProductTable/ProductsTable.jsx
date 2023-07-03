@@ -101,7 +101,7 @@ const ProductsTable = () => {
               <TableRow key={product.id}>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>
-                  <img src={`http://localhost:8080/public/${product.images}`} className="product-image" alt="Product" />
+                  <img src={`http://localhost:8080/public/${product.main}`} className="product-image" alt="Product" />
                 </TableCell>
                 <TableCell>{product.rating}</TableCell>
                 <TableCell>{product.inStock ? 'Yes' : 'No'}</TableCell>

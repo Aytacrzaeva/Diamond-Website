@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Order } = require('../models/order.model');
 
-const productController = {
+const orderController = {
   getAll: async (req, res) => {
     try {
       const orders = await Order.find();
@@ -29,17 +29,24 @@ const productController = {
         user:user,
         products:products,
         paymentMethod:paymentMethod,
-        comment:comment
+        comment:comment,
+        status:"pending"
     })
-    newOrder.save()
+    await newOrder.save()
     res.send(newOrder)
   },
 
   edit: async (req, res) => {
-    const {_id} = req.body
-    const item = Order.findByIdAndUpdate(_id,{status:req.body.status})
-    res.send(item)
+    try {
+      const { _id, status } = req.body;
+      const item = await Order.findByIdAndUpdate(_id, { status: status });
+      res.send(item);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('An error occurred while updating the order.');
+    }
   },
+  
 
   delete: async (req, res) => {
     try {
@@ -52,4 +59,4 @@ const productController = {
   },
 };
 
-module.exports = { productController };
+module.exports = { orderController };

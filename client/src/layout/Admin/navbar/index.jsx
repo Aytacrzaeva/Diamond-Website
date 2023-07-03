@@ -63,13 +63,8 @@ const AdminNavbar = () => {
             {order && (
               <ul>
                 <li className="menu-item">
-                  <NavLink to={"/cinema"}>
-                    <i className="fa-solid fa-caret-right"></i>· Active Orders
-                  </NavLink>
-                </li>
-                <li className="menu-item">
-                  <NavLink to={"/film"}>
-                    <i className="fa-solid fa-caret-right"></i>· Order History
+                  <NavLink to={"order"}>
+                    <i className="fa-solid fa-caret-right"></i>· All Orders
                   </NavLink>
                 </li>
               </ul>

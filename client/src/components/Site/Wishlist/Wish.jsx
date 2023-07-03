@@ -1,44 +1,20 @@
 import React from 'react';
 import "./Wish.scss"
 import { Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
-import Ring1 from "../../../images/products/5/5.png";
-import {AiOutlineCloseCircle} from "react-icons/ai"
-import {FaShoppingCart} from "react-icons/fa"
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { add, remove } from '../../../store/cartSlice';
 
 const Wish = () => {
-  const items = [
-    {
-      id: 1,
-      image: Ring1,
-      productName: 'Product 1',
-      model: 'Model 1',
-      inStock: true,
-      price: '$10.00'
-    },
-    {
-      id: 2,
-      image: Ring1,
-      productName: 'Product 2',
-      model: 'Model 2',
-      inStock: false,
-      price: '$20.00'
-    },
-    {
-      id: 3,
-      image: Ring1,
-      productName: 'Product 3',
-      model: 'Model 3',
-      inStock: true,
-      price: '$200.00'
-    }
-    
-    // Diğer wishlist öğeleri
-  ];
+  const items = useSelector(state => state.cart.items);
+  const dispatch = useDispatch();
 
-  const handleAction = (item) => {
-    console.log('Action clicked for item:', item);
+  const handleMoveToCart = (item) => {
+    dispatch(add(item));
+    dispatch(remove(item.prod._id));
+    console.log("Item moved to cart");
   };
 
   const tableCellStyle = {
@@ -66,18 +42,22 @@ const Wish = () => {
         </TableHead>
         <TableBody>
           {items.map((item) => (
-            <TableRow key={item.id} style={tableCellStyle}>
+            <TableRow key={item.prod._id} style={tableCellStyle}>
               <TableCell style={tableCellStyle}>
-                <img src={item.image} alt={item.productName} style={imageCellStyle} />
+                <img src={`http://localhost:8080/public/${item.prod.main}`} alt={item.prod.name} style={imageCellStyle} />
               </TableCell>
-              <TableCell style={tableCellStyle}>{item.productName}</TableCell>
-              <TableCell style={tableCellStyle}>{item.model}</TableCell>
-              <TableCell style={tableCellStyle}>{item.inStock ? 'Yes' : 'No'}</TableCell>
-              <TableCell style={tableCellStyle}>{item.price}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.name}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.productcode}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.instock ? 'Yes' : 'No'}</TableCell>
+              <TableCell style={tableCellStyle}>{item.prod.price}</TableCell>
               <TableCell style={tableCellStyle}>
                 <div className="action-buttons">
-                <Button className="round-button"  onClick={() => handleAction(item)}><FaShoppingCart/></Button>
-                <Button className="round-button"  onClick={() => handleAction(item)}><AiOutlineCloseCircle/></Button>
+                  <Button className="round-button" onClick={() => handleMoveToCart(item)}>
+                    <FaShoppingCart />
+                  </Button>
+                  <Button className="round-button" onClick={() => dispatch(remove(item.prod._id))}>
+                    <AiOutlineCloseCircle />
+                  </Button>
                 </div>
               </TableCell>
             </TableRow>
@@ -85,8 +65,10 @@ const Wish = () => {
         </TableBody>
       </Table>
       <div className="button-container">
-                <Link to="/products"><Button >Continue Shopping</Button></Link>
-            </div>
+        <Link to="/products">
+          <Button>Continue Shopping</Button>
+        </Link>
+      </div>
     </div>
   );
 };

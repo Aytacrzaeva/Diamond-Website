@@ -24,7 +24,6 @@ const useHoverImage = (mainImage, hoverImage) => {
 const Products = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const Products = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,6 +41,11 @@ const Products = () => {
     setCurrentIndex(prevIndex => (prevIndex - 1 + cards.length) % cards.length);
   };
 
+  const handleAddToCart = (card) => {
+    dispatch(add(card));
+    console.log("Item added to cart");
+  };
+
   const Card = ({ card }) => {
     if (!card) {
       return null;
@@ -50,12 +54,12 @@ const Products = () => {
     const [imageSource, handleImageHover, handleImageLeave] = useHoverImage(card.main, card.hover);
 
     return (
-      <div className="card" key={card.id}>
+      <div className="card" key={card._id}>
         <div className="card__icon">
-          <FaRegHeart />
+          <button onClick={() => handleAddToCart(card)}><FaRegHeart /></button>
         </div>
         <div className="card__header">
-          <Link to={`${card._id}`}>{card.name}</Link>
+          <Link to={`/products/${card._id}`}>{card.name}</Link>
         </div>
         <img
           src={`http://localhost:8080/public/${imageSource}`}
@@ -78,14 +82,7 @@ const Products = () => {
               </div>
             </div>
           </div>
-          <button
-            className="add-to-cart"
-            onClick={() => {
-              console.log(card);
-              dispatch(add(card));
-              console.log("item added to basket");
-            }}
-          >
+          <button className="add-to-cart" onClick={() => handleAddToCart(card)}>
             Add to Cart <RiShoppingBagLine />
           </button>
         </div>

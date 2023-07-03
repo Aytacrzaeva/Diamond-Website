@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const Order = mongoose.model(
-    'Product',
+    'Order',
     new mongoose.Schema(
         {
             user:{
-                type:String
+                type:Object
             },
             products:{
                 type:Array

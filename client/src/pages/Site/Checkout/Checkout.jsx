@@ -39,22 +39,19 @@ const Checkout = () => {
   });
 
   const handleSubmit = (values) => {
-    console.log(values);
-    axios.post("http://localhost:8080/orders",values).then(res=>console.log(res.data))
+    const postData={user:user,products:JSON.parse(localStorage.getItem("basketItems")),paymentMethod:values.paymentMethod,comment:values.comment}
+    console.log(postData);
+    axios.post("http://localhost:8080/orders", postData).then((res)=>{
+      console.log(res.data)
+    })
   };
 
   return (
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        address: '',
-        postCode: '',
-        city: '',
-        country: '',
-        region: '',
         paymentMethod: '',
         comment: '',
+        products:JSON.parse(localStorage.getItem("basketItems"))
       }}
       validationSchema={checkoutSchema}
       onSubmit={handleSubmit}

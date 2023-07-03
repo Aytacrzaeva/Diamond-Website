@@ -81,11 +81,45 @@ const RegisterPage = () => {
                 <ErrorMessage name="email" component="div" />
               </div>
               <div>
-                <h2>Your Password</h2>
+                <label htmlFor="number">*Number:</label>
+                <Field type="text" id="number" name="number" />
+                <ErrorMessage name="number" component="div" />
+              </div>
+              <div>
                 <label htmlFor="password">*Password:</label>
                 <Field type="password" id="password" name="password" />
                 <ErrorMessage name="password" component="div" />
               </div>
+
+              <div>
+                <h2>Your Address:</h2>
+                <label htmlFor="address">*Address:</label>
+                <Field type="text" id="address" name="address" />
+                <ErrorMessage name="address" component="div" />
+              </div>
+              <div>
+                <label htmlFor="postcode">*Post Code:</label>
+                <Field type="text" id="postcode" name="postcode" />
+                <ErrorMessage name="postcode" component="div" />
+              </div>
+
+              <div>
+                <label htmlFor="city">*City:</label>
+                <Field type="text" id="city" name="city" />
+                <ErrorMessage name="city" component="div" />
+              </div>
+              <div>
+                <label htmlFor="country">*Country:</label>
+                <Field type="text" id="country" name="country" />
+                <ErrorMessage name="country" component="div" />
+              </div>
+              <div>
+                <label htmlFor="region">*Region:</label>
+                <Field type="text" id="region" name="region" />
+                <ErrorMessage name="region" component="div" />
+              </div>
+
+
               <button type="submit">Submit</button>
             </Form>
           </Formik>

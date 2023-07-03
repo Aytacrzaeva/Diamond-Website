@@ -144,7 +144,7 @@ const Header2 = () => {
               {firstname!=="My Profile" && lastname && !isAdmin ? (
                 <>
                   <Link to="/acc" onClick={closeProfileDropdown}><BsPersonFillAdd /> My Profile</Link>
-                  <Link to="/orderhistory" onClick={closeProfileDropdown}> Order History</Link>
+                  <Link to="/myorders" onClick={closeProfileDropdown}> Order History</Link>
                   <Link onClick={logout}><BiLogOut /> Logout</Link>
                 </>
               ) : (

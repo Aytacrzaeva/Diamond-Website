@@ -25,6 +25,8 @@ import AddProduct from "../components/Admin/AddProduct/AddProduct";
 import ErrorPage from "../pages/Site/Error/ErrorPage";
 import UserTable from "../pages/Admin/UserTable/UserTable";
 import ChangePass from "../pages/Site/Changepass/ChangePass";
+import OrdersTable from "../pages/Admin/OrdersTable/OrdersTable";
+import OrderHistory from "../pages/Site/OrderHistory/OrderHistory";
 export const ROUTES = [{
     path: "/",
     element: <Siteroot />,
@@ -93,6 +95,10 @@ export const ROUTES = [{
     {
         path: "404error",
         element: <ErrorPage />
+    },
+    {
+        path:"myorders",
+        element:<OrderHistory/>
     }
     ]
 }, {
@@ -113,6 +119,9 @@ export const ROUTES = [{
     {
         path: "users",
         element: <UserTable />
+    },{
+        path: "order",
+        element: <OrdersTable />
     }
     ]
 
