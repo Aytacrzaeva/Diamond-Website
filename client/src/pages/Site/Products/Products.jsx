@@ -9,6 +9,7 @@ import { MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 
 import Ring1 from "../../../images/products/1/1.png";
+import Ring2 from "../../../images/products/1/1-2.png"
 
 import "./Products.scss";
 import { Helmet } from 'react-helmet';
@@ -22,16 +23,16 @@ const Products = () => {
   }, [])
   
   const images = [
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
-    { main: Ring1, hover: Ring1 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
+    { main: Ring1, hover: Ring2 },
   ];
 
   const cards = [

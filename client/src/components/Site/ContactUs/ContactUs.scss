@@ -32,7 +32,8 @@
         padding: 20px;
         background-color: rgb(242, 223, 207);
         border: 1px solid #213a2d;
-        border-radius: 4px;
+        border-radius: 20px;
+        width: 100%;
 
         h2 {
             margin-bottom: 20px;
@@ -41,7 +42,7 @@
         form {
             display: flex;
             flex-direction: column;
-
+            width: 100%;
             div {
                 margin-bottom: 20px;
 

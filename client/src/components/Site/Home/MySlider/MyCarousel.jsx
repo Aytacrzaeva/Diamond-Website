@@ -5,6 +5,7 @@ import "./MyCarousel.scss"
 import Slide1 from "../../../../images/slider/1-1920x750.png"
 import Slide2 from "../../../../images/slider/2-1920x750.png"
 import {RiShoppingBagLine} from "react-icons/ri"
+import { Link } from 'react-router-dom';
 const MyCarousel = () => {
   return (
     <Carousel
@@ -21,7 +22,7 @@ const MyCarousel = () => {
         <div className="slide__text">
           <h1>Jewellery & Diamonds</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <button>Check More Products <RiShoppingBagLine/></button>
+          <Link to='/products'><button>Check More Products <RiShoppingBagLine/></button></Link>
         </div>
       </div>
       <div className='slide'>
@@ -29,7 +30,7 @@ const MyCarousel = () => {
         <div className="slide__text">
           <h1>Jewellery & Diamonds</h1>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <button>Check More Products <RiShoppingBagLine/></button>
+          <Link to='/products'><button>Check More Products <RiShoppingBagLine/></button></Link>
 
         </div>
 

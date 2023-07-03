@@ -28,7 +28,10 @@
   
       &__right {
         width: 20%;
-  
+        a{
+          text-decoration: none;
+          color: rgb(242, 223, 207);
+        }
         button {
           width: 200px !important;
           height: 40px !important;

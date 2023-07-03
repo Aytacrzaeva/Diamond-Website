@@ -18,6 +18,9 @@ const Order = mongoose.model(
             },
             comment:{
                 type:String
+            },
+            totalPrice:{
+                type:Number
             }
         },
         {

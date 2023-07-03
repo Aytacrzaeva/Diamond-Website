@@ -5,15 +5,15 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, remove } from '../../../store/cartSlice';
+import { addwish, removewish } from '../../../store/wishSlice';
 
 const Wish = () => {
-  const items = useSelector(state => state.cart.items);
+  const items = useSelector(state => state.wish.items);
   const dispatch = useDispatch();
 
   const handleMoveToCart = (item) => {
-    dispatch(add(item));
-    dispatch(remove(item.prod._id));
+    dispatch(addwish(item));
+    dispatch(removewish(item.prod._id));
     console.log("Item moved to cart");
   };
 
@@ -55,7 +55,7 @@ const Wish = () => {
                   <Button className="round-button" onClick={() => handleMoveToCart(item)}>
                     <FaShoppingCart />
                   </Button>
-                  <Button className="round-button" onClick={() => dispatch(remove(item.prod._id))}>
+                  <Button className="round-button" onClick={() => dispatch(removewish(item.prod._id))}>
                     <AiOutlineCloseCircle />
                   </Button>
                 </div>

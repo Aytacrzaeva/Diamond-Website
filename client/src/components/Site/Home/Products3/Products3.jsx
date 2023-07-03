@@ -13,6 +13,7 @@ import Ring4 from "../../../../images/products/4/4.png";
 import Ring4_2 from "../../../../images/products/4/4-2.png";
 import Ring5 from "../../../../images/products/5/5.png";
 import Ring5_2 from "../../../../images/products/5/5-2.png";
+import { Link } from 'react-router-dom';
 
 const Products3 = () => {
   const images = [
@@ -120,7 +121,9 @@ const Products3 = () => {
           <h1>Jewellery & diamonds</h1>
         </div>
         <div className="products3__up__right">
+          <Link to='/products'>
           <button>Check More Product <RiShoppingBagLine/></button>
+          </Link>
         </div>
       </div>
       <div className="products3__down">

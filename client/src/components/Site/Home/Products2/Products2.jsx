@@ -26,7 +26,7 @@ const Products2 = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.items);
+  // const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     fetch('http://localhost:8080/products')
@@ -61,7 +61,7 @@ const Products2 = () => {
           <FaRegHeart />
         </div>
         <div className="card__header">
-        <Link to={`${card._id}`}>{card.name}</Link>
+          <Link to={`${card._id}`}>{card.name}</Link>
         </div>
         <img
           src={`http://localhost:8080/public/${imageSource}`}
@@ -94,7 +94,9 @@ const Products2 = () => {
           <h1>Jewellery & diamonds</h1>
         </div>
         <div className="products2__up__right">
+          <Link to='/products'>
           <button>Check More Product <RiShoppingBagLine/></button>
+          </Link>
         </div>
       </div>
       <div className="products2__down">

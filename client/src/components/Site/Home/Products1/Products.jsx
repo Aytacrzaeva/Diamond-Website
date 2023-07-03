@@ -3,9 +3,10 @@ import './Products.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../../store/cartSlice';
+import { addwish } from '../../../../store/wishSlice'
 
 const useHoverImage = (mainImage, hoverImage) => {
   const [imageSource, setImageSource] = useState(mainImage);
@@ -25,7 +26,8 @@ const Products = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
-
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
   useEffect(() => {
     fetch('http://localhost:8080/products')
       .then(response => response.json())
@@ -42,8 +44,23 @@ const Products = () => {
   };
 
   const handleAddToCart = (card) => {
-    dispatch(add(card));
+    if(token){
+      dispatch(add(card));
     console.log("Item added to cart");
+    }
+    else{
+      navigate('/login')
+    }
+  };
+
+  const handleAddToWish = (card) => {
+    if(token){
+      dispatch(addwish(card));
+    console.log("Item added to cart");
+    }
+    else{
+      navigate('/login')
+    }
   };
 
   const Card = ({ card }) => {
@@ -56,14 +73,14 @@ const Products = () => {
     return (
       <div className="card" key={card._id}>
         <div className="card__icon">
-          <button onClick={() => handleAddToCart(card)}><FaRegHeart /></button>
+          <button onClick={() => handleAddToWish(card)}><FaRegHeart /></button>
         </div>
         <div className="card__header">
-          <Link to={`/products/${card._id}`}>{card.name}</Link>
+          <Link to={`/${card._id}`}>{card.name}</Link>
         </div>
         <img
           src={`http://localhost:8080/public/${imageSource}`}
-          alt="Slider Resim"
+          alt="x"
           onMouseEnter={handleImageHover}
           onMouseLeave={handleImageLeave}
         />
@@ -100,9 +117,11 @@ const Products = () => {
             industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
             scrambled it to make a type specimen book.
           </p>
+          <Link to='/products'>
           <button>
             Check More Products <RiShoppingBagLine />
           </button>
+          </Link>
         </div>
       </div>
       <div className="products__right">

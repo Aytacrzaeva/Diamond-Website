@@ -5,8 +5,9 @@ import './Checkout.scss';
 import axios from 'axios';
 
 const Checkout = () => {
-  const [user,setUser] = useState({})
+  const [user, setUser] = useState({})
   const token = localStorage.getItem('token');
+  let products = JSON.parse(localStorage.getItem("basketItems"))
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -39,9 +40,10 @@ const Checkout = () => {
   });
 
   const handleSubmit = (values) => {
-    const postData={user:user,products:JSON.parse(localStorage.getItem("basketItems")),paymentMethod:values.paymentMethod,comment:values.comment}
+    let totalPrice = products.reduce((a, b) => a.prod.price + b.prod.price)
+    const postData = { user: user, products: products, paymentMethod: values.paymentMethod, comment: values.comment, totalPrice: totalPrice }
     console.log(postData);
-    axios.post("http://localhost:8080/orders", postData).then((res)=>{
+    axios.post("http://localhost:8080/orders", postData).then((res) => {
       console.log(res.data)
     })
   };
@@ -51,7 +53,7 @@ const Checkout = () => {
       initialValues={{
         paymentMethod: '',
         comment: '',
-        products:JSON.parse(localStorage.getItem("basketItems"))
+        products: JSON.parse(localStorage.getItem("basketItems"))
       }}
       validationSchema={checkoutSchema}
       onSubmit={handleSubmit}
@@ -67,7 +69,7 @@ const Checkout = () => {
 
           <div>
             <label htmlFor="lastName">*Last Name</label>
-            <Field type="text" id="lastName" name="lastName" value={user.lastname}/>
+            <Field type="text" id="lastName" name="lastName" value={user.lastname} />
             <ErrorMessage name="lastName" component="div" className="error-message" />
           </div>
 
@@ -79,29 +81,28 @@ const Checkout = () => {
 
           <div>
             <label htmlFor="postCode">*Post Code</label>
-            <Field type="text" id="postCode" name="postCode" value={user.postcode}/>
+            <Field type="text" id="postCode" name="postCode" value={user.postcode} />
             <ErrorMessage name="postCode" component="div" className="error-message" />
           </div>
 
           <div>
             <label htmlFor="city">*City</label>
-            <Field type="text" id="city" name="city" value={user.city}/>
+            <Field type="text" id="city" name="city" value={user.city} />
             <ErrorMessage name="city" component="div" className="error-message" />
           </div>
 
           <div>
             <label htmlFor="country">*Country</label>
-            <Field type="text" id="country" name="country" value={user.country}/>
+            <Field type="text" id="country" name="country" value={user.country} />
             <ErrorMessage name="country" component="div" className="error-message" />
           </div>
 
           <div>
             <label htmlFor="region">*Region</label>
-            <Field type="text" id="region" name="region" value={user.region}/>
+            <Field type="text" id="region" name="region" value={user.region} />
             <ErrorMessage name="region" component="div" className="error-message" />
           </div>
 
-          <button type="submit">Continue</button>
         </div>
 
         <div className="shipping">

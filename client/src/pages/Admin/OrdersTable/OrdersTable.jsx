@@ -9,6 +9,7 @@ const OrdersTable = () => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get('http://localhost:8080/orders');
+        console.log(response.data);
         setOrders(response.data);
       } catch (error) {
         console.log(error);
@@ -28,15 +29,16 @@ const OrdersTable = () => {
       });
     });
   };
+
   const handleSaveChanges = async (id, newStatus) => {
     try {
       const response = await axios.get(`http://localhost:8080/orders/${id}`);
       const order = response.data;
-  
+
       const updatedOrder = { ...order, status: newStatus };
-  
+
       await axios.put(`http://localhost:8080/orders/${id}`, updatedOrder);
-      
+
       setOrders(prevOrders => {
         return prevOrders.map(order => {
           if (order._id === id) {
@@ -49,8 +51,19 @@ const OrdersTable = () => {
       console.log(error);
     }
   };
-  
-  
+
+  // createdAt değerini istediğiniz formata dönüştürmek için bir yardımcı fonksiyon
+  const formatDate = (date) => {
+    const formattedDate = new Date(date);
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    return formattedDate.toLocaleString('en-US', options);
+  };
 
   return (
     <div className="orders">
@@ -61,6 +74,7 @@ const OrdersTable = () => {
               <h2>{order?.user.firstname} {order?.user.lastname}</h2>
               <p>Email: {order?.user.email}</p>
               <p>Address: {order?.user.address}</p>
+              <p>Total Price: ${order?.totalPrice}</p>
             </React.Fragment>
           )}
           <p>Payment Method: {order?.paymentMethod}</p>
@@ -68,11 +82,12 @@ const OrdersTable = () => {
             <div className="product" key={product?.prod?._id}>
               {product?.prod?.name && <p>Product: {product?.prod?.name}</p>}
               <p>Quantity: {product?.count}</p>
-              {product?.prod?.createdAt && <p>Created At: {product?.prod?.createdAt}</p>}
+              {product?.prod?.createdAt && <p>Created At: {formatDate(product?.prod?.createdAt)}</p>}
             </div>
           ))}
           <p>Status: {order?.status}</p>
           <select
+          className='orderstatus'
             value={order?.status}
             onChange={(e) => handleStatusChange(order?._id, e.target.value)}
           >
@@ -81,7 +96,7 @@ const OrdersTable = () => {
             <option value="shipped">Shipped</option>
             <option value="delivered">Delivered</option>
           </select>
-          <button onClick={() => handleSaveChanges(order?._id, order?.status)}>Save</button>
+          <button className='savebtn' onClick={() => handleSaveChanges(order?._id, order?.status)}>Save</button>
         </div>
       ))}
     </div>

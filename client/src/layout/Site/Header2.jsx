@@ -127,7 +127,7 @@ const Header2 = () => {
         )}
       </div>
       <div className="nav2__middle">
-        <img src={Logo} alt="" />
+        <Link to='/'><img src={Logo} alt="" /></Link>
       </div>
       <div className="nav2__right">
         <div className="dropdown" ref={dropdownRef}>

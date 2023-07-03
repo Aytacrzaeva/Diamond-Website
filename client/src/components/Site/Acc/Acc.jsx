@@ -51,18 +51,20 @@ const Acc = () => {
                             <div className="acc__left__top__cards__card__left">
                                 <CiBoxes />
                             </div>
+                            <Link to='/myorders'>
                             <div className="acc__left__top__cards__card__right">
                                 <h6>View your Order History</h6>
                                 <p>Edit Your Account</p>
                             </div>
+                            </Link>
                         </div>
                         <div className="acc__left__top__cards__card">
                             <div className="acc__left__top__cards__card__left">
                                 <TbTruckReturn />
                             </div>
                             <div className="acc__left__top__card__right">
-                                <h6>Edit Your Account Information</h6>
-                                <p>Edit Your Account</p>
+                                <h6>Your Address</h6>
+                                <p>View Address</p>
                             </div>
                         </div>
                         
@@ -76,13 +78,13 @@ const Acc = () => {
                         <li><Link>My Account</Link></li>
                         <li><Link>Edit Account</Link></li>
                         <li><Link to="/forgot">Password</Link></li>
-                        <li><Link>Address Book</Link></li>
+                        <li><Link to='/addressbook'>Address Book</Link></li>
                     </ul>
                 </div>
                 <div className="acc__right__card">
                     <h2><TfiPencilAlt/>My Orders</h2>
                     <ul>
-                        <li><Link>Order History</Link></li>
+                        <li><Link to='/myorders'>Order History</Link></li>
                     </ul>
                 </div>
                 <div className="acc__right__card">

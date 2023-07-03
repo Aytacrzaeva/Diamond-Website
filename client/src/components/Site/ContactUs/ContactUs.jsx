@@ -4,9 +4,9 @@ import * as Yup from 'yup';
 import "./ContactUs.scss"
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Ad alanı zorunludur'),
-    email: Yup.string().email('Geçerli bir e-posta girin').required('E-posta alanı zorunludur'),
-    message: Yup.string().required('Mesaj alanı zorunludur'),
+    name: Yup.string().required('Namespace is required'),
+    email: Yup.string().email('Enter a valid email').required('Email is required'),
+    message: Yup.string().required('Message is required'),
 });
 
 const ContactUs = () => {
@@ -86,7 +86,7 @@ const ContactUs = () => {
                             ) : null}
                         </div>
 
-                        <button type="submit">Gönder</button>
+                        <button type="submit">Send</button>
                     </form>
 
                 </div>

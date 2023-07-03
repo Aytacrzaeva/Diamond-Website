@@ -11,7 +11,6 @@ const Basket = () => {
   const products = useSelector((state) => state.cart.items);
   console.log("products", products);
   const [items, setItems] = useState([]);
-
   useEffect(() => {
     if (products && products.length > 0) {
       setItems(products.map((product) => ({ ...product, quantity: 1 })));
@@ -22,7 +21,6 @@ const Basket = () => {
     dispatch(remove(productId)); 
     setItems((prevItems) => prevItems.filter((item) => item.prod._id !== productId));
   };
-  
 
   const handleQuantityChange = (itemId, newQuantity) => {
     const quantity = parseInt(newQuantity) || 1;

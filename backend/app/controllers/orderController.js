@@ -24,13 +24,14 @@ const orderController = {
   },
 
   add: async (req, res) => {
-    const {user,products,paymentMethod,comment} = req.body
+    const {user,products,paymentMethod,comment,totalPrice} = req.body
     const newOrder = new Order({
         user:user,
         products:products,
         paymentMethod:paymentMethod,
         comment:comment,
-        status:"pending"
+        status:"pending",
+        totalPrice:totalPrice
     })
     await newOrder.save()
     res.send(newOrder)
