@@ -1,20 +1,25 @@
 import React from 'react';
 import "./Wish.scss"
 import { Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addwish, removewish } from '../../../store/wishSlice';
+import { add } from '../../../store/cartSlice';
+import { removewish } from '../../../store/wishSlice';
 
 const Wish = () => {
   const items = useSelector(state => state.wish.items);
   const dispatch = useDispatch();
 
   const handleMoveToCart = (item) => {
-    dispatch(addwish(item));
-    dispatch(removewish(item.prod._id));
+    dispatch(add(item.prod));
     console.log("Item moved to cart");
+  };
+
+  const handleRemoveFromWish = (itemId) => {
+    dispatch(removewish(itemId));
+    console.log("Item removed from wishlist");
   };
 
   const tableCellStyle = {
@@ -55,7 +60,7 @@ const Wish = () => {
                   <Button className="round-button" onClick={() => handleMoveToCart(item)}>
                     <FaShoppingCart />
                   </Button>
-                  <Button className="round-button" onClick={() => dispatch(removewish(item.prod._id))}>
+                  <Button className="round-button" onClick={() => handleRemoveFromWish(item.prod._id)}>
                     <AiOutlineCloseCircle />
                   </Button>
                 </div>

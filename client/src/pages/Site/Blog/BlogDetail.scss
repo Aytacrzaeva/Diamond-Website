@@ -1,0 +1,20 @@
+.blogdetail{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 150px;
+    color: beige;
+    &__top{
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+box-shadow: rgba(221, 192, 159, 0.465) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;        }
+    }
+}

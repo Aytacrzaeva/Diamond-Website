@@ -51,30 +51,33 @@
     padding: 10px;
   }
   
-  table {
-    border: 1px solid rgb(242, 223, 207);
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-  
-    thead {
-      tr {
-        th {
-          color: rgb(242, 223, 207);
+  .wish{
+
+    table {
+      border: 1px solid rgb(242, 223, 207);
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+    
+      thead {
+        tr {
+          th {
+            color: rgb(242, 223, 207);
+          }
         }
       }
-    }
-  
-    tbody {
-      tr {
-        td {
-          color: rgb(242, 223, 207);
-  
-          &.image-cell {
-            img {
-              width: auto;
-              height: auto;
-              object-fit: contain;
+    
+      tbody {
+        tr {
+          td {
+            color: rgb(242, 223, 207);
+    
+            &.image-cell {
+              img {
+                width: auto;
+                height: auto;
+                object-fit: contain;
+              }
             }
           }
         }

@@ -1,3 +1,5 @@
+// Details.jsx
+
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { AiFillHome } from 'react-icons/ai';
@@ -6,12 +8,16 @@ import { HiOutlineShoppingBag } from 'react-icons/hi';
 import { FaRegHeart } from 'react-icons/fa';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { add } from '../../../store/cartSlice';
+import { addwish as addToWishlist } from '../../../store/wishSlice';
 import './Details.scss';
 
 const Details = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get(`http://localhost:8080/products/${id}`).then((res) => {
@@ -29,12 +35,14 @@ const Details = () => {
     }
   };
 
-  const renderRatingStars = () => {
-    const stars = [];
-    for (let i = 0; i < data.rating; i++) {
-      stars.push(<span key={i}>&#9733;</span>);
-    }
-    return stars;
+
+
+  const handleAddToCart = () => {
+    dispatch(add(data)); // Assuming `data` contains the product details
+  };
+
+  const handleAddToWishlist = () => {
+    dispatch(addToWishlist(data)); // Assuming `data` contains the product details
   };
 
   return (
@@ -68,7 +76,7 @@ const Details = () => {
           </div>
           <div className="detail__left__header">
             <h2>{data.name}</h2>
-            <button>
+            <button onClick={handleAddToWishlist}>
               <FaRegHeart />
             </button>
           </div>
@@ -78,9 +86,11 @@ const Details = () => {
           </div>
           <div className="detail__left__size">
             <p>*Size</p>
-            {data.size && data.size.map((size) => <button key={size}>
-              <span>{size}</span>
-            </button>)}
+            {data.size && data.size.map((size) => (
+              <button key={size}>
+                <span>{size}</span>
+              </button>
+            ))}
           </div>
           <div className="detail__left__counter">
             <span onClick={decrementCount}>-</span>
@@ -90,11 +100,9 @@ const Details = () => {
           <div className="detail__left__price">
             <p>{data.price}$</p>
           </div>
-          <div className="detail__left__rating">
-            {renderRatingStars()}
-          </div>
+          
           <div className="detail__left__button">
-            <button>
+            <button onClick={handleAddToCart}>
               Add to Cart
               <HiOutlineShoppingBag />
             </button>

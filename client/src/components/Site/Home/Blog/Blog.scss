@@ -20,6 +20,9 @@
       align-items: center;
       justify-content: center;
       gap: 30px;
+      &__card{
+        height: 470px;        
+      }
   
       @media screen and (max-width: 1200px) {
         gap: 20px;

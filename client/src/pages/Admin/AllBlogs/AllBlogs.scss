@@ -1,0 +1,40 @@
+.allblog{
+    width: 100%;
+    height: auto;
+    background-color: rgb(146, 171, 186);
+    padding-left: 310px;
+    padding-top:110px;
+    table{
+        width: 100%;
+        padding: 30px;
+        color: beige;
+        th{
+            padding-bottom: 10px;
+        }
+        
+        tr{
+            border-bottom: 1px solid orange;
+        }
+    }
+}
+.blogbody{
+    padding: 40px;
+    width: 100%;
+    height: 100vh;
+    
+    
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 30px;
+        box-shadow: rgba(191, 116, 84, 0.817) 1px 10px 40px;    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(218,157,115);
+        color: beige;
+        border-radius: 10px;
+        margin-left: 20px;
+      }
+}

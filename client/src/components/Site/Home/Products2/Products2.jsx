@@ -3,8 +3,9 @@ import './Products2.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { add } from '../../../../store/cartSlice';
+import { addwish } from '../../../../store/wishSlice';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -26,7 +27,6 @@ const Products2 = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
-  // const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     fetch('http://localhost:8080/products')
@@ -50,6 +50,11 @@ const Products2 = () => {
 
     const [imageSource, handleImageHover, handleImageLeave] = useHoverImage(card.main, card.hover);
 
+    const handleAddToWish = () => {
+      dispatch(addwish(card));
+      console.log("Item added to wishlist");
+    };
+
     const handleAddToCart = () => {
       dispatch(add(card));
       console.log("Item added to cart");
@@ -58,7 +63,7 @@ const Products2 = () => {
     return (
       <div className="card" key={card._id}>
         <div className="card__icon">
-          <FaRegHeart />
+          <FaRegHeart onClick={handleAddToWish} />
         </div>
         <div className="card__header">
           <Link to={`${card._id}`}>{card.name}</Link>
@@ -95,7 +100,7 @@ const Products2 = () => {
         </div>
         <div className="products2__up__right">
           <Link to='/products'>
-          <button>Check More Product <RiShoppingBagLine/></button>
+            <button>Check More Product <RiShoppingBagLine /></button>
           </Link>
         </div>
       </div>

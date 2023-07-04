@@ -27,6 +27,10 @@ import UserTable from "../pages/Admin/UserTable/UserTable";
 import ChangePass from "../pages/Site/Changepass/ChangePass";
 import OrdersTable from "../pages/Admin/OrdersTable/OrdersTable";
 import OrderHistory from "../pages/Site/OrderHistory/OrderHistory";
+import BlogDetail from "../pages/Site/Blog/BlogDetail";
+import AddBlogs from "../pages/Admin/AddBlogs/AddBlogs";
+import AllBlogs from "../pages/Admin/AllBlogs/AllBlogs";
+import AdminAcc from "../pages/Admin/AdminAcc/AdminAcc";
 export const ROUTES = [{
     path: "/",
     element: <Siteroot />,
@@ -69,7 +73,12 @@ export const ROUTES = [{
     }, {
         path: ":id",
         element: <Details />
-    }, {
+    },
+    {
+        path: "products/:id",
+        element: <Details />
+    },
+     {
         path: "products",
         element: <Products />
     }, {
@@ -99,6 +108,14 @@ export const ROUTES = [{
     {
         path:"myorders",
         element:<OrderHistory/>
+    },
+    {
+        path:":id",
+        element:<BlogDetail/>
+    },
+    {
+        path:"blogs/:id",
+        element:<BlogDetail/>
     }
     ]
 }, {
@@ -122,6 +139,15 @@ export const ROUTES = [{
     },{
         path: "order",
         element: <OrdersTable />
+    },{
+        path: "addblog",
+        element: <AddBlogs />
+    },{
+        path: "allblog",
+        element: <AllBlogs />
+    },{
+        path: "adminacc",
+        element: <AdminAcc />
     }
     ]
 

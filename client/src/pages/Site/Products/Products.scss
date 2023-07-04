@@ -1,215 +1,63 @@
-.prod__right__bottom {
-  display: flex;
+.card__button{
+  display: flex !important;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-  gap: 40px;
-
-  &.grid-view {
-    .card {
-      width: 25%;
-      margin-bottom: 40px;
-
-      .card__img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-      }
-
-      .card__text {
-        display: none;
-      }
-    }
-  }
-
-  &.list-view {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    width: 100%;
-    .card__header {
-      width: 300px;
-      a {
-        font-size: 20px;
-        width: 100px;
-      }
-    }
-    .card__footer {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      width: 1200px;
-      gap: 30px;
-      button {
-        margin: 0;
-      }
-    }
-    .card {
-      width: 100%;
-      margin-bottom: 40px;
-      display: flex;
-      align-items: start;
-      flex-direction: row;
-
-      img {
-        width: 20%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .card__text {
-        width: 50%;
-      }
-    }
+  margin: 20px;
+}
+.active__type{
+  background-color: black;
+  color: white;
+}
+.custom-products{
+  margin-bottom: 100px;
+  h1{
+    margin: 100px 0px;
   }
 }
-
-.prod {
-  font-family: "outfit";
-  padding: 50px 150px;
-  gap: 20px;
+.column__cards{
+  display: flex;
+}
+.sorted{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.second__card{
   width: 100%;
   display: flex;
-  align-items: start;
+  margin-bottom: 20px;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+  img{
+    width: 300px !important;
 
-  &__left {
-    width: 20%;
-
-    .h2div {
-      padding: 10px 0;
-      border-bottom: 1px solid rgb(10, 126, 10);
-
-      h2 {
-        color: rgb(242, 223, 207);
-        font-size: 22px;
-        font-weight: bold;
-      }
-    }
-
-    ul {
-      li {
-        list-style: none;
-
-        a {
-          text-decoration: none;
-          color: rgb(242, 223, 207);
-          line-height: 40px;
-          font-size: 15px;
-        }
-      }
-    }
   }
 
-  &__right {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 80%;
-
-    &__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .grid {
-      button {
-        background: none;
-        color: rgb(242, 223, 207);
-        border: none;
-      }
-      font-size: 20px;
-      display: flex;
-      gap: 10px;
-    }
-  }
 }
-
-.sort {
-  select {
-    border: none;
-    background: none;
-    border: 1px solid rgb(42, 122, 62);
-    border-radius: 20px;
-    padding: 5px;
-    color: rgb(242, 223, 207);
-    width: 100%;
-  }
-}
-
-.pagination-buttons {
-  button {
-    background: none;
-    border: none;
-    border: 1px solid rgb(42, 122, 62);
-    color: rgb(242, 223, 207);
-    padding: 4px;
-    border-radius: 7px;
-  }
-}
-
-/* Responsive Tasarım */
-@media only screen and (max-width: 1400px) {
-  .prod {
-    padding:20px;
-    gap: 60px;
-    &__right{
-      width: 80%;
-    }
-    &__left{
-      width: 20%;
-    }
-}
-
-  
-}
-@media only screen and (max-width: 900px) {
-  .prod {
-    padding: 50px 20px;
-    flex-direction: column;
-
-    &__left {
-      width: 100%;
-    }
-
-    &__right {
-      width: 100%;
-    }
-  }
-
-  .prod__right__bottom {
-    &.grid-view {
-      .card {
-        width: 100%;
-      }
-    }
-    &.list-view {
-      .card__header {
-        width: 100%;
-      }
-
-      .card__footer {
-        width: 100%;
-      }
-
-      .card {
-        flex-direction: column;
-
-        img {
-          width: 100%;
-        }
-
-        .card__text {
-          width: 100%;
-        }
-      }
-    }
-  }
+.gridbtn{
+  border: none;
+  background: none;
+  color: beige;
+  font-size: 30px;
+  margin-right: 20px;
 }
 
 
+select {
+  appearance: none;
+  background: none;
+  border: 1px solid beige;
+  color: beige;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
 
+  &:focus {
+    outline: none;
+    border-color: beige;
+  }
+}

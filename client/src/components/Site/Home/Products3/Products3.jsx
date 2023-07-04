@@ -90,7 +90,7 @@ const Products3 = () => {
         </div>
         <div className="card__right">
         <div className="card__icon">
-          <FaRegHeart />
+        
         </div>
         <div className="card__header">
           <a href="">{card.title}</a>

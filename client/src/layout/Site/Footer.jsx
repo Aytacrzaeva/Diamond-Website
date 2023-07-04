@@ -30,7 +30,8 @@ const Footer = () => {
             <Link to="/delivery"><p>Delivery Information</p></Link>
             <Link to="/about"><p>About Us</p></Link>
             <Link to="/privacy"><p>Privacy Policy</p></Link>
-            <p>brands</p>
+            <Link to="/blogs"><p>Blogs</p></Link>
+            
           </div>
         </div>
         <div className="footer__about">

@@ -17,13 +17,14 @@ const Header2 = () => {
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [loggedIn, setLoggedIn] = useState(false);
   const dropdownRef = useRef(null);
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
-  const [isAdmin, setisAdmin] = useState(null)
+  const [isAdmin, setisAdmin] = useState(null);
   const navigate = useNavigate();
 
   const logout = () => {
@@ -71,7 +72,7 @@ const Header2 = () => {
         const userData = response.data;
         setFirstname(userData.firstname);
         setLastname(userData.lastname);
-        setisAdmin(userData.isAdmin)
+        setisAdmin(userData.isAdmin);
       } catch (error) {
         console.warn(error);
         setFirstname("My Profile");
@@ -85,16 +86,28 @@ const Header2 = () => {
 
   const toggleSearchModal = () => {
     setShowSearchModal(!showSearchModal);
+    if (!showSearchModal) {
+      handleSearch();
+    }
   };
 
   const closeProfileDropdown = () => {
     setShowProfileDropdown(false);
   };
 
-  const handleSearch = () => {
-    setSearchTerm('');
-    toggleSearchModal();
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/products');
+      const products = response.data;
+      const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(filteredProducts);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -132,8 +145,8 @@ const Header2 = () => {
       <div className="nav2__right">
         <div className="dropdown" ref={dropdownRef}>
           <button onClick={() => setShowProfileDropdown(!showProfileDropdown)}>
-            <AiOutlineUser />{firstname!=="My Profile"?firstname+" "+lastname:"My Profile"}
-            {loggedIn && windowWidth > 770 ? "My Profile" : null} <FiChevronDown/>
+            <AiOutlineUser />{firstname !== "My Profile" ? firstname + " " + lastname : "My Profile"}
+            {loggedIn && windowWidth > 770 ? "My Profile" : null} <FiChevronDown />
           </button>
           {showProfileDropdown && (
             <div className="dropdown-content">
@@ -141,7 +154,7 @@ const Header2 = () => {
                 <h3>Your Account</h3>
                 <p>Access account and manage orders</p>
               </div>
-              {firstname!=="My Profile" && lastname && !isAdmin ? (
+              {firstname !== "My Profile" && lastname && !isAdmin ? (
                 <>
                   <Link to="/acc" onClick={closeProfileDropdown}><BsPersonFillAdd /> My Profile</Link>
                   <Link to="/myorders" onClick={closeProfileDropdown}> Order History</Link>
@@ -170,8 +183,18 @@ const Header2 = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <button className="modal-search-button" onClick={handleSearch}><FiSearch/></button>
+                  <button className="modal-search-button" onClick={handleSearch}><FiSearch /></button>
                 </div>
+                {searchResults.length > 0 && (
+                  <div className="modal__results">
+                    {searchResults.map((product) => (
+                      <div key={product.id} className="search-result">
+                        <img src={`http://localhost:8080/public/${product.main}`} alt="" />
+                        <Link to={`${product._id}`}>{product.name}</Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <button className="modal-close-button" onClick={toggleSearchModal}>X</button>
               </div>
             </div>
@@ -189,11 +212,11 @@ const Header2 = () => {
         <div className="cart">
           {windowWidth > 770 ? (
             <Link to="/cart">
-              <AiOutlineShoppingCart/>Cart
+              <AiOutlineShoppingCart />Cart
             </Link>
           ) : (
             <Link to="/cart">
-              <AiOutlineShoppingCart/>
+              <AiOutlineShoppingCart />
             </Link>
           )}
         </div>

@@ -1,273 +1,150 @@
-import React, { useEffect, useState } from 'react';
-import Products2 from '../../../components/Site/Home/Products2/Products2'
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
+import { RiShoppingBagLine } from 'react-icons/ri';
+import { useDispatch, useSelector } from "react-redux"
+import { FaRegHeart } from 'react-icons/fa';
 import { FaList } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
-import { RiShoppingBagLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { FaRegHeart } from 'react-icons/fa';
-import { MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
-import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
-
-import Ring1 from "../../../images/products/1/1.png";
-import Ring2 from "../../../images/products/1/1-2.png"
-
-import "./Products.scss";
-import { Helmet } from 'react-helmet';
-import axios from 'axios'
-
+import "./Products.scss"
+import { addwish } from '../../../store/wishSlice';
+import { add } from '../../../store/cartSlice';
 const Products = () => {
-  const [data, setdata] = useState([])
+  const [products, setProducts] = useState([])
+  const [currentType, setCurrentType] = useState(true)
+  const [sortedProducts, setSortedProducts] = useState([])
+  const cardItems = useSelector(state => state.cart.items)
+  const dispatch = useDispatch();
+
+  const handleAddToWish = (card) => {
+    dispatch(addwish(card));
+    console.log("Item added to wishlist");
+  };
+
+  const handleAddToCart = (card) => {
+    dispatch(add(card));
+    console.log("Item added to cart");
+  };
   useEffect(() => {
-    axios.get('http://localhost:8080/products')
-    .then(res=>setdata(res.data))
+    axios.get("http://localhost:8080/products").then(res => setProducts(res.data))
   }, [])
-  
-  const images = [
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-    { main: Ring1, hover: Ring2 },
-  ];
-
-  const cards = [
-    {
-      id: 1,
-      title: "Stars Ring",
-      price: 150,
-      sizes: ["16", "19", "20", "22"]
-    },
-    {
-      id: 2,
-      title: "Abigail Moon",
-      price: 150,
-      sizes: ["16", "19", "20", "22"]
-    },
-    {
-      id: 3,
-      title: "salam",
-      price: 140,
-      sizes: ["15", "18", "20"]
-    },
-    {
-      id: 4,
-      title: "sagol",
-      price: 140,
-      sizes: ["16", "18", "20"]
-    },
-    {
-      id: 5,
-      title: "a",
-      price: 140,
-      sizes: ["16", "18", "20"]
-    },
-    {
-      id: 6,
-      title: "a",
-      price: 140,
-      sizes: ["16", "18", "20"]
-    }, 
-    {
-      id: 7,
-      title: "a",
-      price: 140,
-      sizes: ["16", "18", "20"]
-    }, 
-    {
-      id: 8,
-      title: "a",
-      price: 140,
-      sizes: ["16", "18", "20"]
-    },
-    {
-      id: 9,
-      title: "aytac",
-      price: 100,
-      sizes: ["16", "18", "20"]
-    },
-    {
-      id: 10,
-      title: "rzayeva",
-      price: 1400,
-      sizes: ["16", "18", "20"]
-    }
-  ];
-
-  const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-  const [isGrid, setIsGrid] = useState(true);
-  const [sortOption, setSortOption] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 6;
-
-  const handleListView = () => {
-    setIsGrid(false);
-  };
-
-  const handleGridView = () => {
-    setIsGrid(true);
-  };
-
-  const handleSortChange = (event) => {
-    setSortOption(event.target.value);
-  };
-
-  const sortCards = () => {
-    switch (sortOption) {
-      case "lowToHigh":
-        return [...cards].sort((a, b) => a.price - b.price);
-      case "highToLow":
-        return [...cards].sort((a, b) => b.price - a.price);
-      default:
-        return cards;
-    }
-  };
-
-  const addToCart = () => {
-    console.log("Ürün sepete eklendi!");
-  };
-
-  const renderCard = (index) => {
-    const card = sortCards()[index];
-
-    const handleCardClick = () => {
-      setSelectedCardIndex(index);
-    };
-
-    const handleImageHover = (event) => {
-      event.target.src = images[index].hover;
-    };
-
-    const handleImageLeave = (event) => {
-      event.target.src = images[index].main;
-    };
-
-    return (
-      <div
-        className={`card ${selectedCardIndex === index ? 'selected' : ''}`}
-        key={card.id}
-        onClick={handleCardClick}
-      >
-        <div className="card__icon">
-          <FaRegHeart />
-        </div>
-        <div className="card__header">
-          <a href="">{card.title}</a>
-        </div>
-        <img
-          src={images[index].main}
-          alt="Slider Resim"
-          onMouseEnter={handleImageHover}
-          onMouseLeave={handleImageLeave}
-        />
-        <div className="card__footer">
-          <div className="price">
-            <span>${card.price}</span>
-            <div className="star">
-              <p>*</p> <p>Size</p>
-              <div className="sizes">
-                {
-                // data&&data
-                card.sizes.map((size, index) => {
-                  return(
-                    <div>
-                      <div className="ring" key={index}>{size}</div>
-                      {/* <img src={`http://localhost:8080/public/${size.images}`} alt="" /> */}
-                      
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-          <button className="add-to-cart" onClick={addToCart}>Add to Cart <RiShoppingBagLine /></button>
-        </div>
-      </div>
-    );
-  };
-
-  // Sayfa değiştirme fonksiyonları
-  const goToPage = (page) => {
-    setCurrentPage(page);
-  };
-
-  const renderPaginationButtons = () => {
-    const totalPages = Math.ceil(sortCards().length / pageSize);
-
-    return (
-      <div className="pagination-buttons">
-        {currentPage > 1 && (
-          <button onClick={() => goToPage(currentPage - 1)}><MdOutlineKeyboardDoubleArrowLeft/></button>
-        )}
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button key={index} onClick={() => goToPage(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
-        {currentPage < totalPages && (
-          <button onClick={() => goToPage(currentPage + 1)}><MdOutlineKeyboardDoubleArrowRight/></button>
-        )}
-      </div>
-    );
-  };
-
-  const renderCards = () => {
-    const sortedCards = sortCards();
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    const currentCards = sortedCards.slice(startIndex, endIndex);
-
-    return currentCards.map((card, index) => renderCard(index));
-  };
+  const changeActiveType = () => {
+    setCurrentType(!currentType)
+  }
 
   return (
-    <>
-    <div className="prod">
-      <div className="prod__left">
-        <div className="h2div">
-          <h2>Category</h2>
-        </div>
-        <ul>
-          <li><Link to="/">Amethyst</Link></li>
-          <li><Link to="/">Bead</Link></li>
-          <li><Link to="/">Blue Sapphire</Link></li>
-          <li><Link to="/">Burma Ruby</Link></li>
-          <li><Link to="/">Black Diamond</Link></li>
-          <li><Link to="/">Ametrine</Link></li>
-        </ul>
-      </div>
-      <div className="prod__right">
-        <div className="prod__right__top">
-          <div className="grid">
-            <button onClick={handleListView}><FaList /></button>
-            <button onClick={handleGridView}><BsFillGrid3X3GapFill /></button>
+    <div className="custom-products">
+      <div className="container">
+        <h1>All Products</h1>
+        <div className='sorted'>
+          <div>
+            <button onClick={changeActiveType} className={currentType === true ? "active__type gridbtn" : "gridbtn"}>< BsFillGrid3X3GapFill/></button>
+            <button onClick={changeActiveType} className={currentType === false ? "active__type gridbtn" : "gridbtn"}><FaList/></button>
           </div>
-          <div className="sort">
-            <select value={sortOption} onChange={handleSortChange}>
+          <div>
+            <select name="" id="" onChange={(e) => {
+              console.log(e.target.value)
+              switch (e.target.value) {
+                case "all":
+                  setSortedProducts([...products])
+                  break;
+                case "low":
+                  setSortedProducts([...products.sort((a, b) => a.price - b.price)])
+                  break;
+                case "high":
+                  setSortedProducts([...products.sort((a, b) => b.price - a.price)])
+                  break;
+
+              }
+            }} >
               <option value="all">All</option>
-              <option value="lowToHigh">Low to High</option>
-              <option value="highToLow">High to Low</option>
+              <option value="low">Low to High</option>
+              <option value="high">High to All</option>
             </select>
           </div>
         </div>
-        <div className={`prod__right__bottom ${isGrid ? 'grid-view' : 'list-view'}`}>
-          {renderCards()}
+        <div className="row">
+          {
+            currentType ? products.map((card, index) => {
+              return (
+                <div className="col-lg-3 col-md-6 col-sm-12 mb-4">
+                  <div className="card" key={card._id}>
+                    <div className="card__icon" onClick={() => handleAddToWish(card)}>
+                      <FaRegHeart />
+                    </div>
+                    <div className="card__header">
+                      <Link to={`${card._id}`}>{card.name}</Link>
+                    </div>
+                    <img
+                      src={`http://localhost:8080/public/${card.main}`}
+                      alt="Slider"
+                      onMouseEnter={(e) => {
+                        e.target.src = `http://localhost:8080/public/${card.hover}`
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.src = `http://localhost:8080/public/${card.main}`
+                      }}
+                    />
+                    <div className="card__footer card__button">
+                      <div className="price">
+                        <span>${card.price}</span>
+                        <div className="star">
+                          <p>*</p> <p>Size</p>
+                          <div className="sizes">
+                            {card.size && card.size.map((size, index) => (
+                              <div className="ring" key={index}>{size}</div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <button className="add-to-cart custom-btn" onClick={() => handleAddToCart(card)}>Add to Cart <RiShoppingBagLine /></button>
+                    </div>
+                  </div>
+                </div>
+              )
+            }) : products.map((card, index) => {
+              return (
+                <div className="col-lg-12">
+                  <div className="card second__card" key={card._id}>
+                    <div className="card__icon" onClick={() => handleAddToWish(card)}>
+                      <FaRegHeart />
+                    </div>
+                    <div className="card__header">
+                      <Link to={`${card._id}`}>{card.name}</Link>
+                    </div>
+                    <img
+                      src={`http://localhost:8080/public/${card.main}`}
+                      alt="Slider"
+                      onMouseEnter={(e) => {
+                        e.target.src = `http://localhost:8080/public/${card.hover}`
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.src = `http://localhost:8080/public/${card.main}`
+                      }}
+                    />
+                    <div className="card__footer card__button">
+                      <div className="price">
+                        <span>${card.price}</span>
+                        <div className="star">
+                          <p>*</p> <p>Size</p>
+                          <div className="sizes">
+                            {card.size && card.size.map((size, index) => (
+                              <div className="ring" key={index}>{size}</div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <button className="add-to-cart custom-btn" onClick={() => handleAddToCart(card)}>Add to Cart <RiShoppingBagLine /></button>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
         </div>
-        {renderPaginationButtons()}
       </div>
     </div>
-    <Products2/>
-    <Helmet>
-      <title>
-        All Products
-      </title>
-    </Helmet>
-    </>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

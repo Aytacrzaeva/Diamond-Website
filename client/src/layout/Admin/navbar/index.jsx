@@ -98,12 +98,12 @@ const AdminNavbar = () => {
             {blog && (
               <ul>
                 <li className="menu-item">
-                  <NavLink to={"/cinema"}>
+                  <NavLink to={"allblog"}>
                     <i className="fa-solid fa-caret-right"></i>· All Blogs
                   </NavLink>
                 </li>
                 <li className="menu-item">
-                  <NavLink to={"/cinema"}>
+                  <NavLink to={"addblog"}>
                     <i className="fa-solid fa-caret-right"></i>· Add Blog
                   </NavLink>
                 </li>
@@ -121,7 +121,7 @@ const AdminNavbar = () => {
             {admin && (
               <ul>
                 <li className="menu-item">
-                  <NavLink to={"/"}>
+                  <NavLink to={"adminacc"}>
                     <i className="fa-solid fa-caret-right"></i>· Profile Details
                   </NavLink>
                 </li>
