@@ -77,7 +77,7 @@ const AllBlogs = () => {
     <div className="allblog">
       <div className="">
         {showInputs ? (
-          <div className="">
+          <div className="myform">
             <form onSubmit={handleEdit}>
               <label className="">
                 Image:

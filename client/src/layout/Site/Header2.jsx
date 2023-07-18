@@ -171,44 +171,7 @@ const Header2 = () => {
             </div>
           )}
         </div>
-        <div className="search">
-          {showSearchModal && (
-            <div className="modal">
-              <div className="modal-content">
-                <div className="modal__input">
-                  <input
-                    className="modal-input"
-                    type="text"
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                  <button className="modal-search-button" onClick={handleSearch}><FiSearch /></button>
-                </div>
-                {searchResults.length > 0 && (
-                  <div className="modal__results">
-                    {searchResults.map((product) => (
-                      <div key={product.id} className="search-result">
-                        <img src={`http://localhost:8080/public/${product.main}`} alt="" />
-                        <Link to={`${product._id}`}>{product.name}</Link>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <button className="modal-close-button" onClick={toggleSearchModal}>X</button>
-              </div>
-            </div>
-          )}
-          {windowWidth > 770 ? (
-            <button className="search-button" onClick={toggleSearchModal}>
-              Search<FiSearch />
-            </button>
-          ) : (
-            <button className="search-button" onClick={toggleSearchModal}>
-              <FiSearch />
-            </button>
-          )}
-        </div>
+        
         <div className="cart">
           {windowWidth > 770 ? (
             <Link to="/cart">

@@ -61,3 +61,19 @@ select {
     border-color: beige;
   }
 }
+.myinp{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+
+  input{
+    background: none;
+    border: none;
+    color: beige;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    border: 1px solid beige;
+  }
+}

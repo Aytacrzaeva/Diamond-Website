@@ -5,9 +5,9 @@ import './Checkout.scss';
 import axios from 'axios';
 
 const Checkout = () => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
   const token = localStorage.getItem('token');
-  let products = JSON.parse(localStorage.getItem("basketItems"))
+  let products = JSON.parse(localStorage.getItem("basketItems"));
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -18,8 +18,8 @@ const Checkout = () => {
           }
         });
         const userData = response.data;
-        console.log(userData)
-        setUser(userData)
+        console.log(userData);
+        setUser(userData);
       } catch (error) {
         console.warn(error);
       }
@@ -27,7 +27,8 @@ const Checkout = () => {
 
     fetchUserData();
   }, [token]);
-  // Yup şema validasyonu
+
+  // Yup schema validation
   const checkoutSchema = Yup.object().shape({
     firstName: Yup.string(),
     lastName: Yup.string(),
@@ -40,12 +41,22 @@ const Checkout = () => {
   });
 
   const handleSubmit = (values) => {
-    let totalPrice = products.reduce((a, b) => a.prod.price + b.prod.price)
-    const postData = { user: user, products: products, paymentMethod: values.paymentMethod, comment: values.comment, totalPrice: totalPrice }
+    let totalPrice = products.reduce((total, product) => total + product.prod.price, 0);
+    const postData = {
+      user: user,
+      products: products,
+      paymentMethod: values.paymentMethod,
+      comment: values.comment,
+      totalPrice: totalPrice
+    };
     console.log(postData);
-    axios.post("http://localhost:8080/orders", postData).then((res) => {
-      console.log(res.data)
-    })
+    axios.post("http://localhost:8080/orders", postData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -58,7 +69,7 @@ const Checkout = () => {
       validationSchema={checkoutSchema}
       onSubmit={handleSubmit}
     >
-      <Form className="checkout-form" >
+      <Form className="checkout-form">
         <div className="shipping-address">
           <h2>Shipping Address</h2>
           <div>
@@ -102,7 +113,6 @@ const Checkout = () => {
             <Field type="text" id="region" name="region" value={user.region} />
             <ErrorMessage name="region" component="div" className="error-message" />
           </div>
-
         </div>
 
         <div className="shipping">

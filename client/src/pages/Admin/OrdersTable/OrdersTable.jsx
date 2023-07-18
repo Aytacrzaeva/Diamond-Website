@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./OrdersTable.scss";
+import { Toaster, toast } from 'react-hot-toast';
 
 const OrdersTable = () => {
   const [orders, setOrders] = useState([]);
@@ -82,12 +83,12 @@ const OrdersTable = () => {
             <div className="product" key={product?.prod?._id}>
               {product?.prod?.name && <p>Product: {product?.prod?.name}</p>}
               <p>Quantity: {product?.count}</p>
-              {product?.prod?.createdAt && <p>Created At: {formatDate(product?.prod?.createdAt)}</p>}
             </div>
           ))}
           <p>Status: {order?.status}</p>
+          <p>Created At: {formatDate(order?.createdAt)}</p> {/* Yaratılma tarihini göster */}
           <select
-          className='orderstatus'
+            className='orderstatus'
             value={order?.status}
             onChange={(e) => handleStatusChange(order?._id, e.target.value)}
           >
@@ -96,7 +97,23 @@ const OrdersTable = () => {
             <option value="shipped">Shipped</option>
             <option value="delivered">Delivered</option>
           </select>
-          <button className='savebtn' onClick={() => handleSaveChanges(order?._id, order?.status)}>Save</button>
+          <button
+            className='savebtn'
+            onClick={() => {
+              handleSaveChanges(order?._id, order?.status);
+              toast.success("Order has been successfully updated!", {
+                position: "top-right",
+                duration: 2000,
+                style: {
+                  background: "#4caf50",
+                  color: "#fff",
+                },
+              });
+            }}
+          >
+            Save
+          </button>
+          <Toaster/>
         </div>
       ))}
     </div>

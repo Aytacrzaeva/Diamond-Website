@@ -53,7 +53,6 @@ const OrderHistory = () => {
             <TableHead>
               <TableRow>
                 <TableCell>Order Date</TableCell>
-                <TableCell>Product Name</TableCell>
                 <TableCell>Order Status</TableCell>
                 <TableCell>Price</TableCell>
               </TableRow>
@@ -62,9 +61,8 @@ const OrderHistory = () => {
               {getUserOrders(users.email).map((order) => (
                 <TableRow key={order._id}>
                   <TableCell>{formatDate(order.createdAt)}</TableCell> {/* formatDate fonksiyonunu kullanarak değeri dönüştürüyoruz */}
-                  <TableCell>{order.products[0].prod.name}</TableCell>
                   <TableCell>{order.status}</TableCell>
-                  <TableCell>${order.products[0].prod.price}</TableCell>
+                  <TableCell>${order.totalPrice}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

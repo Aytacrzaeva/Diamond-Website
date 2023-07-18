@@ -4,16 +4,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import './ProductsTable.scss';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const ProductsTable = () => {
   const [products, setProducts] = useState([]);
   const [dummys, setDummy] = useState(false);
 
-
   useEffect(() => {
     fetchProducts();
-
   }, []);
 
   const fetchProducts = async () => {
@@ -22,7 +21,7 @@ const ProductsTable = () => {
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
-        setDummy(false)
+        setDummy(false);
       } else {
         console.log('HTTP error:', response.status);
       }
@@ -33,22 +32,20 @@ const ProductsTable = () => {
 
   const handleEdit = async (productId) => {
     console.log(`Düzenle: ${productId}`);
-    const selectedProduct = products.find(product => product.id === productId);
+    const selectedProduct = products.find((product) => product.id === productId);
     try {
       const response = await fetch(`http://localhost:8080/products/${productId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(selectedProduct)
+        body: JSON.stringify(selectedProduct),
       });
       if (response.ok) {
         const data = await response.json();
         console.log('Ürün güncellendi:', data);
-        setProducts(prevProducts =>
-          prevProducts.map(product =>
-            product.id === productId ? data : product
-          )
+        setProducts((prevProducts) =>
+          prevProducts.map((product) => (product.id === productId ? data : product))
         );
       } else {
         console.log('HTTP error:', response.status);
@@ -63,13 +60,10 @@ const ProductsTable = () => {
     try {
       const response = await axios.delete(`http://localhost:8080/products/${id}`);
       if (response.status === 200) {
-        console.log('Ürün silindi:', id);
-        // Show toast notification
-        toast.success('Item successfully deleted');
-        // Update the state to remove the deleted item
-        setProducts((prevProducts) =>
-          prevProducts.filter((product) => product._id !== id)
-        );
+        toast.success('Product has been successfully deleted!', {
+          position: 'top-right',
+        });
+        setProducts((prevProducts) => prevProducts.filter((product) => product._id !== id));
       } else {
         console.log('HTTP error:', response.status);
       }
@@ -77,7 +71,6 @@ const ProductsTable = () => {
       console.log('Fetch error:', error);
     }
   };
-
 
   return (
     <div className="products-table">
@@ -101,7 +94,11 @@ const ProductsTable = () => {
               <TableRow key={product.id}>
                 <TableCell>{product.name}</TableCell>
                 <TableCell>
-                  <img src={`http://localhost:8080/public/${product.main}`} className="product-image" alt="Product" />
+                  <img
+                    src={`http://localhost:8080/public/${product.main}`}
+                    className="product-image"
+                    alt="Product"
+                  />
                 </TableCell>
                 <TableCell>{product.rating}</TableCell>
                 <TableCell>{product.inStock ? 'Yes' : 'No'}</TableCell>
@@ -111,15 +108,10 @@ const ProductsTable = () => {
                 <TableCell>
                   <div className="action-buttons">
                     <Button startIcon={<EditIcon />} onClick={() => handleEdit(product._id)}>
-                      Edit
                     </Button>
-                    <Button
-                      startIcon={<DeleteIcon />}
-                      onClick={() => handleDelete(product._id)}
-                    >
+                    <Button startIcon={<DeleteIcon />} onClick={() => handleDelete(product._id)}>
                       Delete
                     </Button>
-
                   </div>
                 </TableCell>
               </TableRow>
@@ -127,6 +119,7 @@ const ProductsTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Toaster/>
     </div>
   );
 };

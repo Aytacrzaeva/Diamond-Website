@@ -148,7 +148,8 @@ export const ROUTES = [{
     },{
         path: "adminacc",
         element: <AdminAcc />
-    }
+    },
+    
     ]
 
 }]

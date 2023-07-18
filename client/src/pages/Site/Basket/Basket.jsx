@@ -117,9 +117,11 @@ const Basket = () => {
           <Button>Continue Shopping</Button>
         </Link>
         <Link to="/checkout">
-          <Button onClick={(e)=>{
+          <Button 
+          onClick={(e)=>{
             localStorage.setItem("basketItems",JSON.stringify(products))
-          }}>Confirm</Button>
+          }}
+          >Confirm</Button>
         </Link>
       </div>
     </div>
