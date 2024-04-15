@@ -29,7 +29,7 @@ const Header2 = () => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    setShowProfileDropdown(false); // Close the dropdown
+    setShowProfileDropdown(false); 
     console.log('logout');
   };
 
@@ -123,19 +123,19 @@ const Header2 = () => {
             </button>
             {showMenu && (
               <ul className="menu-items">
-                <li><a href="">Amethyst</a></li>
-                <li><a href="">Blue Sapphire</a></li>
-                <li><a href="">Black Diamond</a></li>
-                <li><a href="">Ametrine</a></li>
+                <li><Link to='/products'>Amethyst</Link></li>
+                <li><Link to='/products'>Blue Sapphire</Link></li>
+                <li><Link to='/products'>Black Diamond</Link></li>
+                <li><Link to='/products'>Ametrine</Link></li>
               </ul>
             )}
           </>
         ) : (
           <ul>
-            <li><a href="">Amethyst</a></li>
-            <li><a href="">Blue Sapphire</a></li>
-            <li><a href="">Black Diamond</a></li>
-            <li><a href="">Ametrine</a></li>
+            <li><Link to='/products'>Amethyst</Link></li>
+                <li><Link to='/products'>Blue Sapphire</Link></li>
+                <li><Link to='/products'>Black Diamond</Link></li>
+                <li><Link to='/products'>Ametrine</Link></li>
           </ul>
         )}
       </div>

@@ -54,7 +54,7 @@
         }
         
         tr{
-            border-bottom: 1px solid orange;
+            border-bottom: 1px solid rgb(251, 251, 251);
         }
     }
 }
@@ -69,7 +69,8 @@
         height: 150px;
         object-fit: cover;
         border-radius: 30px;
-        box-shadow: rgba(191, 116, 84, 0.817) 1px 10px 40px;    }
+        
+    }
     button {
         padding: 10px 20px;
         border: none;

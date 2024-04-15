@@ -1,35 +1,79 @@
-.orders{
+// .orders{
+//     width: 80%;
+//     background-color:rgb(146,171,185);
+//     display: flex;
+//     color: white;
+//     align-items: center;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     margin-left: 290px;
+//     padding-top:80px;
+//     .order{
+//         width: 50%;
+//         border: solid;
+//         height: 700px;
+//         padding: 20px;
+//     }
+//     .savebtn{
+//         padding: 10px 20px;
+//         border: none;
+//         background-color: rgb(218,157,115);
+//         color: beige;
+//         border-radius: 20px;
+//         margin-left: 20px;
+//         margin-top: 0px;
+
+//     }
+//     .orderstatus{
+//         padding: 10px;
+//         border: none;
+//         background-color: beige;
+//         color: rgb(218,157,115);
+//         border-radius: 20px;
+//         margin: 0 auto;
+//     }
+// }
+
+.orders {
     width: 80%;
-    
-    background-color:rgb(146,171,185);
+    background-color: rgb(146, 171, 185);
     display: flex;
+    flex-wrap:wrap;
     color: white;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-left: 290px;
-    padding-top:80px;
-    .order{
-        width: 50%;
-        border: solid;
-        height: 600px;
-        padding: 20px;
+    margin-left: 288px;
+    padding-top: 80px;
+}
 
-    }
-    .savebtn{
-        padding: 10px 20px;
-        border: none;
-        background-color: rgb(218,157,115);
-        color: beige;
-        border-radius: 20px;
-        margin-left: 20px;
+.order {
+    position: relative;
+    width: 45%; 
+    border: solid;
+    height: 700px;
+    padding: 20px;
+    margin: 20px;
+    overflow: hidden; 
+}
 
-    }
-    .orderstatus{
-        padding: 10px;
-        border: none;
-        background-color: beige;
-        color: rgb(218,157,115);
-        border-radius: 20px;
-    }
+.savebtn {
+    position: absolute;
+    bottom: 10px; 
+    right: 10px; 
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(218, 157, 115);
+    color: beige;
+    border-radius: 20px;
+}
+
+.orderstatus {
+    position: absolute;
+    bottom: 10px; 
+    left: 10px; 
+    padding: 10px 20px;
+    border: none;
+    background-color: beige;
+    color: rgb(218, 157, 115);
+    border-radius: 20px;
 }

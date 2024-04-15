@@ -160,7 +160,7 @@ const AllBlogs = () => {
                       <td className="">{item.name}</td>
                       <td>{item.date}</td>
                       <td>
-                        <div className="">
+                        <div className="allblogbtns">
                           <button
                             className=""
                             onClick={() => handleEdit(item._id)}

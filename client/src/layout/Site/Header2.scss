@@ -252,6 +252,7 @@
 }
 
 @media (max-width: 1300px) {
+  
   .nav2{
     margin: 0 10px;
     &__left{
@@ -308,4 +309,9 @@
     font-size: 20px;
   }
 
+}
+@media (max-width: 400px) {
+  .nav2__middle{
+    display: none;
+  }
 }

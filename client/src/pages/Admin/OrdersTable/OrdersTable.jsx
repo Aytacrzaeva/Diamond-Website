@@ -87,16 +87,8 @@ const OrdersTable = () => {
           ))}
           <p>Status: {order?.status}</p>
           <p>Created At: {formatDate(order?.createdAt)}</p> {/* Yaratılma tarihini göster */}
-          <select
-            className='orderstatus'
-            value={order?.status}
-            onChange={(e) => handleStatusChange(order?._id, e.target.value)}
-          >
-            <option value="pending">Pending</option>
-            <option value="processing">Processing</option>
-            <option value="shipped">Shipped</option>
-            <option value="delivered">Delivered</option>
-          </select>
+          
+
           <button
             className='savebtn'
             onClick={() => {
@@ -113,6 +105,17 @@ const OrdersTable = () => {
           >
             Save
           </button>
+          <select
+            className='orderstatus'
+            value={order?.status}
+            onChange={(e) => handleStatusChange(order?._id, e.target.value)}
+          >
+            <option value="pending">Pending</option>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+          </select>
+          
           <Toaster/>
         </div>
       ))}

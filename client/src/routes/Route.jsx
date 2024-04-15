@@ -31,6 +31,8 @@ import BlogDetail from "../pages/Site/Blog/BlogDetail";
 import AddBlogs from "../pages/Admin/AddBlogs/AddBlogs";
 import AllBlogs from "../pages/Admin/AllBlogs/AllBlogs";
 import AdminAcc from "../pages/Admin/AdminAcc/AdminAcc";
+import OrderReceived from "../pages/Site/OrderReceived/OrderReceived";
+import Success from "../pages/Site/Success/Success";
 export const ROUTES = [{
     path: "/",
     element: <Siteroot />,
@@ -116,6 +118,14 @@ export const ROUTES = [{
     {
         path:"blogs/:id",
         element:<BlogDetail/>
+    },
+    {
+        path:"received",
+        element: <OrderReceived/>
+    },
+    {
+        path:"success",
+        element: <Success/>
     }
     ]
 }, {

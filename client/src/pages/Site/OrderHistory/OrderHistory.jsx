@@ -28,10 +28,9 @@ const OrderHistory = () => {
   }, []);
 
   const getUserOrders = (email) => {
-    return orders.filter((order) => order.user.email === email);
+    return orders.filter((order) =>order.user && order.user.email === email);
   };
 
-  // createdAt değerini istediğiniz formata dönüştürmek için bir yardımcı fonksiyon
   const formatDate = (date) => {
     const formattedDate = new Date(date);
     const options = {
@@ -60,7 +59,7 @@ const OrderHistory = () => {
             <TableBody>
               {getUserOrders(users.email).map((order) => (
                 <TableRow key={order._id}>
-                  <TableCell>{formatDate(order.createdAt)}</TableCell> {/* formatDate fonksiyonunu kullanarak değeri dönüştürüyoruz */}
+                  <TableCell>{formatDate(order.createdAt)}</TableCell> 
                   <TableCell>{order.status}</TableCell>
                   <TableCell>${order.totalPrice}</TableCell>
                 </TableRow>

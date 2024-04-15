@@ -82,7 +82,6 @@ const ProductsTable = () => {
               <TableCell>Name</TableCell>
               <TableCell>Images</TableCell>
               <TableCell>Rating</TableCell>
-              <TableCell>In Stock</TableCell>
               <TableCell>Size</TableCell>
               <TableCell>Price</TableCell>
               <TableCell>Product Code</TableCell>
@@ -101,7 +100,6 @@ const ProductsTable = () => {
                   />
                 </TableCell>
                 <TableCell>{product.rating}</TableCell>
-                <TableCell>{product.inStock ? 'Yes' : 'No'}</TableCell>
                 <TableCell>{product.size}</TableCell>
                 <TableCell>{product.price}</TableCell>
                 <TableCell>{product.productcode}</TableCell>

@@ -27,7 +27,6 @@ const EditProduct = ({ match }) => {
       const response = await axios.put(`http://localhost:8080/products/${product._id}`, values);
       if (response.status === 200) {
         toast.success('Product has been updated successfully!');
-        // İstediğiniz ek işlemleri burada yapabilirsiniz
       } else {
         console.log('HTTP error:', response.status);
       }

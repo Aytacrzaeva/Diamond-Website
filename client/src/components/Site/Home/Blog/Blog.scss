@@ -34,6 +34,7 @@
   
       &__card {
         width: 19%;
+        height: 500px;
         border: 1px solid rgb(242, 223, 207);
         border-radius: 20px;
   
@@ -53,6 +54,8 @@
         @media screen and (max-width:431px){
             width: 100%;
             margin: 30px;
+            padding: 5px;
+            
             .blog{
                 width: 100%;
             }
