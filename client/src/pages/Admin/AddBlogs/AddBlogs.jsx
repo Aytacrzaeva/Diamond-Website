@@ -223,7 +223,7 @@ const AddBlog = ({ setBlogPosts }) => {
       setDesc("");
       setDate("");
     } catch (error) {
-      toast.success("Added new Blog");
+      toast.success("Item added successfully!");
     }
   };
 

@@ -46,7 +46,7 @@ export default function AddProduct() {
                 axios.post("http://localhost:8080/products", values)
 
                 .then((res) => {
-                  toast.success("Added new Card");
+                  toast.success("Item added successfully!");
                 })
                 .catch((error) => {
                   toast.error("Error adding new Card");

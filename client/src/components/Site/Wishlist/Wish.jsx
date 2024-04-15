@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../store/cartSlice';
 import { removewish } from '../../../store/wishSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Wish = () => {
   const items = useSelector(state => state.wish.items);
@@ -14,12 +15,12 @@ const Wish = () => {
 
   const handleMoveToCart = (item) => {
     dispatch(add(item.prod));
-    console.log("Item moved to cart");
+    toast.success('Item added to shopping bag!');
   };
 
   const handleRemoveFromWish = (itemId) => {
     dispatch(removewish(itemId));
-    console.log("Item removed from wishlist");
+    toast.success('Item removed from wishlist');
   };
 
   const tableCellStyle = {
@@ -74,6 +75,7 @@ const Wish = () => {
           <Button>Continue Shopping</Button>
         </Link>
       </div>
+      <Toaster/>
     </div>
   );
 };

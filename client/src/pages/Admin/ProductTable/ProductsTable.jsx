@@ -43,7 +43,6 @@ const ProductsTable = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Ürün güncellendi:', data);
         setProducts((prevProducts) =>
           prevProducts.map((product) => (product.id === productId ? data : product))
         );
@@ -61,7 +60,6 @@ const ProductsTable = () => {
       const response = await axios.delete(`http://localhost:8080/products/${id}`);
       if (response.status === 200) {
         toast.success('Product has been successfully deleted!', {
-          position: 'top-right',
         });
         setProducts((prevProducts) => prevProducts.filter((product) => product._id !== id));
       } else {

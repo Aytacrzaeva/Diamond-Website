@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Products.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaRegHeart, FaHeart } from 'react-icons/fa'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../../store/cartSlice';
-import { addwish } from '../../../../store/wishSlice'
+import { addwish, removewish } from '../../../../store/wishSlice'; // Assuming you have a function to remove from wishlist
+import toast, { Toaster } from 'react-hot-toast';
 
 const useHoverImage = (mainImage, hoverImage) => {
   const [imageSource, setImageSource] = useState(mainImage);
@@ -25,6 +26,7 @@ const useHoverImage = (mainImage, hoverImage) => {
 const Products = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [wishlist, setWishlist] = useState([]); 
   const dispatch = useDispatch();
   const token = localStorage.getItem("token")
   const navigate = useNavigate()
@@ -44,23 +46,32 @@ const Products = () => {
   };
 
   const handleAddToCart = (card) => {
-    if(token){
+    if (token) {
       dispatch(add(card));
-    console.log("Item added to cart");
-    }
-    else{
-      navigate('/login')
+      toast.success('Item added to shopping bag!');
+    } else {
+      navigate('/login');
     }
   };
 
-  const handleAddToWish = (card) => {
-    if(token){
-      dispatch(addwish(card));
-    console.log("Item added to cart");
+  const handleToggleWish = (card) => {
+    if (token) {
+      if (wishlist.includes(card._id)) {
+        dispatch(removewish(card));
+        toast.success('Item removed from wishlist!');
+        setWishlist(prev => prev.filter(item => item !== card._id));
+      } else {
+        dispatch(addwish(card));
+        toast.success('Item added to wishlist!');
+        setWishlist([...wishlist, card._id]);
+      }
+    } else {
+      navigate('/login');
     }
-    else{
-      navigate('/login')
-    }
+  };
+
+  const isWishlistItem = (cardId) => {
+    return wishlist.includes(cardId);
   };
 
   const Card = ({ card }) => {
@@ -73,7 +84,9 @@ const Products = () => {
     return (
       <div className="card" key={card._id}>
         <div className="card__icon">
-          <button onClick={() => handleAddToWish(card)}><FaRegHeart /></button>
+          <button onClick={() => handleToggleWish(card)}>
+            {isWishlistItem(card._id) ? <FaHeart style={{ color: 'red' }} /> : <FaRegHeart />}
+          </button>
         </div>
         <div className="card__header">
           <Link to={`/${card._id}`}>{card.name}</Link>
@@ -118,9 +131,9 @@ const Products = () => {
             scrambled it to make a type specimen book.
           </p>
           <Link to='/products'>
-          <button>
-            Check More Products <RiShoppingBagLine />
-          </button>
+            <button>
+              Check More Products <RiShoppingBagLine />
+            </button>
           </Link>
         </div>
       </div>
@@ -138,6 +151,7 @@ const Products = () => {
           </button>
         </div>
       </div>
+      <Toaster/>
     </div>
   );
 };

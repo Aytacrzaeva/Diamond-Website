@@ -5,6 +5,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { remove,countChange } from '../../../store/cartSlice';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Basket = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,8 @@ const Basket = () => {
   const handleRemove = (productId) => {
     dispatch(remove(productId)); 
     setItems((prevItems) => prevItems.filter((item) => item.prod._id !== productId));
+    toast.success('Item removed from wishlist');
+
   };
 
   const handleQuantityChange = (itemId, newQuantity) => {
@@ -124,6 +128,7 @@ const Basket = () => {
           >Confirm</Button>
         </Link>
       </div>
+      <Toaster/>
     </div>
   );
 };

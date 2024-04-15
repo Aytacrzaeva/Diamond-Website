@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './Products2.scss';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
-import { FaRegHeart } from 'react-icons/fa';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { add } from '../../../../store/cartSlice';
 import { addwish } from '../../../../store/wishSlice';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+import { Link} from 'react-router-dom';
 
 const useHoverImage = (mainImage, hoverImage) => {
   const [imageSource, setImageSource] = useState(mainImage);
@@ -26,6 +27,9 @@ const useHoverImage = (mainImage, hoverImage) => {
 const Products2 = () => {
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [wishlist, setWishlist] = useState([]); 
+  const token = localStorage.getItem("token")
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,20 +54,35 @@ const Products2 = () => {
 
     const [imageSource, handleImageHover, handleImageLeave] = useHoverImage(card.main, card.hover);
 
-    const handleAddToWish = () => {
-      dispatch(addwish(card));
-      console.log("Item added to wishlist");
+    const handleAddToWish = (card) => {
+      if (token) {
+        dispatch(addwish(card));
+        setWishlist([...wishlist, card._id]); 
+        toast.success('Item added to wishlist!');
+      } else {
+       
+      }
     };
 
-    const handleAddToCart = () => {
-      dispatch(add(card));
-      console.log("Item added to cart");
+    const isWishlistItem = (cardId) => {
+      return wishlist.includes(cardId); 
+    };
+
+    const handleAddToCart = (card) => {
+      if (token) {
+        dispatch(add(card));
+        toast.success('Item added to shopping bag!');
+      } else {
+        
+      }
     };
 
     return (
       <div className="card" key={card._id}>
         <div className="card__icon">
-          <FaRegHeart onClick={handleAddToWish} />
+        <button onClick={() => handleAddToWish(card)}>
+            {isWishlistItem(card._id) ? <FaHeart style={{ color: 'red' }} /> : <FaRegHeart />}
+          </button>
         </div>
         <div className="card__header">
           <Link to={`${card._id}`}>{card.name}</Link>
@@ -86,8 +105,9 @@ const Products2 = () => {
               </div>
             </div>
           </div>
-          <button className="add-to-cart" onClick={handleAddToCart}>Add to Cart <RiShoppingBagLine /></button>
-        </div>
+          <button className="add-to-cart" onClick={() => handleAddToCart(card)}>
+            Add to Cart <RiShoppingBagLine />
+          </button>        </div>
       </div>
     );
   };
@@ -116,6 +136,7 @@ const Products2 = () => {
           <button className="slider-button" onClick={nextCard}><MdOutlineKeyboardDoubleArrowRight /></button>
         </div>
       </div>
+      <Toaster/>
     </div>
   );
 };

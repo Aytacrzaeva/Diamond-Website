@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Toaster, toast } from 'react-hot-toast';
 import './AllBlogs.scss';
 
 const AllBlogs = () => {
@@ -53,6 +54,7 @@ const AllBlogs = () => {
     try {
       await axios.delete(`http://localhost:8080/blogs/${id}`);
       setBlogPosts(blogPosts.filter((post) => post._id !== id));
+      toast.success('Item successfully deleted!');
     } catch (error) {
       console.error(error);
     }
@@ -73,12 +75,30 @@ const AllBlogs = () => {
     toggleTable();
   };
 
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      name: name,
+      date: date,
+      desc: desc,
+      image: selectedFile,
+      imageSrc: selectedFile.name
+    }
+    try {
+      await axios.put(`http://localhost:8080/blogs/${id}`, data);
+      toast.success('Item updated successfully!');
+      window.location.reload(); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="allblog">
       <div className="">
         {showInputs ? (
           <div className="myform">
-            <form onSubmit={handleEdit}>
+            <form onSubmit={handleEditSubmit}>
               <label className="">
                 Image:
                 <input
@@ -118,25 +138,13 @@ const AllBlogs = () => {
                   className=""
                 />
               </label>
-              <button className="" type="submit" onClick={(e)=>{
-                e.preventDefault()
-                const data = {
-                  name:name,
-                  date:date,
-                  desc:desc,
-                  image:selectedFile,
-                  imageSrc:selectedFile.name
-                }
-                axios.put(`http://localhost:8080/blogs/${id}`,data).then(res=>console.log(res.data))
-                console.log(data)
-              }}>
+              <button className="" type="submit">
                 Save
               </button>
             </form>
           </div>
         ) : (
           <>
-            
             {showTable && (
               <table className="allblog">
                 <thead className="thead">
@@ -183,6 +191,7 @@ const AllBlogs = () => {
           </>
         )}
       </div>
+      <Toaster/>
     </div>
   );
 };

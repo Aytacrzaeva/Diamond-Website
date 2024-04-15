@@ -53,7 +53,6 @@ const OrdersTable = () => {
     }
   };
 
-  // createdAt değerini istediğiniz formata dönüştürmek için bir yardımcı fonksiyon
   const formatDate = (date) => {
     const formattedDate = new Date(date);
     const options = {
@@ -86,21 +85,14 @@ const OrdersTable = () => {
             </div>
           ))}
           <p>Status: {order?.status}</p>
-          <p>Created At: {formatDate(order?.createdAt)}</p> {/* Yaratılma tarihini göster */}
+          <p>Created At: {formatDate(order?.createdAt)}</p> 
           
 
           <button
             className='savebtn'
             onClick={() => {
               handleSaveChanges(order?._id, order?.status);
-              toast.success("Order has been successfully updated!", {
-                position: "top-right",
-                duration: 2000,
-                style: {
-                  background: "#4caf50",
-                  color: "#fff",
-                },
-              });
+              toast.success("Order has been successfully updated!");
             }}
           >
             Save

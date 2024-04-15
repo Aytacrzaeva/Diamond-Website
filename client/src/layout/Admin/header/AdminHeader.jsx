@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminHeader.scss";
-import Admin from "../../../images/admin/admin.png"
-// import logo_dark from "../../../assets/logo-dark.png";
 const AdminHeader = () => {
   const navigate = useNavigate();
   const [settings, setSettings] = useState(false);
@@ -19,7 +17,7 @@ const AdminHeader = () => {
           </div>
         </div>
         <div className="user-item">
-          <img src={Admin} alt="" />
+          
           <p>Rzayeva Aytac</p>
         </div>
       </div>
